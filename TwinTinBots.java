@@ -54,6 +54,8 @@ public class TwinTinBots {
                 //(les robot execute leurs actions)
             }
             //changer joueur
+            idxJoueurActuel = changerJoueur(idxJoueurActuel);
+            changerJoueur(idxJoueurActuel);
         }
 
     }
