@@ -1,12 +1,7 @@
-<<<<<<< HEAD
-package crystaux;
-
-=======
->>>>>>> ef65c56851a0a06ae8fb46e32a21f30ad30dfb36
 public class CaseHexa
 {
 	private CaseHexa[] casesVoisines;
-	private IContenu   contenuCase;
+	private Contenu   contenuCase;
 
 	public CaseHexa(CaseHexa[] casesVoisines)
 	{
@@ -35,12 +30,12 @@ public class CaseHexa
 		}
 	}
 
-	public void setContenu(IContenu contenuCase)
+	public void setContenu(Contenu contenuCase)
 	{
 		this.contenuCase = contenuCase;
 	}
 
-	public IContenu getContenu()
+	public Contenu getContenu()
 	{
 		return contenuCase;
 	}

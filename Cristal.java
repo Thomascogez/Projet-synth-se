@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-package crystaux;
-
-=======
->>>>>>> ef65c56851a0a06ae8fb46e32a21f30ad30dfb36
-public class Cristal implements IContenu
+public class Cristal extends Contenu
 {
 	private int valeur;
 
@@ -15,7 +10,7 @@ public class Cristal implements IContenu
 	public Cristal creerCristal(int valeur)
 	{
 		if(valeur>=2 && valeur<=4)
-			return this(valeur);
+			return new Cristal(valeur);
 		return null;
 	}
 
