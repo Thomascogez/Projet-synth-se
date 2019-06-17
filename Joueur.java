@@ -1,22 +1,18 @@
-
-
-import java.awt.Robot;
-
 /**
  * Joueur
  */
-public class Joueur {
-    private static int PLAYER_ID = 0;
-    private int id;
+public class Joueur
+{
     private String nom;
+    private String couleur;
     private Base baseJoueur;
     private int points;
     private Robot[] robots;
 
-    public Joueur(String nom) {
-        
-        this.id = ++PLAYER_ID;
+    public Joueur(String nom, String couleur)
+    {
         this.nom = nom;
+        this.couleur = couleur;
         this.baseJoueur = new Base();
         this.points = 0;
         this.robots = new Robot[2];
@@ -26,16 +22,12 @@ public class Joueur {
     }
 
     private void initRobot(){
-        robots[0] = new Robot();
-        robots[1] = new Robot();
+        robots[0] = new Robot(couleur);
+        robots[1] = new Robot(couleur);
     }
 
     public void ajouterCristal(Cristal c){
         this.baseJoueur.ajouterCristal(c);
-    }
-
-    public int getId() {
-        return id;
     }
 
     public String getNom() {

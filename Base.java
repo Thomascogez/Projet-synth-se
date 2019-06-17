@@ -3,7 +3,8 @@ import java.util.ArrayList;
 /**
  * Base
  */
-public class Base {
+public class Base extends Contenu
+{
 
     private ArrayList<Cristal> cristaux;
 

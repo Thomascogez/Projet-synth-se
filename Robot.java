@@ -1,19 +1,29 @@
-public class Robot
+public class Robot extends Contenu
 {
+	private CaseHexa caseHexa;
 	private String   couleur;
-	private CaseHexa case;
 	private int      dir;
 	private Cristal  cristalPorte;
 
-	public Robot(String couleur, CaseHexa case, int dir)
+	public Robot(String couleur)
 	{
 		this.couleur = couleur;
-		this.case    = case;
 
 		if(dir<0 || dir>=6)
 			dir = 0;
-		this.dir     = dir;
 		cristalPorte = null;
+	}
+
+	// A n'utiliser qu'à l'initialisation du plateau
+	public void setCaseHexa(CaseHexa caseHexa)
+	{
+		this.caseHexa = caseHexa;
+	}
+
+	// A n'utiliser qu'à l'initialisation du plateau
+	public void setDir(int dir)
+	{
+		this.dir = dir;
 	}
 
 	private void tourner(char direction)
@@ -27,27 +37,27 @@ public class Robot
 	// PAS ENCORE POSSIBLE DE POUSSER LES ROBOTS ET CRISTAUX
 	private void avancer()
 	{
-		CaseHexa[] casesVoisines = case.getVoisines();
+		CaseHexa[] casesVoisines = caseHexa.getVoisines();
 		if(casesVoisines[dir].getContenu()==null)
 		{
-			case.setContenu(null);
+			caseHexa.setContenu(null);
 			casesVoisines[dir].setContenu(this);
-			case = casesVoisines[dir];
+			caseHexa = casesVoisines[dir];
 		}
 	}
 
 	private void charger()
 	{
-		CaseHexa[] casesVoisines = case.getVoisines();
-		if(casesVoisines[dir].getContenu() instance of Cristal)
+		CaseHexa[] casesVoisines = caseHexa.getVoisines();
+		if(casesVoisines[dir].getContenu() instanceof Cristal)
 		{
-			cristalPorte = casesVoisines[dir].getContenu();
+			cristalPorte = (Cristal)(casesVoisines[dir].getContenu());
 			casesVoisines[dir].setContenu(null);
 		}
 
-		if(casesVoisines[dir].getContenu() instance of Robot)
+		if(casesVoisines[dir].getContenu() instanceof Robot)
 		{
-			Robot autreRobot = casesVoisines[dir].getContenu();
+			Robot autreRobot = (Robot)(casesVoisines[dir].getContenu());
 			this.cristalPorte = autreRobot.cristalPorte;
 			autreRobot.cristalPorte = null;
 		}
@@ -55,23 +65,37 @@ public class Robot
 
 	private void deposer()
 	{
-		CaseHexa[] casesVoisines = case.getVoisines();
+		CaseHexa[] casesVoisines = caseHexa.getVoisines();
 		// Cas hors du plateau
 		if(casesVoisines[dir] == null)
 			return;
 		// Cas Robot chargé
-		if(casesVoisines[dir].getContenu() instance of Robot &&
-		   casesVoisines[dir].getContenu().cristalPorte != null )
-			return;
+		if(casesVoisines[dir].getContenu() instanceof Robot)
+		{
+			Robot r = (Robot)(casesVoisines[dir].getContenu());
+			if(r.cristalPorte != null)
+				return;
+		}
 		// Cas Cristal présent
-		if(casesVoisines[dir].getContenu() instance of Cristal)
+		if(casesVoisines[dir].getContenu() instanceof Cristal)
 			return;
 
 
 		if(casesVoisines[dir].getContenu() == null)
 			casesVoisines[dir].setContenu(cristalPorte);
 
-		if(casesVoisines[dir].getContenu() instance of Robot)
-			;
+		else if(casesVoisines[dir].getContenu() instanceof Robot)
+		{
+			Robot autreRobot = (Robot)(casesVoisines[dir].getContenu());
+			autreRobot.cristalPorte = this.cristalPorte;
+		}
+
+		else if(casesVoisines[dir].getContenu() instanceof Base)
+		{
+			Base base = (Base)(casesVoisines[dir].getContenu());
+			base.ajouterCristal(cristalPorte);
+		}
+
+		cristalPorte = null;
 	}
 }
