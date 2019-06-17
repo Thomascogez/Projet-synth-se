@@ -23,6 +23,7 @@ public class InitPlateau {
             sc = new Scanner(fichier);
             while (sc.hasNextLine()){
             
+                
             }
             
         } catch (Exception e) {
