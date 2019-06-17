@@ -1,3 +1,5 @@
+package crystaux;
+
 public class Cristal implements IContenu
 {
 	private int valeur;

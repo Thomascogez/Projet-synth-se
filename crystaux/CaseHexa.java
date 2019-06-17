@@ -1,3 +1,5 @@
+package crystaux;
+
 public class CaseHexa
 {
 	private CaseHexa[] casesVoisines;
