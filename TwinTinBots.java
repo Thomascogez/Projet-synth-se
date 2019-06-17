@@ -1,9 +1,9 @@
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
 /**
  * TwinTinBots
  */
-public class TwinTinBots {
+/*public class TwinTinBots {
 
     private ArrayList<Joueur> ljoueur;
 
@@ -14,7 +14,7 @@ public class TwinTinBots {
     public void chargerPlateau() {
     }
 
-    
+
     // ------------------
     // ---- Joueur ------
     // ------------------
@@ -61,4 +61,4 @@ public class TwinTinBots {
 
     }
 
-}
+}*/
