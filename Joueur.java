@@ -29,7 +29,7 @@ public class Joueur
 
 	public void donnerOrdres(int numRobot)
 	{
-		robots[numRobot].action(tabOrdres);
+		robots[numRobot].action();
 	}
 
 	public boolean donnerOrdresModif(String[] tabOrdres, int numRobot)
@@ -47,7 +47,7 @@ public class Joueur
 				}
 			}
 		}
-		robots[numRobot].action(tabOrdres);
+		robots[numRobot].actionModif(tabOrdres);
 		return true;
 	}
 

@@ -1,15 +1,12 @@
 public class Robot extends Contenu
 {
 	private CaseHexa caseHexa;
-	private String   couleur;
 	private int      dir;
 	private Cristal  cristalPorte;
 	private String[] tabOrdres;
 
-	public Robot(String couleur)
+	public Robot()
 	{
-		this.couleur = couleur;
-
 		if(dir<0 || dir>=6)
 			dir = 0;
 		cristalPorte = null;
@@ -110,6 +107,7 @@ public class Robot extends Contenu
 
 	private void deposer()
 	{
+		CaseHexa[] casesVoisines = caseHexa.getVoisines();
 		// Sur une case vide
 		if(casesVoisines[dir].getContenu() == null)
 		{
