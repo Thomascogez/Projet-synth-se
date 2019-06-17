@@ -14,7 +14,7 @@ public class InitPlateau {
         this.nbJoueur = nbJoueur;
         
         try {
-            fichier = new File("niveaux/n"+ nbJoueur +".data");
+            fichier = new File("Data/plateau"+ nbJoueur +".data");
         } catch (Exception e) {
             throw e;
         }
