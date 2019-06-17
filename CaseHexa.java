@@ -15,6 +15,11 @@ public class CaseHexa
 		this(new CaseHexa[6]);
 	}
 
+	public CaseHexa[] getVoisines()
+	{
+		return casesVoisines;
+	}
+
 	public void setVoisin(int cote, CaseHexa autreCase)
 	{
 		if(0<=cote && cote<6 &&
