@@ -52,15 +52,17 @@ public class Plateau {
 		int i = 0;
 		final File fichier =new File("Data/Plateau.data");
 		try {
-			Scanner sc = new Scanner (new FileReader( fichier) );
+			Scanner sc = new Scanner (fichier );
 
 			while ( sc.hasNext() )
 			{
-				String buff =  sc.nextLine();
-				System.out.println ( i );
-				buff.replace("$", terrain[i++].getid()+"" );
-				retour +=  buff+"\n";
+				String s =  sc.next();
+				if (s.equals("$")) {retour += " "+this.terrain[i++].getid()+" ";}
+				else             {retour += s;}
 			}
+			retour = retour.replaceAll(	"3", "\n");
+			retour = retour.replaceAll(	"1", " ");
+			retour = retour.replaceAll(	"4", "    ");
 		} catch (Exception e) {
 		}
 		return retour;

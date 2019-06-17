@@ -38,7 +38,11 @@ public class Joueur
 
     public void setPoint(int point){
         this.points += point;
+<<<<<<< HEAD
     }*/
 
 
+=======
+    }
+>>>>>>> 3921d58a98b058442077a576fa7849ad3596b9bf
 }

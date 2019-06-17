@@ -5,7 +5,8 @@ public class CaseHexa
 
 	public CaseHexa(String infoCase)
 	{
-		this.id = "P";
+		String[] s = infoCase.split("-");
+		id = s[0];
 		//contenuCase = null;
 	}
 
