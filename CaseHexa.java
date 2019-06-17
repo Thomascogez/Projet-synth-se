@@ -1,17 +1,13 @@
 public class CaseHexa
 {
 	private CaseHexa[] casesVoisines;
-	private char id;
+	private String id;
 
-	public CaseHexa(Sting infoCase)
+	public CaseHexa(String infoCase)
 	{
-		id = infoCase.charAt(0);
-		contenuCase = null;
-	}
-
-	public CaseHexa()
-	{
-		this(new CaseHexa[6]);
+		String[] s = infoCase.split("-");
+		id = s[0];
+		//contenuCase = null;
 	}
 
 	public CaseHexa[] getVoisines()
@@ -19,20 +15,20 @@ public class CaseHexa
 		return casesVoisines;
 	}
 
-	public void setVoisin(CaseHexa[] casesVoisines)
+	public void setVoisins(CaseHexa[] casesVoisines)
 	{
 		this.casesVoisines=casesVoisines;
 	}
 
-	public void setContenu(Contenu contenuCase)
+	/*public void setContenu(Contenu contenuCase)
 	{
 		this.contenuCase = contenuCase;
-	}
+	}*/
 
-	public char getid(){return this.id;}
+	public String getid(){return this.id;}
 
-	public Contenu getContenu()
+	/*public Contenu getContenu()
 	{
 		return contenuCase;
-	}
+	}*/
 }
