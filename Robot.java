@@ -4,6 +4,7 @@ public class Robot extends Contenu
 	private String   couleur;
 	private int      dir;
 	private Cristal  cristalPorte;
+	private String[] tabOrdres;
 
 	public Robot(String couleur)
 	{
@@ -14,7 +15,7 @@ public class Robot extends Contenu
 		cristalPorte = null;
 	}
 
-	public void action(String[] tabOrdres)
+	public void action()
 	{
 		for(int i=0; i<3; i++)
 		{
@@ -24,6 +25,8 @@ public class Robot extends Contenu
 
 			if(tabOrdres[i].equals("AVANCER"))
 				avancer();
+			if(tabOrdres[i].equals("AVANCER2"))
+				avancer2();
 
 			if(tabOrdres[i].equals("CHARGER"))
 				charger();
@@ -31,6 +34,12 @@ public class Robot extends Contenu
 			if(tabOrdres[i].equals("DEPOSER"))
 				deposer();
 		}
+	}
+
+	public void actionModif(String[] tabOrdres)
+	{
+		this.tabOrdres = tabOrdres;
+		action();
 	}
 
 	// A n'utiliser qu'à l'initialisation du plateau
@@ -74,6 +83,12 @@ public class Robot extends Contenu
 				caseHexa = casesVoisines[dir];
 			}
 		}
+	}
+
+	private void avancer2()
+	{
+		avancer();
+		avancer();
 	}
 
 	private void charger()
