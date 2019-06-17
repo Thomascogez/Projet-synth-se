@@ -2,6 +2,7 @@ import java.io.*;
 import java.util.*;
 public class Plateau {
 	private final int NBCASE = 61;
+	private int pointMax;
 
 	private CaseHexa[] terrain;
 	private Joueur[]   tabJoueur;
@@ -11,8 +12,10 @@ public class Plateau {
 		for (int i = 0 ; i< nomJoueur.length ;i++ ) {
 			this.tabJoueur[i] = new Joueur(nomJoueur[i]);
 		}
+		pointMax = 13-nomJoueur.length;
 		this.terrain = setTerrain(nomJoueur.length);
 	}
+	public boolean getVictoire(){return false;}
 
 	private CaseHexa[] setTerrain(int nbJoueur){
 		CaseHexa[] voisinsHexa;
@@ -50,7 +53,7 @@ public class Plateau {
 	public String afficherPlateau(){
 		String retour = "";
 		int i = 0;
-		final File fichier =new File("Data/Plateau.data");
+		final File fichier =new File("Data/plateau.data");
 		try {
 			Scanner sc = new Scanner (fichier );
 
