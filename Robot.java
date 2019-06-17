@@ -14,6 +14,25 @@ public class Robot extends Contenu
 		cristalPorte = null;
 	}
 
+	public void action(String[] tabOrdres)
+	{
+		for(int i=0; i<3; i++)
+		{
+			tabOrdres[i].toUpperCase();
+			if(tabOrdres[i].contains("TOURNER"))
+				tourner(tabOrdres[i].charAt(tabOrdres.length-1));
+
+			if(tabOrdres[i].equals("AVANCER"))
+				avancer();
+
+			if(tabOrdres[i].equals("CHARGER"))
+				charger();
+
+			if(tabOrdres[i].equals("DEPOSER"))
+				deposer();
+		}
+	}
+
 	// A n'utiliser qu'à l'initialisation du plateau
 	public void setCaseHexa(CaseHexa caseHexa)
 	{
