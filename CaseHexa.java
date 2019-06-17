@@ -20,15 +20,15 @@ public class CaseHexa
 		this.casesVoisines=casesVoisines;
 	}
 
-	/*public void setContenu(Contenu contenuCase)
+	public void setContenu(Contenu contenuCase)
 	{
 		this.contenuCase = contenuCase;
-	}*/
+	}
 
 	public String getid(){return this.id;}
 
-	/*public Contenu getContenu()
+	public Contenu getContenu()
 	{
 		return contenuCase;
-	}*/
+	}
 }
