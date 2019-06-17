@@ -15,7 +15,7 @@ public class IHMCUI
 		while (nbJoueurMax>6||nbJoueurMax<2)
 		{
 			System.out.println ( "ERREUR : Choix du nombre de joueurs invalide !" );
-			System.out.print ( "Choix du nombre de joueurs [2..4] : " );
+			System.out.print ( "Choix du nombre de joueurs [2..6] : " );
 			nbJoueurMax = Clavier.lire_int();
 		}
 		//...Et on demande leurs noms respectifs

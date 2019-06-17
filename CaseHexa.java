@@ -1,6 +1,7 @@
 public class CaseHexa
 {
 	private CaseHexa[] casesVoisines;
+	private Contenu contenuCase;
 	private String id;
 
 	public CaseHexa(String infoCase)
