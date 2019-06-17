@@ -1,12 +1,11 @@
 public class CaseHexa
 {
 	private CaseHexa[] casesVoisines;
-	private Contenu   contenuCase;
+	private char id;
 
-	public CaseHexa(CaseHexa[] casesVoisines)
+	public CaseHexa(Sting infoCase)
 	{
-		for(int i=0; i<6; i++)
-			this.casesVoisines[i] = casesVoisines[i];
+		id = infoCase.charAt(0);
 		contenuCase = null;
 	}
 
@@ -20,20 +19,17 @@ public class CaseHexa
 		return casesVoisines;
 	}
 
-	public void setVoisin(int cote, CaseHexa autreCase)
+	public void setVoisin(CaseHexa[] casesVoisines)
 	{
-		if(0<=cote && cote<6 &&
-		   autreCase != null && autreCase.casesVoisines[(cote+3)%6] == null)
-		{
-			this.casesVoisines[cote] = autreCase;
-			autreCase.casesVoisines[(cote+3)%6] = this;
-		}
+		this.casesVoisines=casesVoisines;
 	}
 
 	public void setContenu(Contenu contenuCase)
 	{
 		this.contenuCase = contenuCase;
 	}
+
+	public char getid(){return this.id;}
 
 	public Contenu getContenu()
 	{

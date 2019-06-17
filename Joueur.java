@@ -4,15 +4,13 @@
 public class Joueur
 {
     private String nom;
-    private String couleur;
     private Base baseJoueur;
     private int points;
     private Robot[] robots;
 
-    public Joueur(String nom, String couleur)
+    public Joueur(String nom)
     {
         this.nom = nom;
-        this.couleur = couleur;
         this.baseJoueur = new Base();
         this.points = 0;
         this.robots = new Robot[2];
@@ -22,8 +20,8 @@ public class Joueur
     }
 
     private void initRobot(){
-        robots[0] = new Robot(couleur);
-        robots[1] = new Robot(couleur);
+        robots[0] = new Robot();
+        robots[1] = new Robot();
     }
 
     public void ajouterCristal(Cristal c){
