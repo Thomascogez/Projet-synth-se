@@ -34,7 +34,6 @@ public class Robot extends Contenu
 			dir = (dir-1)%6;
 	}
 
-	// PAS ENCORE POSSIBLE DE POUSSER LES ROBOTS ET CRISTAUX
 	private void avancer()
 	{
 		CaseHexa[] casesVoisines = caseHexa.getVoisines();
@@ -43,6 +42,18 @@ public class Robot extends Contenu
 			caseHexa.setContenu(null);
 			casesVoisines[dir].setContenu(this);
 			caseHexa = casesVoisines[dir];
+		}
+		else if(casesVoisines[dir].getContenu() instanceof Cristal ||
+		        casesVoisines[dir].getContenu() instanceof Robot     )
+		{
+			CaseHexa[] casesVoisinesDeVoisine = casesVoisines[dir].getVoisines();
+			if(casesVoisinesDeVoisine[dir].getContenu() == null)
+			{
+				caseHexa.setContenu(null);
+				casesVoisinesDeVoisine[dir].setContenu(casesVoisines[dir].getContenu());
+				casesVoisines[dir].setContenu(this);
+				caseHexa = casesVoisines[dir];
+			}
 		}
 	}
 
