@@ -10,7 +10,8 @@ public class Base {
     public Base() {
         this.cristaux = new ArrayList <Cristal>();
     }
-    /**
+    
+    /** 
      * Methode permettant d'ajouter un crystal dans la base
      * 
      * @param c la crystal a ajouter

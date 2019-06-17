@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 package crystaux;
 
+=======
+>>>>>>> ef65c56851a0a06ae8fb46e32a21f30ad30dfb36
 public class CaseHexa
 {
 	private CaseHexa[] casesVoisines;
