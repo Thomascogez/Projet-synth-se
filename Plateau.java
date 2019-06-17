@@ -50,7 +50,7 @@ public class Plateau {
 	public String afficherPlateau(){
 		String retour = "";
 		int i = 0;
-		final File fichier =new File("Data/Plateau.data");
+		final File fichier =new File("Data/plateau.data");
 		try {
 			Scanner sc = new Scanner (fichier );
 
