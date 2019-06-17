@@ -10,11 +10,11 @@ public class Controleur
 
 	public void lancerPartie()
 	{
-		while(!this.metier.getVictoire())
-		{
+		/*while(!this.metier.getVictoire())
+		{*/
 		this.ihm.afficherGrille(this.metier.afficherPlateau());
 
-		}
+		//}
 	}
 
 
