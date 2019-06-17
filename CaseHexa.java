@@ -7,7 +7,8 @@ public class CaseHexa
 	public CaseHexa(String infoCase)
 	{
 		String[] s = infoCase.split("-");
-		id = s[0];
+		if (s[0].equals("N")) {id = " ";}
+		else{id = s[0];}
 		//contenuCase = null;
 	}
 
