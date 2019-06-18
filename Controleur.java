@@ -52,8 +52,7 @@ public class Controleur
 
 			metier.changerJoueur();
 		}
-		this.ihm.victoire(this.metier.getVictoire());
-
+		this.ihm.victoire();
 	}
 
 
