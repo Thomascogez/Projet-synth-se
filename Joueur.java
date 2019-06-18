@@ -8,7 +8,9 @@ public class Joueur
 	private int     points;
 	private Robot[] robots;
 
-	private String[] mainOrdres;
+	private static final String[] mainOrdres = new String[] {"Avancer", "Avancer2",
+	                                                         "TournerG", "TournerD",
+	                                                         "Charger", "Deposer"   };
 	private int[]    mainNbOrdres;
 
 	public Joueur(String nom)
@@ -18,13 +20,20 @@ public class Joueur
 		this.points = 0;
 		this.robots = new Robot[2];
 
-		mainOrdres = new String[] {"Avancer", "Avancer2",
-		                           "TournerG", "TournerD",
-		                           "Charger", "Deposer"   };
 		mainNbOrdres = new int[] {2,1,3,3,2,2};
 
 		//TODO : type de robot ?????
 		this.initRobot();
+	}
+
+	public String[] getMainOrdres()
+	{
+		return mainOrdres;
+	}
+
+	public int[] getMainNbOrdres()
+	{
+		return mainNbOrdres;
 	}
 
 	public void donnerOrdres(int numRobot)
@@ -34,7 +43,7 @@ public class Joueur
 
 	public boolean donnerOrdresModif(String[] tabOrdres, int numRobot)
 	{
-		for(int i=0; i<3; i++)
+		for(int i=0; i<tabOrdres.length; i++)
 		{
 			for(int j=0; j<mainOrdres.length; j++)
 			{
