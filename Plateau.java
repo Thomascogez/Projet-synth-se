@@ -101,19 +101,19 @@ public class Plateau {
 					{
 						tmp = new Robot();
 						retour[k].setContenu(tmp);
-						this.tabJoueur[Integer.parseInt(splitContenu[1])].setRobot(tmp,retour[k],splitContenu[2]);
+						this.tabJoueur[Integer.parseInt(splitContenu[1])].setRobot(tmp,retour[k],Integer.parseInt(splitContenu[2]));
 					}
 
 					if (splitContenu[0].equals("C"))
 					{
-						retour[k].setContenu(new Cristal(Integer.parseInt(splitContenu[1])));
+						retour[k].setContenu(Cristal.creerCristal(Integer.parseInt(splitContenu[1])));
 					}
 
 					if (splitContenu[0].equals("B"))
 					{
 						base = new Base();
 						retour[k].setContenu(base);
-						this.tabJoueur[Integer.parseInt(splitContenu[1])];
+						this.tabJoueur[Integer.parseInt(splitContenu[1])].setBase(base);
 					}
 				}
 			}
