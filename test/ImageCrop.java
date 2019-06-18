@@ -26,6 +26,7 @@ public class ImageCrop extends JFrame {
         new CropImageFilter(50, 50, 50, 50)));
     }
 
+    
     public void paint(Graphics g) {
         super.paint(g);
         if (insets == null) {
