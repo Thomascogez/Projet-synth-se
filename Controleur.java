@@ -13,9 +13,9 @@ public class Controleur
 		this.ihm.afficherGrille(this.metier.afficherPlateau());
 		while(!this.metier.getVictoire())
 		{
-			
+
 		}
-		this.ihm.victoire(this.metier.getVictoire());
+		this.ihm.victoire();
 	}
 
 

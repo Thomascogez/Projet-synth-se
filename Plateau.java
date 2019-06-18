@@ -1,15 +1,19 @@
 import java.io.*;
 import java.util.*;
 public class Plateau {
-	private final int NBCASE = 61;
+	private int nbCases;
 	private int pointMax;
 
 	private CaseHexa[] terrain;
 	private Joueur[]   tabJoueur;
 
-	public Plateau(String[] nomJoueur){
+	public Plateau(String[] nomJoueur)
+	{
+		this.nbCases = 61;
 		this.tabJoueur = new Joueur[nomJoueur.length];
-		for (int i = 0 ; i< nomJoueur.length ;i++ ) {
+
+		for (int i = 0 ; i< nomJoueur.length ;i++ )
+		{
 			this.tabJoueur[i] = new Joueur(nomJoueur[i]);
 		}
 		pointMax = 13-nomJoueur.length;
@@ -17,21 +21,25 @@ public class Plateau {
 	}
 	public boolean getVictoire()
 	{
-		for (Joueur j : tabJoueur[] )
+		for (Joueur j : tabJoueur )
 		{
-			if (j.getPoints() >= pointMax)
+			if (j.getPoint() >= pointMax)
 				return true;
+
 		}
 		return false;
 	}
 
-	private CaseHexa[] setTerrain(int nbJoueur){
+	private CaseHexa[] setTerrain(int nbJoueur)
+	{
+		if (nbJoueur>4) { this.nbCases=91; }
 		CaseHexa[] voisinsHexa;
-		CaseHexa[] retour = new CaseHexa[NBCASE];
-		String[] voisins  = new String  [NBCASE];
+		CaseHexa[] retour = new CaseHexa[nbCases];
+		String[] voisins  = new String  [nbCases];
 		int cpt = 0;
 		final File fichier =new File("Data/Plateau"+nbJoueur+".data");
-		try {
+		try
+		{
 			Scanner sc = new Scanner (new FileReader( fichier) );
 
 			while ( sc.hasNext() )
@@ -45,7 +53,7 @@ public class Plateau {
 		catch (Exception e) {
 			System.out.println("Impossible de cr\u00e9er le plateau");
 		}
-		for (int i = 0;i< NBCASE;i++ ) {
+		for (int i = 0;i< nbCases;i++ ) {
 			voisinsHexa = new CaseHexa[6];
 			String[] splitVoisins = voisins[i].split("-");
 			for (int j = 0;j< voisinsHexa.length;j++) {
@@ -61,7 +69,7 @@ public class Plateau {
 	public String afficherPlateau(){
 		String retour = "";
 		int i = 0;
-		final File fichier =new File("Data/AffichagePlateau2.data");
+		final File fichier =new File("Data/AffichagePlateau1.data");
 		try {
 			Scanner sc = new Scanner (fichier );
 
