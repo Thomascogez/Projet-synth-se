@@ -29,7 +29,7 @@ public class Controleur
 					   joueur.donnerOrdresModif(ihm.demandeModifTour1(metier.getJoueurCourant()), 1)   )
 						valid = true;
 					else
-						System.out.println("Ordres invalides");
+						System.out.println("\nOrdres invalides\n");
 				}
 				else
 				{

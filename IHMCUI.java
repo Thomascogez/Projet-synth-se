@@ -106,6 +106,7 @@ public class IHMCUI
 
 	public String[] demandeModif(Joueur jCourant)
 	{
+		jCourant.resetCarte();
 		System.out.println("Choisir les ordres à donner au robot (max 3, -1 pour arrêter) :");
 		String[] main   = jCourant.getMainOrdres();
 		int[]    mainNb = jCourant.getMainNbOrdres();
