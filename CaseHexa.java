@@ -25,6 +25,12 @@ public class CaseHexa
 	public void setContenu(Contenu contenuCase)
 	{
 		this.contenuCase = contenuCase;
+		if(contenuCase == null)
+			id = " ";
+		if(contenuCase instanceof Robot)
+			id = "R";
+		if(contenuCase instanceof Cristal)
+			id = "C";
 	}
 
 	public String getid(){return this.id;}

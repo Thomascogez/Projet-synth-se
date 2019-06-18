@@ -11,7 +11,8 @@ public class Joueur
 	private static final String[] mainOrdres = new String[] {"Avancer", "Avancer2",
 	                                                         "TournerG", "TournerD",
 	                                                         "Charger", "Deposer"   };
-	private int[]    mainNbOrdres;
+	private int[] mainNbOrdres;
+	private int[] mainNbOrdresStock;
 
 	public Joueur(String nom)
 	{
@@ -19,7 +20,8 @@ public class Joueur
 		this.points = 0;
 		this.robots = new Robot[2];
 
-		mainNbOrdres = new int[] {2,1,3,3,2,2};
+		mainNbOrdres      = new int[] {2,1,3,3,2,2};
+		mainNbOrdresStock = new int[] {2,1,3,3,2,2};
 
 		//TODO : type de robot ?????
 	}
@@ -41,7 +43,6 @@ public class Joueur
 
 	public boolean donnerOrdresModif(String[] tabOrdres, int numRobot)
 	{
-		System.out.println("Joueur donnerOrdresModif");
 		for(int i=0; i<tabOrdres.length; i++)
 		{
 			for(int j=0; j<mainOrdres.length; j++)
@@ -51,12 +52,22 @@ public class Joueur
 					if(mainNbOrdres[j]>0)
 						mainNbOrdres[j]--;
 					else
+					{
+						resetCarte();
 						return false;
+					}
 				}
 			}
 		}
 		robots[numRobot].actionModif(tabOrdres);
 		return true;
+	}
+
+	public void resetCarte()
+	{
+		System.out.println("RESET");
+			for(int cpt=0; cpt<mainNbOrdres.length; cpt++)
+					mainNbOrdres[cpt] = mainNbOrdresStock[cpt];
 	}
 
 	public void ajouterCristal(Cristal c){
