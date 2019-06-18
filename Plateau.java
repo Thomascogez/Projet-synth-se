@@ -98,6 +98,7 @@ public class Plateau {
 					if (splitContenu[0].equals("R"))
 					{
 						tmp = new Robot();
+						//TODO: setCaseHexa !!
 						retour[k].setContenu(tmp);
 						this.tabJoueur[Integer.parseInt(splitContenu[1])].setRobot(tmp,retour[k],Integer.parseInt(splitContenu[2]));
 					}
