@@ -39,6 +39,7 @@ public class Robot extends Contenu
 	public void actionModif(String[] tabOrdres)
 	{
 		this.tabOrdres = tabOrdres;
+		action();
 	}
 
 	// A n'utiliser qu'à l'initialisation du plateau

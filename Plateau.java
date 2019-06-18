@@ -6,6 +6,7 @@ public class Plateau {
 
 	private CaseHexa[] terrain;
 	private Joueur[]   tabJoueur;
+	private int tourJoueur;
 
 	public Plateau(String[] nomJoueur){
 		this.tabJoueur = new Joueur[nomJoueur.length];
@@ -14,12 +15,24 @@ public class Plateau {
 		}
 		pointMax = 13-nomJoueur.length;
 		this.terrain = setTerrain(nomJoueur.length);
+		tourJoueur = 0;
 	}
+
+	public void changerJoueur()
+	{
+		tourJoueur=(tourJoueur+1)%tabJoueur.length;
+	}
+
+	public Joueur getJoueurCourant()
+	{
+		return tabJoueur[tourJoueur];
+	}
+
 	public boolean getVictoire()
 	{
-		for (Joueur j : tabJoueur[] )
+		for (Joueur j : tabJoueur )
 		{
-			if (j.getPoints() >= pointMax)
+			if (j.getPoint() >= pointMax)
 				return true;
 		}
 		return false;
