@@ -123,6 +123,7 @@ public class Plateau {
 
 	public String afficherPlateau(){
 		String retour = "";
+
 		int i = 0;
 		final File fichier =new File("Data/AffichagePlateau"+this.typePlateau+".data");
 		try {
