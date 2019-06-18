@@ -7,10 +7,12 @@ public class Plateau {
 	private CaseHexa[] terrain;
 	private Joueur[]   tabJoueur;
 	private int tourJoueur;
+	private int typePlateau;
 
 	public Plateau(String[] nomJoueur)
 	{
 		this.nbCases = 61;
+		this.typePlateau = 1;
 		this.tabJoueur = new Joueur[nomJoueur.length];
 
 		for (int i = 0 ; i< nomJoueur.length ;i++ )
@@ -45,7 +47,7 @@ public class Plateau {
 
 	private CaseHexa[] setTerrain(int nbJoueur)
 	{
-		if (nbJoueur>4) { this.nbCases=91; }
+		if (nbJoueur>4) { this.nbCases=91; this.typePlateau = 2; }
 		CaseHexa[] voisinsHexa;
 		CaseHexa[] retour = new CaseHexa[nbCases];
 		String[] voisins  = new String  [nbCases];
@@ -82,7 +84,7 @@ public class Plateau {
 	public String afficherPlateau(){
 		String retour = "";
 		int i = 0;
-		final File fichier =new File("Data/AffichagePlateau1.data");
+		final File fichier =new File("Data/AffichagePlateau"+this.typePlateau+".data");
 		try {
 			Scanner sc = new Scanner (fichier );
 
