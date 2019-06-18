@@ -11,7 +11,7 @@ public class Controleur
 	public void lancerPartie()
 	{
 		this.ihm.afficherGrille(this.metier.afficherPlateau());
-		while(this.metier.getVictoire() == null)
+		while(!this.metier.getVictoire())
 		{
 			
 		}
