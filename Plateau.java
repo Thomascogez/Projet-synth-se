@@ -90,9 +90,7 @@ public class Plateau {
 		for (int k = 0;k< nbCases;k++ )
 		{
 			String[] splitContenu = contenu[k].split("-");
-			for (String s : splitContenu ) {
-				System.out.println(s);
-			}
+
 			for (int l = 0;l< splitContenu.length;l++)
 			{
 				if (!splitContenu[0].equals("N"))

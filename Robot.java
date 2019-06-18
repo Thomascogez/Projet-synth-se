@@ -14,6 +14,7 @@ public class Robot extends Contenu
 
 	public void action()
 	{
+		System.out.println("action début");
 		for(int i=0; i<tabOrdres.length; i++)
 		{
 			if(tabOrdres[i] != null)
@@ -23,7 +24,7 @@ public class Robot extends Contenu
 					tourner(tabOrdres[i].charAt(tabOrdres.length-1));
 
 				if(tabOrdres[i].equals("AVANCER"))
-					avancer();
+					avancer();System.out.println("AVANCER");
 				if(tabOrdres[i].equals("AVANCER2"))
 					avancer2();
 
@@ -59,9 +60,12 @@ public class Robot extends Contenu
 
 	private void avancer()
 	{
+		System.out.println("avancer début");
 		CaseHexa[] casesVoisines = caseHexa.getVoisines();
+		System.out.println(casesVoisines[dir].getContenu());
 		if(casesVoisines[dir].getContenu()==null)
 		{
+			System.out.println("CASE EN FACE VIDE");
 			caseHexa.setContenu(null);
 			casesVoisines[dir].setContenu(this);
 			caseHexa = casesVoisines[dir];
