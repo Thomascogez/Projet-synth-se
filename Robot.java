@@ -14,29 +14,31 @@ public class Robot extends Contenu
 
 	public void action()
 	{
-		for(int i=0; i<3; i++)
+		for(int i=0; i<tabOrdres.length; i++)
 		{
-			tabOrdres[i].toUpperCase();
-			if(tabOrdres[i].contains("TOURNER"))
-				tourner(tabOrdres[i].charAt(tabOrdres.length-1));
+			if(tabOrdres[i] != null)
+			{
+				tabOrdres[i].toUpperCase();
+				if(tabOrdres[i].contains("TOURNER"))
+					tourner(tabOrdres[i].charAt(tabOrdres.length-1));
 
-			if(tabOrdres[i].equals("AVANCER"))
-				avancer();
-			if(tabOrdres[i].equals("AVANCER2"))
-				avancer2();
+				if(tabOrdres[i].equals("AVANCER"))
+					avancer();
+				if(tabOrdres[i].equals("AVANCER2"))
+					avancer2();
 
-			if(tabOrdres[i].equals("CHARGER"))
-				charger();
+				if(tabOrdres[i].equals("CHARGER"))
+					charger();
 
-			if(tabOrdres[i].equals("DEPOSER"))
-				deposer();
+				if(tabOrdres[i].equals("DEPOSER"))
+					deposer();
+			}
 		}
 	}
 
 	public void actionModif(String[] tabOrdres)
 	{
 		this.tabOrdres = tabOrdres;
-		action();
 	}
 
 	// A n'utiliser qu'à l'initialisation du plateau
