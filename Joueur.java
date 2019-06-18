@@ -16,14 +16,12 @@ public class Joueur
 	public Joueur(String nom)
 	{
 		this.nom = nom;
-		this.baseJoueur = new Base();
 		this.points = 0;
 		this.robots = new Robot[2];
 
 		mainNbOrdres = new int[] {2,1,3,3,2,2};
 
 		//TODO : type de robot ?????
-		this.initRobot();
 	}
 
 	public String[] getMainOrdres()
@@ -60,13 +58,30 @@ public class Joueur
 		return true;
 	}
 
-	private void initRobot(){
-		robots[0] = new Robot();
-		robots[1] = new Robot();
-	}
-
 	public void ajouterCristal(Cristal c){
 		this.baseJoueur.ajouterCristal(c);
+	}
+
+	public void setRobot(Robot r, CaseHexa caseHex, int orientation)
+	{
+		if (robots[0] == null)
+		{
+			robots[0]=r;
+			this.setCaseHexa(robots[0], caseHex, orientation);
+			return;
+		}
+		robots[1]=r;
+		this.setCaseHexa(robots[1], caseHex, orientation);
+	}
+
+	public void setBase(Base b)
+	{
+		this.baseJoueur=b;
+	}
+
+	public void setCaseHexa(Robot r, CaseHexa caseHex, int orientation)
+	{
+		r.setCaseHexa(caseHex, orientation);
 	}
 
 	public String getNom() {

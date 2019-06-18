@@ -1,35 +1,36 @@
 import java.util.ArrayList;
 
 /**
- * Base
- */
+* Base
+*/
 public class Base extends Contenu
 {
 
-    private ArrayList<Cristal> cristaux;
+	private ArrayList<Cristal> cristaux;
 
-    public Base() {
-        this.cristaux = new ArrayList <Cristal>();
-    }
-    
-    /** 
-     * Methode permettant d'ajouter un crystal dans la base
-     * 
-     * @param c la crystal a ajouter
-     */
-    public void ajouterCristal(Cristal c){
-        this.cristaux.add(c);
-    }
+	public Base()
+	{
+		this.cristaux = new ArrayList <Cristal>();
+	}
 
-    public ArrayList<Cristal> getCristaux() {
-        return cristaux;
-    }
+	/**
+	* Methode permettant d'ajouter un crystal dans la base
+	*
+	* @param c la crystal a ajouter
+	*/
+	public void ajouterCristal(Cristal c)
+	{
+		this.cristaux.add(c);
+	}
 
-    @Override
-    public String toString() {
-        return "Cristaux dans la base "+cristaux;
-    }
+	public ArrayList<Cristal> getCristaux()
+	{
+		return cristaux;
+	}
 
-   
-
+	@Override
+	public String toString()
+	{
+		return "Cristaux dans la base "+cristaux;
+	}
 }

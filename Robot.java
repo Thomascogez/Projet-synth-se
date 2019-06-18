@@ -43,15 +43,10 @@ public class Robot extends Contenu
 	}
 
 	// A n'utiliser qu'à l'initialisation du plateau
-	public void setCaseHexa(CaseHexa caseHexa)
+	public void setCaseHexa(CaseHexa caseHexa, int orientation)
 	{
 		this.caseHexa = caseHexa;
-	}
-
-	// A n'utiliser qu'à l'initialisation du plateau
-	public void setDir(int dir)
-	{
-		this.dir = dir;
+		this.dir = orientation;
 	}
 
 	private void tourner(char direction)

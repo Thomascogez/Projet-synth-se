@@ -50,8 +50,12 @@ public class Plateau {
 		if (nbJoueur>4) { this.nbCases=91; this.typePlateau = 2; }
 		CaseHexa[] voisinsHexa;
 		CaseHexa[] retour = new CaseHexa[nbCases];
+		String[] contenu  = new String  [nbCases];
 		String[] voisins  = new String  [nbCases];
 		int cpt = 0;
+		Robot tmp;
+		Base base;
+
 		final File fichier =new File("Data/Plateau"+nbJoueur+".data");
 		try
 		{
@@ -62,22 +66,60 @@ public class Plateau {
 				String[] infocase = sc.nextLine().split("/");
 				retour[cpt] = new CaseHexa(infocase[0]);
 				voisins[cpt] = infocase[1];
+				contenu[cpt] = infocase[0];
 				cpt ++;
 			}
 		}
 		catch (Exception e) {
 			System.out.println("Impossible de cr\u00e9er le plateau");
 		}
-		for (int i = 0;i< nbCases;i++ ) {
+		for (int i = 0;i< nbCases;i++ )
+		{
 			voisinsHexa = new CaseHexa[6];
 			String[] splitVoisins = voisins[i].split("-");
-			for (int j = 0;j< voisinsHexa.length;j++) {
-				if (!splitVoisins[j].equals("R")) {
+			for (int j = 0;j< voisinsHexa.length;j++)
+			{
+				if (!splitVoisins[j].equals("R"))
+				{
 					voisinsHexa[j] = retour[Integer.parseInt(splitVoisins[j])];
 				}
 			}
 			retour[i].setVoisins(voisinsHexa);
 		}
+
+		for (int k = 0;k< nbCases;k++ )
+		{
+			String[] splitContenu = contenu[k].split("-");
+			for (String s : splitContenu ) {
+				System.out.println(s);
+			}
+			for (int l = 0;l< splitContenu.length;l++)
+			{
+				if (!splitContenu[0].equals("N"))
+				{
+					if (splitContenu[0].equals("R"))
+					{
+						tmp = new Robot();
+						retour[k].setContenu(tmp);
+						this.tabJoueur[Integer.parseInt(splitContenu[1])].setRobot(tmp,retour[k],splitContenu[2]);
+					}
+
+					if (splitContenu[0].equals("C"))
+					{
+						retour[k].setContenu(new Cristal(Integer.parseInt(splitContenu[1])));
+					}
+
+					if (splitContenu[0].equals("B"))
+					{
+						base = new Base();
+						retour[k].setContenu(base);
+						this.tabJoueur[Integer.parseInt(splitContenu[1])];
+					}
+				}
+			}
+		}
+
+
 		return retour;
 	}
 
