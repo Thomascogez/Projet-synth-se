@@ -15,7 +15,15 @@ public class Plateau {
 		pointMax = 13-nomJoueur.length;
 		this.terrain = setTerrain(nomJoueur.length);
 	}
-	public boolean getVictoire(){return false;}
+	public boolean getVictoire()
+	{
+		for (Joueur j : tabJoueur[] )
+		{
+			if (j.getPoints() >= pointMax)
+				return true;
+		}
+		return false;
+	}
 
 	private CaseHexa[] setTerrain(int nbJoueur){
 		CaseHexa[] voisinsHexa;
@@ -53,7 +61,7 @@ public class Plateau {
 	public String afficherPlateau(){
 		String retour = "";
 		int i = 0;
-		final File fichier =new File("Data/plateau.data");
+		final File fichier =new File("Data/AffichagePlateau2.data");
 		try {
 			Scanner sc = new Scanner (fichier );
 

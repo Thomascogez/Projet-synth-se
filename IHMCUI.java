@@ -20,7 +20,7 @@ public class IHMCUI
 		{
 			Console.println ( CouleurConsole.ROUGE.getFont()+"ERREUR : Choix du nombre de joueurs invalide !" );
 			Console.normal();
-			Console.print ( "Choix du nombre de joueurs [2..4] : " );
+			Console.print ( "Choix du nombre de joueurs [2..6] : " );
 			nbJoueurMax = Clavier.lire_int();
 		}
 		//...Et on demande leurs noms respectifs
@@ -53,6 +53,11 @@ public class IHMCUI
 	public void menuAction() {
         Console.println("\tVoulez-vous modifier un programme avant execution ? : \n\n" + "\t\t"+ CouleurConsole.VERT.getFont() +" 1 - Oui\n" + "\t\t"+ CouleurConsole.ROUGE.getFont() +" 2 - Non");
         Console.normal();
+    }
+
+    public void victoire()
+    {
+    	Console.println("Bravo le joueur x à gagner la partie !");
     }
 
 	public void finDePartie(){
