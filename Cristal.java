@@ -7,7 +7,7 @@ public class Cristal extends Contenu
 		this.valeur = valeur;
 	}
 
-	public Cristal creerCristal(int valeur)
+	public static Cristal creerCristal(int valeur)
 	{
 		if(valeur>=2 && valeur<=4)
 			return new Cristal(valeur);

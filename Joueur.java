@@ -41,6 +41,7 @@ public class Joueur
 
 	public boolean donnerOrdresModif(String[] tabOrdres, int numRobot)
 	{
+		System.out.println("Joueur donnerOrdresModif");
 		for(int i=0; i<tabOrdres.length; i++)
 		{
 			for(int j=0; j<mainOrdres.length; j++)
