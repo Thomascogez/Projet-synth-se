@@ -5,12 +5,15 @@ import java.awt.*;
 
 public class PanJoueur extends JPanel{
 	private double rotation;
+	private JLabel lblprog;
+	private int x;
 	// Constructor
-	public PanJoueur(double rotation/*,int x, int y*/){
+	public PanJoueur(double rotation,int x, int y){
 		//this.setSize(x,y);
 		this.rotation = rotation;
-		//this.add(new JLabel(new ImageIcon(new ImageIcon("Images/tableau_prog.jpg").getImage().getScaledInstance(350, 80, Image.SCALE_DEFAULT))));
-		this.add(new JLabel("TEST"));
+		lblprog = new JLabel(new ImageIcon(new ImageIcon("Images/tableau_prog.jpg").getImage().getScaledInstance(x/5-x/28, 40, Image.SCALE_SMOOTH)));
+		this.add(lblprog);
+		//this.add(new JLabel("TEST"));
 	}
 
 	@Override
