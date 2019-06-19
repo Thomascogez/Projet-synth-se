@@ -74,6 +74,32 @@ public class Joueur
 		return true;
 	}
 
+	public void actualiserMain()
+	{
+		resetCarte();
+
+		String[] tabOrdres = robots[0].getOrdres();
+		String[] tabAutre  = robots[1].getOrdres();
+
+		for(int i=0; i<tabOrdres.length; i++)
+		{
+			for(int j=0; j<mainOrdres.length; j++)
+			{
+				if(tabOrdres[i]!=null)
+				{
+					if( tabOrdres[i].equals(mainOrdres[j]) ||
+					    tabAutre[i].equals(mainOrdres[j])   )
+					{
+						if(mainNbOrdres[j]>0)
+							mainNbOrdres[j]--;
+					}
+				}
+			}
+		}
+		for(int i=0; i<tabOrdres.length; i++)
+			System.out.println("BUG? : "+mainOrdres[i]+" x"+mainNbOrdres[i]);
+	}
+
 	public String[] getOrdresRobot(int numRobot)
 	{
 		return robots[numRobot].getOrdres();
@@ -91,6 +117,16 @@ public class Joueur
 	public ArrayList<Cristal> getCristauxBase()
 	{
 		return this.baseJoueur.getCristaux();
+	}
+
+	public int getNbCristaux(int valeur)
+	{
+		return this.baseJoueur.getNbCristaux(valeur);
+	}
+
+	public int comparerPoints(boolean etape, Joueur autreJoueur)
+	{
+		return (etape)? this.getPoints()-autreJoueur.getPoints() : this.getPoint()-autreJoueur.getPoint();
 	}
 
 	public void resetCarte()

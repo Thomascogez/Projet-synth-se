@@ -28,6 +28,17 @@ public class Base extends Contenu
 		return cristaux;
 	}
 
+	public int getNbCristaux(int valeur)
+	{
+		int cpt = 0;
+		for (Cristal c : this.cristaux)
+		{
+			if (c.getValeur() == valeur)
+				cpt++;
+		}
+		return cpt;
+	}
+
 	@Override
 	public String toString()
 	{
