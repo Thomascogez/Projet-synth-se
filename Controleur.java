@@ -29,6 +29,15 @@ public class Controleur
 			do{
 				if(test.getProperty("TEST_MODE").trim().equals("TRUE"))
 				{
+					String[] tabSequence = test.getProperty("SEQUENCE_TEST").trim().split("#");
+					
+					for (String s : tabSequence) {
+						metier.getJoueur((Integer.parseInt(s.split("/")[0].split(":")[0])));
+						
+						System.out.println("Joueur N°"+s.split("/")[0].split(":")[0]);
+						System.out.println("Robot N°"+s.split("/")[0].split(":")[1]);
+						System.out.println("Séquence :"+s.split("/")[1]+"\n\n\n");
+					}
 				}
 				else
 				{
