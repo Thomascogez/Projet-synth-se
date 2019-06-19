@@ -1,6 +1,7 @@
 import java.io.*;
 import java.util.*;
-public class Plateau {
+public class Plateau 
+{
 	private int nbCases;
 	private int pointMax;
 

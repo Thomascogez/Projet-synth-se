@@ -14,6 +14,10 @@ public class Cristal extends Contenu
 		return null;
 	}
 
+	public int getPositionDeBase(){
+		//TODO:position de la case de départ
+		return 0;
+	}
 	public int getValeur()
 	{
 		return valeur;
