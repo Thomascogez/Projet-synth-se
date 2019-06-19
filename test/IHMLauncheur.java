@@ -18,12 +18,18 @@ public class IHMLauncheur extends JFrame {
 
 	public IHMLauncheur() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(1000,800);
 		this.setLocationRelativeTo(null);
+		this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
 		this.tabJoueur = new PanJoueur[6];
 		JPanel contentPane = new JPanel();
-		setContentPane(contentPane);
+		add(contentPane);
 		contentPane.setLayout(new BorderLayout());
+
+		Dimension tailleEcran = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+		int hauteur = (int)tailleEcran.getHeight();
+		int largeur = (int)tailleEcran.getWidth();
+
+		System.out.println ( hauteur+" : "+largeur );
 
 		JPanel panel = new JPanel();
 		contentPane.add(panel, BorderLayout.SOUTH);
@@ -31,7 +37,7 @@ public class IHMLauncheur extends JFrame {
 
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setIcon(new ImageIcon("Images/programme.png"));
+		lblNewLabel.setIcon(new ImageIcon("Images/tableau_prog.jpg"));
 		panel.add(lblNewLabel, BorderLayout.NORTH);
 
 		JPanel panel_1 = new JPanel();
@@ -43,28 +49,28 @@ public class IHMLauncheur extends JFrame {
 		plateau.setLayout(spGeneral);
 
 		JPanel terrain = new JPanel();
-		spGeneral.putConstraint(SpringLayout.NORTH, terrain, 120, SpringLayout.NORTH, plateau);
-		spGeneral.putConstraint(SpringLayout.WEST, terrain, 150, SpringLayout.WEST, plateau);
-		spGeneral.putConstraint(SpringLayout.SOUTH, terrain, 520, SpringLayout.NORTH, plateau);
-		spGeneral.putConstraint(SpringLayout.EAST, terrain, 770, SpringLayout.WEST, plateau);
+		spGeneral.putConstraint(SpringLayout.NORTH, terrain, hauteur/9, SpringLayout.NORTH, plateau);
+		spGeneral.putConstraint(SpringLayout.WEST, terrain, largeur/5, SpringLayout.WEST, plateau);
+		spGeneral.putConstraint(SpringLayout.SOUTH, terrain,  hauteur/2+ hauteur/8, SpringLayout.NORTH, plateau);
+		spGeneral.putConstraint(SpringLayout.EAST, terrain, largeur-largeur/5, SpringLayout.WEST, plateau);
 		plateau.add(terrain);
-		terrain.add(new JLabel(new ImageIcon(new ImageIcon("Images/board1.jpg").getImage().getScaledInstance(620, 400, Image.SCALE_DEFAULT))));
+		terrain.add(new JLabel(new ImageIcon(new ImageIcon("Images/board1.jpg").getImage().getScaledInstance(largeur-largeur/4, hauteur/2+ hauteur/8, Image.SCALE_SMOOTH))));
 
 		JPanel joueur_1 = new JPanel();
 		tabJoueur[0] = new PanJoueur(rotation[0]  /*,dim[0]*/);
 		tabJoueur[0].setBorder(new LineBorder(Color.RED, 2));
 		spGeneral.putConstraint(SpringLayout.NORTH, tabJoueur[0], -90, SpringLayout.NORTH, terrain);
-		spGeneral.putConstraint(SpringLayout.WEST, tabJoueur[0], 0, SpringLayout.WEST, terrain);
+		spGeneral.putConstraint(SpringLayout.WEST, tabJoueur[0], largeur/20, SpringLayout.WEST, terrain);
 		spGeneral.putConstraint(SpringLayout.SOUTH, tabJoueur[0], -10, SpringLayout.NORTH, terrain);
-		spGeneral.putConstraint(SpringLayout.EAST, tabJoueur[0], 400, SpringLayout.WEST, plateau);
+		spGeneral.putConstraint(SpringLayout.EAST, tabJoueur[0], largeur/3, SpringLayout.WEST, plateau);
 		plateau.add(tabJoueur[0]);
 
 		tabJoueur[1] = new PanJoueur(rotation[1]  /*,dim[0]*/);
 		tabJoueur[1].setBorder(new LineBorder(Color.YELLOW, 2));
 		spGeneral.putConstraint(SpringLayout.NORTH, tabJoueur[1], -90, SpringLayout.NORTH, terrain);
-		spGeneral.putConstraint(SpringLayout.WEST, tabJoueur[1], 120, SpringLayout.EAST, tabJoueur[0]);
+		spGeneral.putConstraint(SpringLayout.WEST, tabJoueur[1], largeur/8, SpringLayout.EAST, tabJoueur[0]);
 		spGeneral.putConstraint(SpringLayout.SOUTH, tabJoueur[1], -10, SpringLayout.NORTH, terrain);
-		spGeneral.putConstraint(SpringLayout.EAST, tabJoueur[1], 0, SpringLayout.EAST, terrain);
+		spGeneral.putConstraint(SpringLayout.EAST, tabJoueur[1], -largeur/20, SpringLayout.EAST, terrain);
 		plateau.add(tabJoueur[1]);
 
 		tabJoueur[2] = new PanJoueur(rotation[2]  /*,dim[0]*/);
@@ -99,7 +105,7 @@ public class IHMLauncheur extends JFrame {
 		spGeneral.putConstraint(SpringLayout.EAST, tabJoueur[5], 260, SpringLayout.EAST, terrain);
 		plateau.add(tabJoueur[5]);
 
-		plateau.add(new JLabel(new ImageIcon(new ImageIcon("D:/coursIUT/IUT/test/Images/fond.jpg").getImage().getScaledInstance(1000, 800, Image.SCALE_DEFAULT))));
+		plateau.add(new JLabel(new ImageIcon(new ImageIcon("Images/fond.jpg").getImage().getScaledInstance(largeur, hauteur, Image.SCALE_DEFAULT))));
 
 	}
 }
