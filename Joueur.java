@@ -96,7 +96,7 @@ public class Joueur
 					{
 						if(mainNbOrdres[j]>0)
 							mainNbOrdres[j]--;
-						System.out.println();
+						System.out.println("\t"+mainNbOrdres[j]);
 					}
 				}
 			}
