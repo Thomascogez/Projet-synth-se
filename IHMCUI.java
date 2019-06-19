@@ -109,6 +109,7 @@ public class IHMCUI
 	public String[] demandeModif(Joueur jCourant)
 	{
 		jCourant.resetCarte();
+		System.out.println(jCourant.afficherOrdresRobots());
 		System.out.println("Choisir les ordres à donner au robot (max 3, -1 pour arrêter) :");
 		String[] main   = jCourant.getMainOrdres();
 		int[]    mainNb = jCourant.getMainNbOrdres();
@@ -130,7 +131,7 @@ public class IHMCUI
 			if(rep == -1 && cpt>0)
 				break;
 
-			if(rep>0 && rep<main.length && mainNb[rep-1]>0)
+			if(rep>0 && rep<=main.length && mainNb[rep-1]>0)
 			{
 				tabRetour[cpt] = main[rep-1];
 				cpt++;
