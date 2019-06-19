@@ -47,14 +47,17 @@ public class Joueur
 		{
 			for(int j=0; j<mainOrdres.length; j++)
 			{
-				if( tabOrdres[i].equals(mainOrdres[j]) )
+				if(tabOrdres[i]!=null)
 				{
-					if(mainNbOrdres[j]>0)
-						mainNbOrdres[j]--;
-					else
+					if( tabOrdres[i].equals(mainOrdres[j]) )
 					{
-						resetCarte();
-						return false;
+						if(mainNbOrdres[j]>0)
+							mainNbOrdres[j]--;
+						else
+						{
+							resetCarte();
+							return false;
+						}
 					}
 				}
 			}

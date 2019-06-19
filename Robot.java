@@ -21,7 +21,7 @@ public class Robot extends Contenu
 				tabOrdres[i] = tabOrdres[i].toUpperCase();
 
 				if(tabOrdres[i].contains("TOURNER"))
-					tourner(tabOrdres[i].charAt(tabOrdres.length-1));
+					tourner(tabOrdres[i].charAt(tabOrdres[i].length()-1));
 
 				if(tabOrdres[i].equals("AVANCER"))
 				{
@@ -54,15 +54,18 @@ public class Robot extends Contenu
 
 	private void tourner(char direction)
 	{
+		System.out.println("direction "+dir+" - direction-1mod6 : "+((dir-1)%6));
 		if(direction == 'd' || direction == 'D')
-			dir = (dir+1)%6;
+			dir = (dir==5)?dir=0:(dir+1)%6;
 		if(direction == 'g' || direction == 'G')
-			dir = (dir-1)%6;
+			dir = (dir==0)?dir=5:(dir-1)%6;
+		System.out.println("tourner "+dir);
 	}
 
 	private void avancer()
 	{
 		CaseHexa[] casesVoisines = caseHexa.getVoisines();
+		System.out.println("avancer "+dir);
 		if(casesVoisines[dir].getContenu()==null)
 		{
 			caseHexa.setContenu(null);
@@ -73,12 +76,15 @@ public class Robot extends Contenu
 		        casesVoisines[dir].getContenu() instanceof Robot     )
 		{
 			CaseHexa[] casesVoisinesDeVoisine = casesVoisines[dir].getVoisines();
-			if(casesVoisinesDeVoisine[dir].getContenu() == null)
+			if(casesVoisinesDeVoisine[dir] != null)
 			{
-				caseHexa.setContenu(null);
-				casesVoisinesDeVoisine[dir].setContenu(casesVoisines[dir].getContenu());
-				casesVoisines[dir].setContenu(this);
-				caseHexa = casesVoisines[dir];
+				if(casesVoisinesDeVoisine[dir].getContenu() == null)
+				{
+					caseHexa.setContenu(null);
+					casesVoisinesDeVoisine[dir].setContenu(casesVoisines[dir].getContenu());
+					casesVoisines[dir].setContenu(this);
+					caseHexa = casesVoisines[dir];
+				}
 			}
 		}
 	}
