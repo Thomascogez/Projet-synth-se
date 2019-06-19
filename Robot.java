@@ -12,12 +12,9 @@ public class Robot extends Contenu
 		cristalPorte = null;
 	}
 
-	public String afficherOrdres()
+	public String[] getOrdres()
 	{
-		String retour = "";
-		for(int i=0; i<tabOrdres.length; i++)
-			retour += tabOrdres[i]+" - ";
-		return retour;
+		return tabOrdres;
 	}
 
 	public void action()
@@ -82,24 +79,27 @@ public class Robot extends Contenu
 	{
 		CaseHexa[] casesVoisines = caseHexa.getVoisines();
 		System.out.println("avancer "+dir);
-		if(casesVoisines[dir].getContenu()==null)
+		if(casesVoisines[dir] != null)
 		{
-			caseHexa.setContenu(null);
-			casesVoisines[dir].setContenu(this);
-			caseHexa = casesVoisines[dir];
-		}
-		else if(casesVoisines[dir].getContenu() instanceof Cristal ||
-		        casesVoisines[dir].getContenu() instanceof Robot     )
-		{
-			CaseHexa[] casesVoisinesDeVoisine = casesVoisines[dir].getVoisines();
-			if(casesVoisinesDeVoisine[dir] != null)
+			if(casesVoisines[dir].getContenu()==null)
 			{
-				if(casesVoisinesDeVoisine[dir].getContenu() == null)
+				caseHexa.setContenu(null);
+				casesVoisines[dir].setContenu(this);
+				caseHexa = casesVoisines[dir];
+			}
+			else if(casesVoisines[dir].getContenu() instanceof Cristal ||
+			        casesVoisines[dir].getContenu() instanceof Robot     )
+			{
+				CaseHexa[] casesVoisinesDeVoisine = casesVoisines[dir].getVoisines();
+				if(casesVoisinesDeVoisine[dir] != null)
 				{
-					caseHexa.setContenu(null);
-					casesVoisinesDeVoisine[dir].setContenu(casesVoisines[dir].getContenu());
-					casesVoisines[dir].setContenu(this);
-					caseHexa = casesVoisines[dir];
+					if(casesVoisinesDeVoisine[dir].getContenu() == null)
+					{
+						caseHexa.setContenu(null);
+						casesVoisinesDeVoisine[dir].setContenu(casesVoisines[dir].getContenu());
+						casesVoisines[dir].setContenu(this);
+						caseHexa = casesVoisines[dir];
+					}
 				}
 			}
 		}

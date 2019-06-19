@@ -44,21 +44,28 @@ public class Joueur
 
 	public boolean donnerOrdresModif(String[] tabOrdres, int numRobot)
 	{
+		resetCarte();
+
+		int numAutreRobot;
+		if(numRobot == 0)
+			numAutreRobot = 1;
+		else
+			numAutreRobot = 0;
+		String[] tabAutre = robots[numAutreRobot].getOrdres();
+
 		for(int i=0; i<tabOrdres.length; i++)
 		{
 			for(int j=0; j<mainOrdres.length; j++)
 			{
 				if(tabOrdres[i]!=null)
 				{
-					if( tabOrdres[i].equals(mainOrdres[j]) )
+					if( tabOrdres[i].equals(mainOrdres[j]) ||
+					    tabAutre[i].equals(mainOrdres[j])   )
 					{
 						if(mainNbOrdres[j]>0)
 							mainNbOrdres[j]--;
 						else
-						{
-							resetCarte();
 							return false;
-						}
 					}
 				}
 			}
@@ -67,14 +74,9 @@ public class Joueur
 		return true;
 	}
 
-	public String afficherOrdresRobots()
+	public String[] getOrdresRobot(int numRobot)
 	{
-		String retour="";
-		for(int i=0; i<robots.length; i++)
-		{
-			retour+="Robot "+i+" : "+robots[i].afficherOrdres()+"\n";
-		}
-		return retour;
+		return robots[numRobot].getOrdres();
 	}
 
 	public int getPoints()
