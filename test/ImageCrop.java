@@ -1,4 +1,4 @@
-package test;
+//package test;
 
 import java.awt.Graphics;
 import java.awt.Image;
@@ -26,7 +26,7 @@ public class ImageCrop extends JFrame {
         new CropImageFilter(50, 50, 50, 50)));
     }
 
-    
+
     public void paint(Graphics g) {
         super.paint(g);
         if (insets == null) {

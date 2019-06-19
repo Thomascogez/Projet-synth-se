@@ -2,15 +2,15 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 
+
 public class PanJoueur extends JPanel{
 	private double rotation;
 	// Constructor
-	public PanJoueur(double rotation){
-		this.setPreferredSize(new Dimension(320, 100));
+	public PanJoueur(double rotation/*,int x, int y*/){
+		//this.setSize(x,y);
 		this.rotation = rotation;
-		this.add(new JLabel(new ImageIcon("Images/fond.jpg")));
-		this.add(new JLabel("test"));
-		
+		//this.add(new JLabel(new ImageIcon(new ImageIcon("Images/tableau_prog.jpg").getImage().getScaledInstance(350, 80, Image.SCALE_DEFAULT))));
+		this.add(new JLabel("TEST"));
 	}
 
 	@Override
@@ -21,5 +21,5 @@ public class PanJoueur extends JPanel{
 		g2.rotate(rotation, x, y);
 		super.paintComponent(g2);
     }
-	
+
 }
