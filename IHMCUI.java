@@ -64,17 +64,19 @@ public class IHMCUI
 				rep = Integer.parseInt(sc.next());
 			}catch(Exception e){ rep = -1; }
 		}while(rep!=1 && rep!=2);
-		sc.close();
 
 		return String.valueOf(rep);
 	}
 
 	public int demandeNumRobot()
 	{
-		System.out.println("Quel robot voulez-vous reprogrammer (1-2)?");
+		System.out.println("Quel robot voulez-vous reprogrammer ?");
 		int nRobot;
+		Scanner sc = new Scanner(System.in);
 		do{
-			nRobot = Integer.parseInt(Clavier.lireString())-1;
+			try{
+				nRobot = sc.nextInt()-1;
+			}catch(Exception e){ nRobot=-1; }
 		}while(nRobot<0 || nRobot>1);
 		return nRobot;
 	}
@@ -120,8 +122,9 @@ public class IHMCUI
 		while(cpt<3)
 		{
 			System.out.print("Ordre "+(cpt+1)+" : ");
+
 			try{
-				rep = Integer.parseInt(sc.next());
+				rep = sc.nextInt();
 			}catch(Exception e){ rep = 0; }
 
 			if(rep == -1 && cpt>0)
@@ -135,7 +138,6 @@ public class IHMCUI
 			else
 				System.out.println("Ordre invalide");
 		}
-		sc.close();
 
 		return tabRetour;
 	}
