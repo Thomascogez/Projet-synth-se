@@ -1,0 +1,14 @@
+1 -----Déplacement de base---------------
+
+déplacement N,O,S,E
+déplacement NE,NO,OS,SE,EO
+
+2 -----Déplacement avec conditions-------
+
+déplacement vers le bord du plateau
+
+déplacement vers une case avec un cristal
+déplacement vers une case avec un joueur
+déplacement vers une case avec une base
+essayer de déplacé un cristal et sont cristal adjacent
+

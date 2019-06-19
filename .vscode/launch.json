@@ -1,0 +1,42 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - ChargementTest",
+            "request": "launch",
+            "mainClass": "tests.ChargementTest",
+            "projectName": "Projet-synth-se_7ca6e798"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - ImageCrop",
+            "request": "launch",
+            "mainClass": "test.ImageCrop",
+            "projectName": "Projet-synth-se_7ca6e798"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - TestAffichage",
+            "request": "launch",
+            "mainClass": "test.TestAffichage",
+            "projectName": "Projet-synth-se_7ca6e798"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - StackGemme",
+            "request": "launch",
+            "mainClass": "test.StackGemme",
+            "projectName": "Projet-synth-se_7ca6e798"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch) - Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        }
+    ]
+}
