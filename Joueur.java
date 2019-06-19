@@ -151,6 +151,9 @@ public class Joueur
 		robots[1]=r;
 		this.setCaseHexa(robots[1], caseHex, orientation);
 	}
+	public void setOrdres(){
+
+	}
 
 	public void setBase(Base b)
 	{

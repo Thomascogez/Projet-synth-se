@@ -1,12 +1,16 @@
 public class Controleur
 {
-	IHMCUI  ihm;
-	Plateau metier;
-	int     numTour;
+	private IHMCUI  ihm;
+	private Plateau metier;
+	private int     numTour;
+	private ChargementTest test;
+
 	public Controleur()
 	{
+
 		this.ihm = new IHMCUI();
 		this.metier = new Plateau(this.ihm.nouvellePartie());
+		this.test = new ChargementTest(1);
 		numTour = 0;
 	}
 
@@ -23,6 +27,22 @@ public class Controleur
 
 			boolean valid = false;
 			do{
+				if(test.getProperty("TEST_MODE").trim().equals("TRUE"))
+				{
+					String[] tabSequence = test.getProperty("SEQUENCE_TEST").trim().split("#");
+					
+					for (String s : tabSequence) {
+						metier.getJoueur((Integer.parseInt(s.split("/")[0].split(":")[0])));
+						
+						System.out.println("Joueur N°"+s.split("/")[0].split(":")[0]);
+						System.out.println("Robot N°"+s.split("/")[0].split(":")[1]);
+						System.out.println("Séquence :"+s.split("/")[1]+"\n\n\n");
+					}
+				}
+				else
+				{
+
+			
 				if(numTour == 1)
 				{
 					if(joueur.donnerOrdresModif(ihm.demandeModifTour1(joueur), 0) &&
@@ -57,6 +77,7 @@ public class Controleur
 						valid = true;
 					}
 				}
+			}
 			}while(!valid);
 
 			metier.changerJoueur();

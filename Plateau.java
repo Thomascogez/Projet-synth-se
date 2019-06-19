@@ -123,6 +123,11 @@ public class Plateau
 		return retour;
 	}
 
+	public Joueur getJoueur(int id){
+		return tabJoueur[id];
+	}
+
+
 	public String afficherPlateau(){
 		String retour = "";
 

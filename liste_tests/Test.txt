@@ -12,3 +12,6 @@ déplacement vers une case avec un joueur
 déplacement vers une case avec une base
 essayer de déplacé un cristal et sont cristal adjacent
 
+
+3
+

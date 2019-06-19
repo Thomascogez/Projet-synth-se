@@ -1,5 +1,4 @@
 
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,9 +9,11 @@ import java.util.Properties;
  */
 public class ChargementTest {
     private Properties prop;
-
-    public ChargementTest() {
-        try (InputStream input = new FileInputStream("C:/Users/wedzy/Desktop/Projet-synth-se/tests/liste_tests/test_1.config")) {
+    private int numTest;
+    public ChargementTest(int numTest) {
+        this.numTest = numTest;
+        try (InputStream input = new FileInputStream(
+                "liste_tests/test_"+this.numTest+".config")) {
 
             prop = new Properties();
             prop.load(input);
@@ -25,6 +26,5 @@ public class ChargementTest {
     public String getProperty(String key) {
         return prop.getProperty(key);
     }
-  
 
 }
