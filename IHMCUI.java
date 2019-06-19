@@ -21,7 +21,7 @@ public class IHMCUI
 		{
 			Console.println ( CouleurConsole.ROUGE.getFont()+"ERREUR : Choix du nombre de joueurs invalide !" );
 			Console.normal();
-			Console.print ( "Choix du nombre de joueurs [2..4] : " );
+			Console.print ( "Choix du nombre de joueurs [2..6] : " );
 			nbJoueurMax = Clavier.lire_int();
 		}
 		//...Et on demande leurs noms respectifs
@@ -96,7 +96,7 @@ public class IHMCUI
 			try{
 				rep = Integer.parseInt(sc.next());
 			}catch(Exception e){ rep = 0; }
-			if(rep>0 && rep<main.length)
+			if(rep>0 && rep<=main.length)
 				retour = main[rep-1];
 		}
 
