@@ -17,7 +17,20 @@ public class Controleur
 	public void lancerPartie()
 	{
 		Joueur j1 = metier.getJoueurCourant();
-		while(!this.metier.getVictoire())
+		if(test.getProperty("TEST_MODE").trim().equals("TRUE"))
+			{
+				String[] tabSequence = test.getProperty("SEQUENCE_TEST").trim().split("#");
+				
+				for (String s : tabSequence) {
+					metier.getJoueur(Integer.parseInt(s.split("/")[0].split(":")[0])).setTestOrdres(s.split("/")[1],Integer.parseInt(s.split("/")[0].split(":")[1]));
+
+					System.out.println("Joueur N°"+s.split("/")[0].split(":")[0]);
+					System.out.println("Robot N°"+s.split("/")[0].split(":")[1]);
+					System.out.println("Séquence :"+s.split("/")[1]+"\n\n\n");
+					this.ihm.afficherGrille(this.metier.afficherPlateau(), metier.getJoueurCourant());
+				}
+			}
+		while(!this.metier.getVictoire() ||test.getProperty("TEST_MODE").trim().equals("TRUE"))
 		{
 			Joueur joueur = metier.getJoueurCourant();
 			if(joueur == j1)
@@ -26,62 +39,48 @@ public class Controleur
 			this.ihm.afficherGrille(this.metier.afficherPlateau(), joueur);
 
 			boolean valid = false;
-			do{
-				if(test.getProperty("TEST_MODE").trim().equals("TRUE"))
-				{
-					String[] tabSequence = test.getProperty("SEQUENCE_TEST").trim().split("#");
-					
-					for (String s : tabSequence) {
-						metier.getJoueur((Integer.parseInt(s.split("/")[0].split(":")[0])));
-						
-						System.out.println("Joueur N°"+s.split("/")[0].split(":")[0]);
-						System.out.println("Robot N°"+s.split("/")[0].split(":")[1]);
-						System.out.println("Séquence :"+s.split("/")[1]+"\n\n\n");
-					}
-				}
-				else
-				{
-
 			
-				if(numTour == 1)
+				do
 				{
-					if(joueur.donnerOrdresModif(ihm.demandeModifTour1(joueur), 0) &&
-					   joueur.donnerOrdresModif(ihm.demandeModifTour1(joueur), 1)   )
-						valid = true;
-					else
-						System.out.println("\nOrdres invalides\n");
-				}
-				else
-				{
-					if(ihm.menuAction().equals("1"))
+					if(numTour == 1)
 					{
-						int numRobot, numAutreRobot;
-						numRobot = ihm.demandeNumRobot();
-						if(numRobot==0)
-							numAutreRobot = 1;
+						if(joueur.donnerOrdresModif(ihm.demandeModifTour1(joueur), 0) &&
+						joueur.donnerOrdresModif(ihm.demandeModifTour1(joueur), 1)   )
+							valid = true;
 						else
-							numAutreRobot = 0;
-						if(joueur.donnerOrdresModif(ihm.demandeModif(joueur, numRobot), numRobot))
+							System.out.println("\nOrdres invalides\n");
+					}
+					else
+					{
+						if(ihm.menuAction().equals("1"))
 						{
-							joueur.donnerOrdres(numAutreRobot);
+							int numRobot, numAutreRobot;
+							numRobot = ihm.demandeNumRobot();
+							if(numRobot==0)
+								numAutreRobot = 1;
+							else
+								numAutreRobot = 0;
+							if(joueur.donnerOrdresModif(ihm.demandeModif(joueur, numRobot), numRobot))
+							{
+								joueur.donnerOrdres(numAutreRobot);
+								valid = true;
+							}
+							else
+								System.out.println("Ordres invalides");
+						}
+
+						else
+						{
+							joueur.donnerOrdres(0);
+							joueur.donnerOrdres(1);
 							valid = true;
 						}
-						else
-							System.out.println("Ordres invalides");
 					}
-
-					else
-					{
-						joueur.donnerOrdres(0);
-						joueur.donnerOrdres(1);
-						valid = true;
-					}
-				}
-			}
 			}while(!valid);
+		
 
 			metier.changerJoueur();
-		}
+	}
 		this.ihm.victoire();
 	}
 
