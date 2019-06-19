@@ -103,7 +103,6 @@ public class IHMCUI
 		}
 
 		String[] tabRetour = new String[]{ retour, "", "" };
-		System.out.println(retour);
 		return tabRetour;
 	}
 
@@ -128,6 +127,8 @@ public class IHMCUI
 		System.out.println("\t1-Remplacer l'ordre par un ordre de la main");
 		System.out.println("\t2-Echanger  l'ordre par un autre ordre du robot");
 		System.out.println("\t3-Récupérer l'ordre dans la main");
+
+		jCourant.actualiserMain();
 		int indOption;
 		do{
 			try{

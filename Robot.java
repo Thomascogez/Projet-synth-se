@@ -10,6 +10,7 @@ public class Robot extends Contenu
 		if(dir<0 || dir>=6)
 			dir = 0;
 		cristalPorte = null;
+		tabOrdres = new String[]{"","",""};
 	}
 
 	public String[] getOrdres()
@@ -78,7 +79,7 @@ public class Robot extends Contenu
 	private void avancer()
 	{
 		CaseHexa[] casesVoisines = caseHexa.getVoisines();
-		System.out.println("avancer "+dir);
+
 		if(casesVoisines[dir] != null)
 		{
 			if(casesVoisines[dir].getContenu()==null)
