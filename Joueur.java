@@ -87,17 +87,15 @@ public class Joueur
 			{
 				if(tabOrdres[i]!=null)
 				{
-					if( tabOrdres[i].equals(mainOrdres[j]) ||
-					    tabAutre[i].equals(mainOrdres[j])   )
-					{
+					if(tabOrdres[i].equalsIgnoreCase(mainOrdres[j]))
 						if(mainNbOrdres[j]>0)
 							mainNbOrdres[j]--;
-					}
+					if(tabAutre[i].equalsIgnoreCase(mainOrdres[j]))
+						if(mainNbOrdres[j]>0)
+							mainNbOrdres[j]--;
 				}
 			}
 		}
-		for(int i=0; i<tabOrdres.length; i++)
-			System.out.println("BUG? : "+mainOrdres[i]+" x"+mainNbOrdres[i]);
 	}
 
 	public String[] getOrdresRobot(int numRobot)
