@@ -61,7 +61,7 @@ public class Controleur
 							numAutreRobot = 1;
 						else
 							numAutreRobot = 0;
-						if(joueur.donnerOrdresModif(ihm.demandeModif(joueur), numRobot))
+						if(joueur.donnerOrdresModif(ihm.demandeModif(joueur, numRobot), numRobot))
 						{
 							joueur.donnerOrdres(numAutreRobot);
 							valid = true;

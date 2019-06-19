@@ -102,45 +102,104 @@ public class IHMCUI
 				retour = main[rep-1];
 		}
 
-		String[] tabRetour = new String[]{ retour };
+		String[] tabRetour = new String[]{ retour, "", "" };
+		System.out.println(retour);
 		return tabRetour;
 	}
 
-	public String[] demandeModif(Joueur jCourant)
+	public String[] demandeModif(Joueur jCourant, int numRobot)
 	{
-		jCourant.resetCarte();
-		System.out.println(jCourant.afficherOrdresRobots());
-		System.out.println("Choisir les ordres à donner au robot (max 3, -1 pour arrêter) :");
+		//jCourant.resetCarte();
+		String[] tabOrdres = jCourant.getOrdresRobot(numRobot);
+		System.out.print(" - ");
+		for(int i=0; i<tabOrdres.length; i++)
+			System.out.print(tabOrdres[i]+" - ");
+		System.out.println("\nChanger quel ordre ?");
+
+		Scanner sc = new Scanner(System.in);
+		int numOrdre;
+		do{
+			try{
+				numOrdre = sc.nextInt()-1;
+			}catch(Exception e){ numOrdre=-1; }
+		}while(numOrdre<0||numOrdre>=3);
+
+		System.out.println("Que voulez vous faire ?");
+		System.out.println("\t1-Remplacer l'ordre par un ordre de la main");
+		System.out.println("\t2-Echanger  l'ordre par un autre ordre du robot");
+		System.out.println("\t3-Récupérer l'ordre dans la main");
+		int indOption;
+		do{
+			try{
+				indOption = sc.nextInt();
+			}catch(Exception e){ indOption=-1; }
+		}while(indOption<=0||indOption>3);
+
+		if(indOption==1)
+			return remplacerParMain(jCourant, numRobot, numOrdre);
+		if(indOption==2)
+			return remplacerParAutreOrdre(jCourant, numRobot, numOrdre);
+		if(indOption==3)
+			return recupOrdre(jCourant, numRobot, numOrdre);
+
+		return null;
+	}
+
+	private String[] remplacerParMain(Joueur jCourant, int numRobot, int numOrdre)
+	{
 		String[] main   = jCourant.getMainOrdres();
 		int[]    mainNb = jCourant.getMainNbOrdres();
 		for(int i=0; i<main.length; i++)
 			System.out.println("\t"+(i+1)+" "+main[i]+" (x"+mainNb[i]+")");
 
-		Scanner  sc = new Scanner(System.in);
-		int      cpt = 0;
-		int      rep;
-		String[] tabRetour = new String[3];
-		while(cpt<3)
-		{
-			System.out.print("Ordre "+(cpt+1)+" : ");
-
+		System.out.println("Par quel ordre voulez le remplacer ?");
+		Scanner sc = new Scanner(System.in);
+		int numOrdreRemplace;
+		do{
 			try{
-				rep = sc.nextInt();
-			}catch(Exception e){ rep = 0; }
+				numOrdreRemplace = sc.nextInt()-1;
+			}catch(Exception e){ numOrdreRemplace=-1; }
+		}while(numOrdreRemplace<0 || numOrdreRemplace>main.length-1);
 
-			if(rep == -1 && cpt>0)
-				break;
+		String[] tabOrdres = jCourant.getOrdresRobot(numRobot);
+		for(int i=0; i<tabOrdres.length; i++)
+			if(i==numOrdreRemplace)
+				tabOrdres[i] = main[numOrdreRemplace];
 
-			if(rep>0 && rep<=main.length && mainNb[rep-1]>0)
-			{
-				tabRetour[cpt] = main[rep-1];
-				cpt++;
-			}
-			else
-				System.out.println("Ordre invalide");
-		}
+		return tabOrdres;
+	}
 
-		return tabRetour;
+	private String[] remplacerParAutreOrdre(Joueur jCourant, int numRobot, int numOrdre)
+	{
+		System.out.println("Par quel ordre voulez le remplacer ?");
+		String[] tabOrdres = jCourant.getOrdresRobot(numRobot);
+		for(int i=0; i<tabOrdres.length; i++)
+			System.out.println(i+"-"+tabOrdres[i]);
+
+		Scanner sc = new Scanner(System.in);
+		int numOrdreRemplace;
+		do{
+			try{
+				numOrdreRemplace = sc.nextInt()-1;
+			}catch(Exception e){ numOrdreRemplace=-1; }
+		}while(numOrdreRemplace<0 || numOrdreRemplace>tabOrdres.length-1);
+
+		String ordre = tabOrdres[numOrdre];
+		tabOrdres[numOrdre]         = tabOrdres[numOrdreRemplace];
+		tabOrdres[numOrdreRemplace] = ordre;
+
+		return tabOrdres;
+	}
+
+	private String[] recupOrdre(Joueur jCourant, int numRobot, int numOrdre)
+	{
+		String[] tabOrdres = jCourant.getOrdresRobot(numRobot);
+		tabOrdres[numOrdre] = "";
+
+		for(int i=0; i<tabOrdres.length; i++)
+			System.out.println(tabOrdres[i]);
+
+		return tabOrdres;
 	}
 
 	public void victoire()
