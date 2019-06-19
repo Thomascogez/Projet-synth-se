@@ -29,7 +29,6 @@ public class Controleur
 			do{
 				if(test.getProperty("TEST_MODE").trim().equals("TRUE"))
 				{
-					String[] sequence =
 				}
 				else
 				{
