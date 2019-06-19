@@ -31,6 +31,7 @@ public class Robot extends Contenu
 
 				if(tabOrdres[i].equals("AVANCER"))
 				{
+					System.out.println("AVANCE");
 					avancer();
 				}
 				if(tabOrdres[i].equals("AVANCER2"))
@@ -127,6 +128,11 @@ public class Robot extends Contenu
 			this.cristalPorte = autreRobot.cristalPorte;
 			autreRobot.cristalPorte = null;
 		}
+	}
+	public void setTestOrdres(String tabTest)
+	{
+		tabOrdres = tabTest.split(":");
+		this.action();
 	}
 
 	private void deposer()

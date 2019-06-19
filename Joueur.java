@@ -157,8 +157,9 @@ public class Joueur
 		robots[1]=r;
 		this.setCaseHexa(robots[1], caseHex, orientation);
 	}
-	public void setOrdres(){
-
+	public void setTestOrdres(String orde,int numRobot){
+		robots[numRobot].setTestOrdres(orde);
+	
 	}
 
 	public void setBase(Base b)
