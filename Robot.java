@@ -30,10 +30,8 @@ public class Robot extends Contenu
 					tourner(tabOrdres[i].charAt(tabOrdres[i].length()-1));
 
 				if(tabOrdres[i].equals("AVANCER"))
-				{
-					System.out.println("AVANCE");
 					avancer();
-				}
+
 				if(tabOrdres[i].equals("AVANCER2"))
 					avancer2();
 
@@ -83,8 +81,10 @@ public class Robot extends Contenu
 
 		if(casesVoisines[dir] != null)
 		{
+			System.out.println(casesVoisines[dir].getid());
 			if(casesVoisines[dir].getContenu()==null)
 			{
+				System.out.println("Rien devant");
 				caseHexa.setContenu(null);
 				casesVoisines[dir].setContenu(this);
 				caseHexa = casesVoisines[dir];
@@ -97,6 +97,7 @@ public class Robot extends Contenu
 				{
 					if(casesVoisinesDeVoisine[dir].getContenu() == null)
 					{
+						System.out.println("Etape Finale avancer");
 						caseHexa.setContenu(null);
 						casesVoisinesDeVoisine[dir].setContenu(casesVoisines[dir].getContenu());
 						casesVoisines[dir].setContenu(this);
