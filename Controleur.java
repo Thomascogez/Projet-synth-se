@@ -37,8 +37,8 @@ public class Controleur
 			
 				if(numTour == 1)
 				{
-					if(joueur.donnerOrdresModif(ihm.demandeModifTour1(metier.getJoueurCourant()), 0) &&
-					   joueur.donnerOrdresModif(ihm.demandeModifTour1(metier.getJoueurCourant()), 1)   )
+					if(joueur.donnerOrdresModif(ihm.demandeModifTour1(joueur), 0) &&
+					   joueur.donnerOrdresModif(ihm.demandeModifTour1(joueur), 1)   )
 						valid = true;
 					else
 						System.out.println("\nOrdres invalides\n");
@@ -47,16 +47,25 @@ public class Controleur
 				{
 					if(ihm.menuAction().equals("1"))
 					{
-						if(joueur.donnerOrdresModif(ihm.demandeModif(metier.getJoueurCourant()),
-						                            ihm.demandeNumRobot()                       ))
+						int numRobot, numAutreRobot;
+						numRobot = ihm.demandeNumRobot();
+						if(numRobot==0)
+							numAutreRobot = 1;
+						else
+							numAutreRobot = 0;
+						if(joueur.donnerOrdresModif(ihm.demandeModif(joueur), numRobot))
+						{
+							joueur.donnerOrdres(numAutreRobot);
 							valid = true;
+						}
 						else
 							System.out.println("Ordres invalides");
 					}
 
 					else
 					{
-						joueur.donnerOrdres(ihm.demandeNumRobot());
+						joueur.donnerOrdres(0);
+						joueur.donnerOrdres(1);
 						valid = true;
 					}
 				}
@@ -67,8 +76,6 @@ public class Controleur
 		}
 		this.ihm.victoire();
 	}
-
-
 
 	public static void main(String[] args)
 	{

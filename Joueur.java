@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 /**
  * Joueur
  */
@@ -64,6 +65,30 @@ public class Joueur
 		}
 		robots[numRobot].actionModif(tabOrdres);
 		return true;
+	}
+
+	public String afficherOrdresRobots()
+	{
+		String retour="";
+		for(int i=0; i<robots.length; i++)
+		{
+			retour+="Robot "+i+" : "+robots[i].afficherOrdres()+"\n";
+		}
+		return retour;
+	}
+
+	public int getPoints()
+	{
+		int pointsTot;
+
+		pointsTot = this.points+this.robots[0].getValeurCristal()+this.robots[1].getValeurCristal();
+
+		return pointsTot;
+	}
+
+	public ArrayList<Cristal> getCristauxBase()
+	{
+		return this.baseJoueur.getCristaux();
 	}
 
 	public void resetCarte()

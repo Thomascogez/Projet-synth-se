@@ -12,6 +12,14 @@ public class Robot extends Contenu
 		cristalPorte = null;
 	}
 
+	public String afficherOrdres()
+	{
+		String retour = "";
+		for(int i=0; i<tabOrdres.length; i++)
+			retour += tabOrdres[i]+" - ";
+		return retour;
+	}
+
 	public void action()
 	{
 		for(int i=0; i<tabOrdres.length; i++)
@@ -43,6 +51,14 @@ public class Robot extends Contenu
 	{
 		this.tabOrdres = tabOrdres;
 		action();
+	}
+
+	public int getValeurCristal()
+	{
+		if(this.cristalPorte!=null)
+			return this.cristalPorte.getValeur()-1;
+
+		return 0;
 	}
 
 	// A n'utiliser qu'à l'initialisation du plateau
