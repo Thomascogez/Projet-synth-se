@@ -20,7 +20,7 @@ public class Controleur
 		if(test.getProperty("TEST_MODE").trim().equals("TRUE"))
 			{
 				String[] tabSequence = test.getProperty("SEQUENCE_TEST").trim().split("#");
-				
+
 				for (String s : tabSequence) {
 					metier.getJoueur(Integer.parseInt(s.split("/")[0].split(":")[0])).setTestOrdres(s.split("/")[1],Integer.parseInt(s.split("/")[0].split(":")[1]));
 
@@ -39,7 +39,7 @@ public class Controleur
 			this.ihm.afficherGrille(this.metier.afficherPlateau(), joueur);
 
 			boolean valid = false;
-			
+
 				do
 				{
 					if(numTour == 1)
@@ -77,7 +77,7 @@ public class Controleur
 						}
 					}
 			}while(!valid);
-		
+
 
 			metier.changerJoueur();
 	}

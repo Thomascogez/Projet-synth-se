@@ -29,6 +29,7 @@ public class Plateau
 		pileCristaux = new Stack<Cristal>();
 		this.terrain = creerTerrain(nomJoueur.length);
 		initTerrain(nomJoueur.length);
+
 		tourJoueur = 0;
 	}
 
@@ -48,7 +49,6 @@ public class Plateau
 		{
 			if (j.getPoint() >= pointMax)
 				return true;
-
 		}
 		return false;
 	}
@@ -67,19 +67,17 @@ public class Plateau
 		int longueurTot = longueurCourante;
 
 		for (int i = 0;i<nbCases ;i++ )
-		{
 			terrain[i] = new CaseHexa();
-		}
 
 		while(cpt <4)
 		{
 			while(caseHex<longueurTot && longueurCourante<=this.longueurMax)
 			{
-				if (terrain[caseHex]!=terrain[longueurCourante-1])
+				if (terrain[caseHex]!=terrain[longueurTot-1])
 					terrain[caseHex].lierCase(terrain[caseHex+1],0);
 
 				terrain[caseHex].lierCase(terrain[caseHex+longueurCourante],2);
-				terrain[caseHex].lierCase(terrain[caseHex+longueurCourante-1], 3);
+				terrain[caseHex].lierCase(terrain[caseHex+longueurCourante+1], 3);
 				caseHex++;
 			}
 			longueurCourante++;
@@ -87,24 +85,26 @@ public class Plateau
 			cpt++;
 		}
 
-		longueurTot-=this.longueurMax;
-
-		while(cpt >0)
+		while(cpt >=0)
 		{
-			while(caseHex>longueurTot && longueurCourante>=this.longueurMin)
+			while(caseHex<longueurTot && longueurCourante>=this.longueurMin)
 			{
-				if (terrain[caseHex]!=terrain[longueurCourante-1])
+				if (terrain[caseHex]!=terrain[longueurTot-1] && cpt != 0)
 				{
 					terrain[caseHex].lierCase(terrain[caseHex+1], 0);
-					terrain[caseHex].lierCase(terrain[caseHex+longueurCourante-1], 3);
+					terrain[caseHex].lierCase(terrain[caseHex+longueurCourante], 3);
 				}
 
-				terrain[caseHex].lierCase(terrain[caseHex+longueurCourante], 2);
+				if (terrain[caseHex]!=terrain[longueurTot-longueurCourante] && cpt != 0)
+					terrain[caseHex].lierCase(terrain[caseHex+longueurCourante-1], 2);
 
-				caseHex--;
+				if (cpt == 0 && terrain[caseHex]!=terrain[longueurTot-1])
+					terrain[caseHex].lierCase(terrain[caseHex+1], 0);
+
+				caseHex++;
 			}
 			longueurCourante--;
-			longueurTot-= longueurCourante;
+			longueurTot+= longueurCourante;
 			cpt--;
 		}
 

@@ -22,22 +22,22 @@ public class CaseHexa
 	}
 
 	public void lierCase(CaseHexa caseHex, int orientation)
-    {
-        this.setVoisin(caseHex, orientation);
-        caseHex.setVoisin(this, orientation);
-    }
+	{
+		this.setVoisin(caseHex, orientation);
+		caseHex.setVoisin(this, orientation);
+	}
 
 	public void setContenu(Contenu contenuCase)
 	{
 		this.contenuCase = contenuCase;
 		if(contenuCase == null)
-			id = " ";
+		id = " ";
 		if(contenuCase instanceof Robot)
-			id = "R";
+		id = "R";
 		if(contenuCase instanceof Cristal)
-			id = "C";
+		id = "C";
 		if(contenuCase instanceof Base)
-			id = "B";
+		id = "B";
 	}
 
 	public String getid(){return this.id;}
