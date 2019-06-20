@@ -3,17 +3,25 @@ public class CaseHexa
 	private CaseHexa[] casesVoisines;
 	private Contenu contenuCase;
 	private String id;
+	private static int numIncre = 0;
+	private int num;
 
 	public CaseHexa()
 	{
 		contenuCase = null;
 		id          = " ";
 		casesVoisines = new CaseHexa[6];
+		num = CaseHexa.numIncre++;
 	}
 
 	public CaseHexa[] getVoisines()
 	{
 		return casesVoisines;
+	}
+
+	public int getNum()
+	{
+		return this.num;
 	}
 
 	public void setVoisin(CaseHexa caseHexa, int orientation)

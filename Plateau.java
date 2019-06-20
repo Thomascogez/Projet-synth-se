@@ -30,6 +30,11 @@ public class Plateau
 		this.terrain = creerTerrain(nomJoueur.length);
 		initTerrain(nomJoueur.length);
 
+		for (CaseHexa c : terrain[27].getVoisines() )
+		{
+			System.out.println(c.getNum());
+		}
+
 		tourJoueur = 0;
 	}
 
@@ -149,6 +154,7 @@ public class Plateau
 						if(cpt==1)
 						{
 							base = new Base();
+							System.out.println("TEST : gz grg zrgzr : " + terrain[tabObjContenu[1]].getNum());
 							terrain[tabObjContenu[1]].setContenu(base);
 							tabJoueur[tabObjContenu[0]].setBase(base);
 						}
