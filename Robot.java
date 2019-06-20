@@ -30,13 +30,13 @@ public class Robot extends Contenu
 					tourner(tabOrdres[i].charAt(tabOrdres[i].length()-1));
 
 				if(tabOrdres[i].equals("AVANCER"))
+					avancer();
+
+				if(tabOrdres[i].equals("AVANCER2"))
 				{
 					avancer();
 					avancer();
 				}
-
-				if(tabOrdres[i].equals("AVANCER2"))
-					avancer2();
 
 				if(tabOrdres[i].equals("CHARGER"))
 					charger();
