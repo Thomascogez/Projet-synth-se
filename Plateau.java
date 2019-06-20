@@ -205,8 +205,7 @@ public class Plateau
 			retour = retour.replaceAll(	"l", "\n");
 			retour = retour.replaceAll(	"e", " ");
 			retour = retour.replaceAll(	"t", "    ");
-		} catch (Exception e) {
-		}
+		} catch (Exception e) {}
 		return retour;
 	}
 }
