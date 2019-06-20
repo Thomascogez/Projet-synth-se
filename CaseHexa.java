@@ -4,12 +4,11 @@ public class CaseHexa
 	private Contenu contenuCase;
 	private String id;
 
-	public CaseHexa(String infoCase)
+	public CaseHexa()
 	{
-		String[] s = infoCase.split("-");
-		if (s[0].equals("N")) {id = " ";}
-		else{id = s[0];}
-		//contenuCase = null;
+		contenuCase = null;
+		id          = " ";
+		casesVoisines = new CaseHexa[6];
 	}
 
 	public CaseHexa[] getVoisines()
@@ -17,10 +16,16 @@ public class CaseHexa
 		return casesVoisines;
 	}
 
-	public void setVoisins(CaseHexa[] casesVoisines)
+	public void setVoisin(CaseHexa caseHexa, int orientation)
 	{
-		this.casesVoisines=casesVoisines;
+		this.casesVoisines[orientation]=caseHexa;
 	}
+
+	public void lierCase(CaseHexa caseHex, int orientation)
+    {
+        this.setVoisin(caseHex, orientation);
+        caseHex.setVoisin(this, orientation);
+    }
 
 	public void setContenu(Contenu contenuCase)
 	{
@@ -31,6 +36,8 @@ public class CaseHexa
 			id = "R";
 		if(contenuCase instanceof Cristal)
 			id = "C";
+		if(contenuCase instanceof Base)
+			id = "B";
 	}
 
 	public String getid(){return this.id;}
