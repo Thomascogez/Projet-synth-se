@@ -33,7 +33,10 @@ public class Robot extends Contenu
 					avancer();
 
 				if(tabOrdres[i].equals("AVANCER2"))
-					avancer2();
+				{
+					avancer();
+					avancer();
+				}
 
 				if(tabOrdres[i].equals("CHARGER"))
 					charger();
@@ -108,15 +111,11 @@ public class Robot extends Contenu
 		}
 	}
 
-	private void avancer2()
-	{
-		avancer();
-		avancer();
-	}
-
 	private void charger()
 	{
 		CaseHexa[] casesVoisines = caseHexa.getVoisines();
+		if(casesVoisines[dir] == null)
+			return;
 		if(casesVoisines[dir].getContenu() instanceof Cristal)
 		{
 			cristalPorte = (Cristal)(casesVoisines[dir].getContenu());
@@ -139,6 +138,9 @@ public class Robot extends Contenu
 	private void deposer()
 	{
 		CaseHexa[] casesVoisines = caseHexa.getVoisines();
+		if(casesVoisines[dir]==null)
+			return;
+
 		// Sur une case vide
 		if(casesVoisines[dir].getContenu() == null)
 		{
@@ -153,7 +155,7 @@ public class Robot extends Contenu
 			if(autreRobot.cristalPorte == null)
 			{
 				autreRobot.cristalPorte = this.cristalPorte;
-				cristalPorte = null;
+				this.cristalPorte = null;
 			}
 		}
 

@@ -1,6 +1,6 @@
 import java.io.*;
 import java.util.*;
-public class Plateau 
+public class Plateau
 {
 	private int nbCases;
 	private int pointMax;
@@ -9,19 +9,27 @@ public class Plateau
 	private Joueur[]   tabJoueur;
 	private int tourJoueur;
 	private int typePlateau;
+	private Stack<Cristal> pileCristaux;
+	private int longueurMin;
+	private int longueurMax;
 
 	public Plateau(String[] nomJoueur)
 	{
 		this.nbCases = 61;
 		this.typePlateau = 1;
 		this.tabJoueur = new Joueur[nomJoueur.length];
+		longueurMin = 5;
+		longueurMax = 9;
 
 		for (int i = 0 ; i< nomJoueur.length ;i++ )
 		{
 			this.tabJoueur[i] = new Joueur(nomJoueur[i]);
 		}
 		pointMax = 13-nomJoueur.length;
-		this.terrain = setTerrain(nomJoueur.length);
+		pileCristaux = new Stack<Cristal>();
+		this.terrain = creerTerrain(nomJoueur.length);
+		initTerrain(nomJoueur.length);
+
 		tourJoueur = 0;
 	}
 
@@ -41,86 +49,131 @@ public class Plateau
 		{
 			if (j.getPoint() >= pointMax)
 				return true;
-
 		}
 		return false;
 	}
 
-	private CaseHexa[] setTerrain(int nbJoueur)
+	public CaseHexa[] creerTerrain(int nbJoueur)
 	{
-		if (nbJoueur>4) { this.nbCases=91; this.typePlateau = 2; }
-		CaseHexa[] voisinsHexa;
-		CaseHexa[] retour = new CaseHexa[nbCases];
-		String[] contenu  = new String  [nbCases];
-		String[] voisins  = new String  [nbCases];
-		int cpt = 0;
-		Robot tmp;
-		Base base;
-
-		final File fichier =new File("Data/Plateau"+nbJoueur+".data");
-		try
+		if (nbJoueur>4)
 		{
+			this.nbCases=91;
+			this.typePlateau = 2;
+		}
+		int longueurCourante = this.longueurMin;
+		CaseHexa[] terrain = new CaseHexa[91];
+		int cpt = 0;
+		int caseHex = 0;
+		int longueurTot = longueurCourante;
+
+		for (int i = 0;i<nbCases ;i++ )
+			terrain[i] = new CaseHexa();
+
+		while(cpt <4)
+		{
+			while(caseHex<longueurTot && longueurCourante<=this.longueurMax)
+			{
+				if (terrain[caseHex]!=terrain[longueurTot-1])
+					terrain[caseHex].lierCase(terrain[caseHex+1],0);
+
+				terrain[caseHex].lierCase(terrain[caseHex+longueurCourante],2);
+				terrain[caseHex].lierCase(terrain[caseHex+longueurCourante+1], 3);
+				caseHex++;
+			}
+			longueurCourante++;
+			longueurTot+= longueurCourante;
+			cpt++;
+		}
+
+		while(cpt >=0)
+		{
+			while(caseHex<longueurTot && longueurCourante>=this.longueurMin)
+			{
+				if (terrain[caseHex]!=terrain[longueurTot-1] && cpt != 0)
+				{
+					terrain[caseHex].lierCase(terrain[caseHex+1], 0);
+					terrain[caseHex].lierCase(terrain[caseHex+longueurCourante], 3);
+				}
+
+				if (terrain[caseHex]!=terrain[longueurTot-longueurCourante] && cpt != 0)
+					terrain[caseHex].lierCase(terrain[caseHex+longueurCourante-1], 2);
+
+				if (cpt == 0 && terrain[caseHex]!=terrain[longueurTot-1])
+					terrain[caseHex].lierCase(terrain[caseHex+1], 0);
+
+				caseHex++;
+			}
+			longueurCourante--;
+			longueurTot+= longueurCourante;
+			cpt--;
+		}
+
+		return terrain;
+	}
+
+	private void initTerrain(int nbJoueur)
+	{
+		final File fichier =new File("Data/Plateau.data");
+		String sTmp;
+		try{
 			Scanner sc = new Scanner (new FileReader( fichier) );
 
 			while ( sc.hasNext() )
 			{
-				String[] infocase = sc.nextLine().split("/");
-				retour[cpt] = new CaseHexa(infocase[0]);
-				voisins[cpt] = infocase[1];
-				contenu[cpt] = infocase[0];
-				cpt ++;
+				sTmp = sc.nextLine();
+				if(sTmp.equals("Plateau "+nbJoueur+" :"))
+					break;
 			}
-		}
-		catch (Exception e) {
-			System.out.println("Impossible de cr\u00e9er le plateau");
-		}
-		for (int i = 0;i< nbCases;i++ )
-		{
-			voisinsHexa = new CaseHexa[6];
-			String[] splitVoisins = voisins[i].split("-");
-			for (int j = 0;j< voisinsHexa.length;j++)
+
+			String[] tabObjets;
+			String[] tabStrObjContenu;
+			Robot    robot;
+			Base     base;
+			Cristal  cristal;
+			for(int cpt=0; cpt<4; cpt++)
 			{
-				if (!splitVoisins[j].equals("R"))
+				sTmp = sc.nextLine();
+				tabObjets = sTmp.split("/");
+				for(int i=0; i<tabObjets.length; i++)
 				{
-					voisinsHexa[j] = retour[Integer.parseInt(splitVoisins[j])];
+					tabStrObjContenu = tabObjets[i].split("-");
+					int[] tabObjContenu = new int[tabStrObjContenu.length];
+					for(int j=0; j<tabStrObjContenu.length; j++)
+						tabObjContenu[j] = Integer.parseInt(tabStrObjContenu[j]);
+
+					for(int j=0; j<tabObjContenu.length; j++)
+					{
+						if(cpt==0)
+						{
+							robot = new Robot();
+							terrain[tabObjContenu[2]].setContenu(robot);
+							tabJoueur[tabObjContenu[0]].setRobot(robot,
+							                                     terrain[tabObjContenu[2]],
+							                                     tabObjContenu[1]);
+						}
+
+						if(cpt==1)
+						{
+							base = new Base();
+							terrain[tabObjContenu[1]].setContenu(base);
+							tabJoueur[tabObjContenu[0]].setBase(base);
+						}
+
+						if(cpt==2)
+						{
+							cristal = Cristal.creerCristal(tabObjContenu[0]);
+							terrain[tabObjContenu[1]].setContenu(cristal);
+						}
+
+						if(cpt==3)
+						{
+							cristal = Cristal.creerCristal(tabObjContenu[0]);
+							pileCristaux.push(cristal);
+						}
+					}
 				}
 			}
-			retour[i].setVoisins(voisinsHexa);
-		}
-
-		for (int k = 0;k< nbCases;k++ )
-		{
-			String[] splitContenu = contenu[k].split("-");
-
-			for (int l = 0;l< splitContenu.length;l++)
-			{
-				if (!splitContenu[0].equals("N"))
-				{
-					if (splitContenu[0].equals("R"))
-					{
-						tmp = new Robot();
-						//TODO: setCaseHexa !!
-						retour[k].setContenu(tmp);
-						this.tabJoueur[Integer.parseInt(splitContenu[1])].setRobot(tmp,retour[k],Integer.parseInt(splitContenu[2]));
-					}
-
-					if (splitContenu[0].equals("C"))
-					{
-						retour[k].setContenu(Cristal.creerCristal(Integer.parseInt(splitContenu[1])));
-					}
-
-					if (splitContenu[0].equals("B"))
-					{
-						base = new Base();
-						retour[k].setContenu(base);
-						this.tabJoueur[Integer.parseInt(splitContenu[1])].setBase(base);
-					}
-				}
-			}
-		}
-
-
-		return retour;
+		}catch(Exception e){e.printStackTrace();/*System.out.println("Impossible d'initialiser le plateau !");*/}
 	}
 
 	public Joueur getJoueur(int id){
