@@ -77,7 +77,7 @@ public class Plateau
 					terrain[caseHex].lierCase(terrain[caseHex+1],0);
 
 				terrain[caseHex].lierCase(terrain[caseHex+longueurCourante],2);
-				terrain[caseHex].lierCase(terrain[caseHex+longueurCourante+1], 3);
+				terrain[caseHex].lierCase(terrain[caseHex+longueurCourante+1], 1);
 				caseHex++;
 			}
 			longueurCourante++;
@@ -92,7 +92,7 @@ public class Plateau
 				if (terrain[caseHex]!=terrain[longueurTot-1] && cpt != 0)
 				{
 					terrain[caseHex].lierCase(terrain[caseHex+1], 0);
-					terrain[caseHex].lierCase(terrain[caseHex+longueurCourante], 3);
+					terrain[caseHex].lierCase(terrain[caseHex+longueurCourante], 1);
 				}
 
 				if (terrain[caseHex]!=terrain[longueurTot-longueurCourante] && cpt != 0)
@@ -183,21 +183,28 @@ public class Plateau
 
 	public String afficherPlateau(){
 		String retour = "";
+		int caseHex;
 
-		int i = 0;
-		final File fichier =new File("Data/merde.data");
+		final File fichier =new File("Data/AffichagePlateau"+typePlateau+".data");
 		try {
 			Scanner sc = new Scanner (fichier );
 
 			while ( sc.hasNext() )
 			{
 				String s =  sc.next();
-				if (s.equals("$")) {retour += "  |"+this.terrain[i++].getid()+"|  ";}
-				else             {retour += s;}
+				if (s.contains("$"))
+				{
+					caseHex = Integer.parseInt(s.substring(s.trim().lastIndexOf("$")+1));
+					retour += " "+this.terrain[caseHex].getid()+" ";
+				}
+				else
+				{
+					retour += s;
+				}
 			}
-			retour = retour.replaceAll(	"3", "\n");
-			retour = retour.replaceAll(	"1", " ");
-			retour = retour.replaceAll(	"4", "    ");
+			retour = retour.replaceAll(	"l", "\n");
+			retour = retour.replaceAll(	"e", " ");
+			retour = retour.replaceAll(	"t", "    ");
 		} catch (Exception e) {
 		}
 		return retour;
