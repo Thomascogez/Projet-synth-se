@@ -175,7 +175,7 @@ public class Plateau
 		return tabJoueur[id];
 	}
 
-	public void ajouterNouvCristalDePile(int indCase)//MATHIEU
+	public void ajouterNouvCristalDePile(int indCase)
 	{
 		if(terrain[indCase].getContenu()==null)
 			terrain[indCase].setContenu(pileCristaux.pop());
@@ -219,7 +219,11 @@ public class Plateau
 				if (s.contains("$"))
 				{
 					caseHex = Integer.parseInt(s.substring(s.trim().lastIndexOf("$")+1));
-					retour += " "+this.terrain[caseHex].getid()+" ";
+					if(this.terrain[caseHex].getid().equals("R") &&
+					   !getJoueurCourant().robotAppartientAuJoueur((Robot)(terrain[caseHex].getContenu())) )
+						retour += " r ";
+					else
+						retour += " "+this.terrain[caseHex].getid()+" ";
 				}
 				else
 				{

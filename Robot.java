@@ -16,6 +16,12 @@ public class Robot extends Contenu
 		this.plateau = plateau;
 	}
 
+	public boolean equals(Robot autre)
+	{
+		return this.caseHexa==autre.caseHexa &&
+		       this.dir     ==autre.dir;
+	}
+
 	public int getDir()
 	{
 		return dir;

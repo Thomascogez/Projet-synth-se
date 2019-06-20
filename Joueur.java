@@ -32,6 +32,15 @@ public class Joueur
 		return robots[numRobot].getDir();
 	}
 
+	public boolean robotAppartientAuJoueur(Robot robot)
+	{
+		for(int i=0; i<robots.length; i++)
+			if(robots[i].equals(robot))
+				return true;
+
+		return false;
+	}
+
 	public String[] getMainOrdres()
 	{
 		return mainOrdres;
