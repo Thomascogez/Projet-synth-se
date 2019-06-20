@@ -68,7 +68,7 @@ public class Controleur
 								valid = true;
 							}
 							else
-								System.out.println("Ordres invalides");
+								System.out.println("\nLa reprogrammation n'a pas été effectué\n");
 						}
 
 						else

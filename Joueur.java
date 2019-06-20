@@ -27,6 +27,11 @@ public class Joueur
 		//TODO : type de robot ?????
 	}
 
+	public int getDirRobot(int numRobot)
+	{
+		return robots[numRobot].getDir();
+	}
+
 	public String[] getMainOrdres()
 	{
 		return mainOrdres;

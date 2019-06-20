@@ -16,6 +16,11 @@ public class Robot extends Contenu
 		this.plateau = plateau;
 	}
 
+	public int getDir()
+	{
+		return dir;
+	}
+
 	public String[] getOrdres()
 	{
 		return tabOrdres;
