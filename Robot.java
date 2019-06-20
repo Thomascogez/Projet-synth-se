@@ -114,6 +114,8 @@ public class Robot extends Contenu
 	private void charger()
 	{
 		CaseHexa[] casesVoisines = caseHexa.getVoisines();
+		if(casesVoisines[dir] == null)
+			return;
 		if(casesVoisines[dir].getContenu() instanceof Cristal)
 		{
 			cristalPorte = (Cristal)(casesVoisines[dir].getContenu());
