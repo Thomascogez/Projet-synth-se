@@ -33,15 +33,9 @@ public class Plateau
 		tourJoueur = 0;
 	}
 
-	public void changerJoueur()
-	{
-		tourJoueur=(tourJoueur+1)%tabJoueur.length;
-	}
-
-	public Joueur getJoueurCourant()
-	{
-		return tabJoueur[tourJoueur];
-	}
+	public void changerJoueur(){tourJoueur=(tourJoueur+1)%tabJoueur.length;}
+	public Joueur getJoueurCourant(){return tabJoueur[tourJoueur];}
+	public int getJoueur(){return tourJoueur;}
 
 	public boolean getVictoire()
 	{
@@ -183,21 +177,28 @@ public class Plateau
 
 	public String afficherPlateau(){
 		String retour = "";
+		int caseHex;
 
-		int i = 0;
-		final File fichier =new File("Data/merde.data");
+		final File fichier =new File("Data/AffichagePlateau"+typePlateau+".data");
 		try {
 			Scanner sc = new Scanner (fichier );
 
 			while ( sc.hasNext() )
 			{
 				String s =  sc.next();
-				if (s.equals("$")) {retour += "  |"+this.terrain[i++].getid()+"|  ";}
-				else             {retour += s;}
+				if (s.contains("$"))
+				{
+					caseHex = Integer.parseInt(s.substring(s.trim().lastIndexOf("$")+1));
+					retour += " "+this.terrain[caseHex].getid()+" ";
+				}
+				else
+				{
+					retour += s;
+				}
 			}
-			retour = retour.replaceAll(	"3", "\n");
-			retour = retour.replaceAll(	"1", " ");
-			retour = retour.replaceAll(	"4", "    ");
+			retour = retour.replaceAll(	"l", "\n");
+			retour = retour.replaceAll(	"e", " ");
+			retour = retour.replaceAll(	"t", "    ");
 		} catch (Exception e) {
 		}
 		return retour;
