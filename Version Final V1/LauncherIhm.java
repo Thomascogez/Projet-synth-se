@@ -12,7 +12,7 @@ public class LauncherIhm extends JFrame{
 
 	public LauncherIhm(ControleurGUI ctrl) {
 		this.setResizable(false);
-		this.setSize(515, 750);
+		this.setSize(515, 700);
 		this.ctrl = ctrl;
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

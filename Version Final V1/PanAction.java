@@ -75,7 +75,7 @@ public class PanAction extends JPanel implements ActionListener{
 		}
 		panProgra.setBackground(new Color(130,130,130));
 		panProgra.setEnabled(false);
-		panProgra.add(Box.createHorizontalStrut(100));
+		panProgra.add(Box.createHorizontalStrut(30));
 
 		panProgra.add(new JLabel(new ImageIcon("Images/R1.png")));
 		for (int i = 0;i<picRobot1.length ; i++) {
