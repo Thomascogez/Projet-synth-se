@@ -45,7 +45,7 @@ public class Controleur
 					if(numTour == 1)
 					{
 						if(joueur.donnerOrdresModif(ihm.demandeModifTour1(joueur), 0) &&
-						joueur.donnerOrdresModif(ihm.demandeModifTour1(joueur), 1)   )
+						   joueur.donnerOrdresModif(ihm.demandeModifTour1(joueur), 1)   )
 							valid = true;
 						else
 							System.out.println("\nOrdres invalides\n");
@@ -76,11 +76,11 @@ public class Controleur
 							valid = true;
 						}
 					}
-			}while(!valid);
+				}while(!valid);
 
 
 			metier.changerJoueur();
-	}
+		}
 		this.ihm.victoire();
 	}
 

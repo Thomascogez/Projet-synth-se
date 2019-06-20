@@ -132,14 +132,17 @@ public class IHMLauncheur extends JFrame {
 
 	}
 
-	public void finTour()
+	public void finTour(int nouvJoueur, int nbJoueur)
 	{
+		int ancienJoueur = nouvJoueur-1;
+		if(ancienJoueur==-1)
+			ancienJoueur = nbJoueur-1;
+		
 		tabJoueur[joueur].setBorder(new LineBorder(couleurs[joueur], 2));
 		tabJoueur[joueur].majFinTour();
-		joueur = (joueur +1) % tabJoueur.length;
 		action.removeAll();	
-		action.add(tabJoueur[joueur].getPanAction());
-		tabJoueur[joueur].setBorder(new LineBorder(couleurs[joueur], 5));
+		action.add(tabJoueur[nouvJoueur].getPanAction());
+		tabJoueur[nouvJoueur].setBorder(new LineBorder(couleurs[nouvJoueur], 5));
 		this.revalidate();
 		this.repaint();
 	}

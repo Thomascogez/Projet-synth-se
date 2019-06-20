@@ -35,9 +35,10 @@ public class Plateau
 		tourJoueur = 0;
 	}
 
-	public void changerJoueur()
+	public int changerJoueur()
 	{
 		tourJoueur=(tourJoueur+1)%tabJoueur.length;
+		return tourJoueur;
 	}
 
 	public Joueur getJoueurCourant()
@@ -182,6 +183,10 @@ public class Plateau
 		return tabJoueur[id];
 	}
 
+	public int getNbJoueurs()
+	{
+		return tabJoueur.length;
+	}
 
 	public String afficherPlateau(){
 		String retour = "";

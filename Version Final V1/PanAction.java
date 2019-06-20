@@ -136,7 +136,7 @@ public class PanAction extends JPanel implements ActionListener{
 			}
 		}
 		if (e.getSource()==btnFin) {
-			this.frame.finTour();
+			//this.frame.finTour();
 		}
 	}
 
