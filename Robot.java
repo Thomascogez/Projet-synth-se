@@ -102,6 +102,11 @@ public class Robot extends Contenu
 						casesVoisinesDeVoisine[this.dir].setContenu(casesVoisines[this.dir].getContenu());
 						casesVoisines[dir].setContenu(this);
 						caseHexa = casesVoisines[this.dir];
+						if(casesVoisinesDeVoisine[dir].getContenu() instanceof Robot)
+						{
+							Robot r2 = (Robot)(casesVoisinesDeVoisine[this.dir].getContenu());
+							r2.caseHexa = casesVoisinesDeVoisine[this.dir];
+						}
 					}
 				}
 			}
