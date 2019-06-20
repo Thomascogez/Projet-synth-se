@@ -162,11 +162,13 @@ public class IHMCUI
 			}catch(Exception e){ numOrdreRemplace=-1; }
 		}while(numOrdreRemplace<0 || numOrdreRemplace>main.length-1);
 
+		System.out.println("BUG? "+numOrdreRemplace +" "+main[numOrdreRemplace]);
 		String[] tabOrdres = jCourant.getOrdresRobot(numRobot);
-		for(int i=0; i<tabOrdres.length; i++)
-			if(i==numOrdreRemplace)
-				tabOrdres[i] = main[numOrdreRemplace];
 
+		tabOrdres[numOrdre] = main[numOrdreRemplace];
+
+		for(int i=0; i<tabOrdres.length; i++)
+			System.out.println("BUG? "+tabOrdres[i]);
 		return tabOrdres;
 	}
 
@@ -175,7 +177,7 @@ public class IHMCUI
 		System.out.println("Par quel ordre voulez le remplacer ?");
 		String[] tabOrdres = jCourant.getOrdresRobot(numRobot);
 		for(int i=0; i<tabOrdres.length; i++)
-			System.out.println(i+"-"+tabOrdres[i]);
+			System.out.println("\t"+(i+1)+"-"+tabOrdres[i]);
 
 		Scanner sc = new Scanner(System.in);
 		int numOrdreRemplace;

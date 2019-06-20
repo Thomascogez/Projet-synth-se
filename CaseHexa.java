@@ -29,6 +29,7 @@ public class CaseHexa
 
 	public void setContenu(Contenu contenuCase)
 	{
+		System.out.println("BUG?");
 		this.contenuCase = contenuCase;
 		if(contenuCase == null)
 		id = " ";

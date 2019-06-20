@@ -77,7 +77,7 @@ public class Plateau
 					terrain[caseHex].lierCase(terrain[caseHex+1],0);
 
 				terrain[caseHex].lierCase(terrain[caseHex+longueurCourante],2);
-				terrain[caseHex].lierCase(terrain[caseHex+longueurCourante+1], 3);
+				terrain[caseHex].lierCase(terrain[caseHex+longueurCourante+1], 1);
 				caseHex++;
 			}
 			longueurCourante++;
@@ -92,7 +92,7 @@ public class Plateau
 				if (terrain[caseHex]!=terrain[longueurTot-1] && cpt != 0)
 				{
 					terrain[caseHex].lierCase(terrain[caseHex+1], 0);
-					terrain[caseHex].lierCase(terrain[caseHex+longueurCourante], 3);
+					terrain[caseHex].lierCase(terrain[caseHex+longueurCourante], 1);
 				}
 
 				if (terrain[caseHex]!=terrain[longueurTot-longueurCourante] && cpt != 0)
