@@ -8,11 +8,13 @@ public class Controleur
 	public Controleur()
 	{
 
-		this.ihm = new IHMCUI();
+		this.ihm = new IHMCUI(this);
 		this.metier = new Plateau(this.ihm.nouvellePartie());
 		this.test = new ChargementTest(1);
 		numTour = 0;
 	}
+
+	public int getJoueur(){return metier.getJoueur();}
 
 	public void lancerPartie()
 	{

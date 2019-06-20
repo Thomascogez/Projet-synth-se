@@ -129,9 +129,8 @@ public class Joueur
 
 	public void resetCarte()
 	{
-		System.out.println("RESET");
-			for(int cpt=0; cpt<mainNbOrdres.length; cpt++)
-					mainNbOrdres[cpt] = mainNbOrdresStock[cpt];
+		for(int cpt=0; cpt<mainNbOrdres.length; cpt++)
+				mainNbOrdres[cpt] = mainNbOrdresStock[cpt];
 	}
 
 	public void ajouterCristal(Cristal c){

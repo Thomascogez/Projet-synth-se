@@ -4,7 +4,12 @@ import java.util.Scanner;
 import iut.algo.*;
 public class IHMCUI
 {
+	CouleurConsole[] coulJoueur = {CouleurConsole.valueOf("ROUGE"),CouleurConsole.valueOf("JAUNE"),
+	                               CouleurConsole.valueOf("VERT") ,CouleurConsole.valueOf("BLEU"),
+								   CouleurConsole.valueOf("MAUVE"),CouleurConsole.valueOf("BLANC")};
+	private Controleur ctrl;
 
+	public IHMCUI(Controleur ctrl){this.ctrl = ctrl;}
 	public void ecranDemarrage()
 	{
 		System.out.println(
@@ -28,7 +33,7 @@ public class IHMCUI
 		String[] tabNom = new String[nbJoueurMax];
 		for (int i= 0; i< nbJoueurMax ;i++ )
 		{
-			Console.print (CouleurConsole.CYAN.getFont()+"Nom du Joueur " +(i+1)+ " : ");
+			Console.print (coulJoueur[i].getFont()+"Nom du Joueur " +(i+1)+ " : ");
 			Console.normal();
 			tabNom[i] = Clavier.lireString();
 		}
@@ -38,7 +43,8 @@ public class IHMCUI
 	public void afficherGrille(String grille, Joueur joueur)
 	{
 		System.out.println(grille);
-		System.out.println("Tour du Joueur " + joueur.getNom());
+		Console.println (coulJoueur[ctrl.getJoueur()].getFont()+"Tour du Joueur " + joueur.getNom() + "| Point : "+joueur.getPoints()+"");
+		Console.normal();
 	}
 	public void afficherScores(ArrayList<Joueur> lJoueur)
 	{
@@ -87,16 +93,15 @@ public class IHMCUI
 		String[] main   = jCourant.getMainOrdres();
 		int[]    mainNb = jCourant.getMainNbOrdres();
 		for(int i=0; i<main.length; i++)
-			System.out.println("\t"+(i+1)+" "+main[i]+" (x"+mainNb[i]+")");
-
+			{System.out.println("\t"+(i+1)+" "+main[i]+" (x"+mainNb[i]+")");}
+			System.out.println("Saisir un numéro d'ordre : ");
 		Scanner  sc = new Scanner(System.in);
 		int      rep;
 		String retour ="";
 		while(retour.equals(""))
 		{
-			System.out.print("Saisir un numéro d'ordre : ");
 			try{
-				rep = Integer.parseInt(sc.next());
+				rep = sc.nextInt();
 			}catch(Exception e){ rep = 0; }
 			if(rep>0 && rep<=main.length)
 				retour = main[rep-1];
@@ -162,11 +167,13 @@ public class IHMCUI
 			}catch(Exception e){ numOrdreRemplace=-1; }
 		}while(numOrdreRemplace<0 || numOrdreRemplace>main.length-1);
 
+		System.out.println("BUG? "+numOrdreRemplace +" "+main[numOrdreRemplace]);
 		String[] tabOrdres = jCourant.getOrdresRobot(numRobot);
-		for(int i=0; i<tabOrdres.length; i++)
-			if(i==numOrdreRemplace)
-				tabOrdres[i] = main[numOrdreRemplace];
 
+		tabOrdres[numOrdre] = main[numOrdreRemplace];
+
+		for(int i=0; i<tabOrdres.length; i++)
+			System.out.println("BUG? "+tabOrdres[i]);
 		return tabOrdres;
 	}
 
@@ -175,7 +182,7 @@ public class IHMCUI
 		System.out.println("Par quel ordre voulez le remplacer ?");
 		String[] tabOrdres = jCourant.getOrdresRobot(numRobot);
 		for(int i=0; i<tabOrdres.length; i++)
-			System.out.println(i+"-"+tabOrdres[i]);
+			System.out.println("\t"+(i+1)+"-"+tabOrdres[i]);
 
 		Scanner sc = new Scanner(System.in);
 		int numOrdreRemplace;

@@ -87,7 +87,6 @@ public class Robot extends Contenu
 			System.out.println(casesVoisines[dir].getid());
 			if(casesVoisines[dir].getContenu()==null)
 			{
-				System.out.println("Rien devant");
 				caseHexa.setContenu(null);
 				casesVoisines[dir].setContenu(this);
 				caseHexa = casesVoisines[dir];
