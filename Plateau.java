@@ -1,6 +1,6 @@
 import java.io.*;
 import java.util.*;
-public class Plateau 
+public class Plateau
 {
 	private int nbCases;
 	private int pointMax;
@@ -79,6 +79,7 @@ public class Plateau
 					terrain[caseHex].lierCase(terrain[caseHex+1],0);
 
 				terrain[caseHex].lierCase(terrain[caseHex+longueurCourante],2);
+				terrain[caseHex].lierCase(terrain[caseHex+longueurCourante-1], 3);
 				caseHex++;
 			}
 			longueurCourante++;
@@ -96,6 +97,8 @@ public class Plateau
 					terrain[caseHex].lierCase(terrain[caseHex+1], 0);
 
 				terrain[caseHex].lierCase(terrain[caseHex+longueurCourante], 2);
+				terrain[caseHex].lierCase(terrain[caseHex+longueurCourante-1], 3);
+
 				caseHex--;
 			}
 			longueurCourante--;
