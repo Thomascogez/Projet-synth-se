@@ -185,14 +185,14 @@ public class Plateau
 		String retour = "";
 
 		int i = 0;
-		final File fichier =new File("Data/AffichagePlateau"+this.typePlateau+".data");
+		final File fichier =new File("Data/merde.data");
 		try {
 			Scanner sc = new Scanner (fichier );
 
 			while ( sc.hasNext() )
 			{
 				String s =  sc.next();
-				if (s.equals("$")) {retour += " "+this.terrain[i++].getid()+" ";}
+				if (s.equals("$")) {retour += "  |"+this.terrain[i++].getid()+"|  ";}
 				else             {retour += s;}
 			}
 			retour = retour.replaceAll(	"3", "\n");
