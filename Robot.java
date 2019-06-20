@@ -174,7 +174,10 @@ public class Robot extends Contenu
 		{
 			Base base = (Base)(casesVoisines[dir].getContenu());
 			base.ajouterCristal(cristalPorte);
-			plateau.ajouterNouvCristalDePile(cristalPorte.getPositionDeBase());
+			if(cristalPorte != null){
+				plateau.ajouterNouvCristalDePile(cristalPorte.getPositionDeBase());
+			}
+			
 			cristalPorte = null;
 		}
 	}
