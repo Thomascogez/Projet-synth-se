@@ -10,7 +10,7 @@ public class Controleur
 
 		this.ihm = new IHMCUI(this);
 		this.metier = new Plateau(this.ihm.nouvellePartie());
-		this.test = new ChargementTest(1);
+		this.test = new ChargementTest(20);
 		numTour = 0;
 	}
 
@@ -30,6 +30,10 @@ public class Controleur
 					System.out.println("Robot N°"+s.split("/")[0].split(":")[1]);
 					System.out.println("Séquence :"+s.split("/")[1]+"\n\n\n");
 					this.ihm.afficherGrille(this.metier.afficherPlateau(), metier.getJoueurCourant());
+					if(this.metier.getVictoire()){
+						this.ihm.victoire();
+						break;
+					}
 				}
 			}
 		while(!this.metier.getVictoire() ||test.getProperty("TEST_MODE").trim().equals("TRUE"))
