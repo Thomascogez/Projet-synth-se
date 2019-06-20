@@ -27,7 +27,20 @@ public class PanAction extends JPanel implements ActionListener{
 
 		picRobot1 = new JLabel[3];
 		picRobot2 = new JLabel[3];
-		picCarte  = new JLabel[6];	
+		picCarte  = new JLabel[13];
+		picCarte[0]  = new JLabel(new ImageIcon(image[0]));
+		picCarte[1]  = new JLabel(new ImageIcon(image[0]));
+		picCarte[2]  = new JLabel(new ImageIcon(image[1]));
+		picCarte[3]  = new JLabel(new ImageIcon(image[2]));
+		picCarte[4]  = new JLabel(new ImageIcon(image[2]));
+		picCarte[5]  = new JLabel(new ImageIcon(image[2]));
+		picCarte[6]  = new JLabel(new ImageIcon(image[3]));
+		picCarte[7]  = new JLabel(new ImageIcon(image[3]));
+		picCarte[8]  = new JLabel(new ImageIcon(image[3]));
+		picCarte[9]  = new JLabel(new ImageIcon(image[4]));
+		picCarte[10]  = new JLabel(new ImageIcon(image[4]));
+		picCarte[11]  = new JLabel(new ImageIcon(image[5]));
+		picCarte[11]  = new JLabel(new ImageIcon(image[5]));
 		MouseListener ml = new MouseListener() {
 
 			@Override
@@ -39,7 +52,7 @@ public class PanAction extends JPanel implements ActionListener{
 				JComponent jc = (JComponent)e.getSource();
 				TransferHandler th = jc.getTransferHandler();
 				th.exportAsDrag(jc, e, TransferHandler.COPY);
-				//jc.setVisible(false);
+				jc.setVisible(false);
 			}
 
 			@Override
@@ -87,7 +100,6 @@ public class PanAction extends JPanel implements ActionListener{
 		JPanel panCarte = new JPanel();
 		panProgra.setBackground(new Color(130,130,130));
 		for (int i = 0; i<picCarte.length ;i++ ) {
-			picCarte[i]  = new JLabel(new ImageIcon(image[i]));
 			picCarte[i].addMouseListener(ml);
 			picCarte[i].setTransferHandler(new TransferHandler("icon"));
 			panCarte.add(picCarte[i]);
@@ -98,7 +110,7 @@ public class PanAction extends JPanel implements ActionListener{
 
 		panCentre.add(panProgra);
 		panCentre.add(panCarte);
-		add(panCentre);	
+		add(panCentre);
 	}
 
 	public Image[] getProgram(){
@@ -120,12 +132,12 @@ public class PanAction extends JPanel implements ActionListener{
 		for (int i=0; i<reset.length; i++ ) {
 			if (e.getSource()==reset[i]) {
 				Icon  image = null;
-				if (i<3) { 
+				if (i<3) {
 					image = picRobot1[i].getIcon();
 					picRobot1[i].setIcon(new ImageIcon("Images/rouge.png"));
 
 				}
-				else     { 
+				else     {
 					image = picRobot2[i-3].getIcon();
 					picRobot2[i-3].setIcon(new ImageIcon("Images/rouge.png"));
 				}

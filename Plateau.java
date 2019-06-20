@@ -33,15 +33,9 @@ public class Plateau
 		tourJoueur = 0;
 	}
 
-	public void changerJoueur()
-	{
-		tourJoueur=(tourJoueur+1)%tabJoueur.length;
-	}
-
-	public Joueur getJoueurCourant()
-	{
-		return tabJoueur[tourJoueur];
-	}
+	public void changerJoueur(){tourJoueur=(tourJoueur+1)%tabJoueur.length;}
+	public Joueur getJoueurCourant(){return tabJoueur[tourJoueur];}
+	public int getJoueur(){return tourJoueur;}
 
 	public boolean getVictoire()
 	{
