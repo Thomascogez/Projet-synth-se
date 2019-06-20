@@ -94,10 +94,12 @@ public class Plateau
 			while(caseHex>longueurTot && longueurCourante>=this.longueurMin)
 			{
 				if (terrain[caseHex]!=terrain[longueurCourante-1])
+				{
 					terrain[caseHex].lierCase(terrain[caseHex+1], 0);
+					terrain[caseHex].lierCase(terrain[caseHex+longueurCourante-1], 3);
+				}
 
 				terrain[caseHex].lierCase(terrain[caseHex+longueurCourante], 2);
-				terrain[caseHex].lierCase(terrain[caseHex+longueurCourante-1], 3);
 
 				caseHex--;
 			}
