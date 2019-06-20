@@ -24,7 +24,7 @@ public class CaseHexa
 	public void lierCase(CaseHexa caseHex, int orientation)
 	{
 		this.setVoisin(caseHex, orientation);
-		caseHex.setVoisin(this, orientation);
+		caseHex.setVoisin(this, (orientation+3)%6);
 	}
 
 	public void setContenu(Contenu contenuCase)
