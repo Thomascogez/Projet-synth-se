@@ -5,16 +5,16 @@ import java.awt.Toolkit;
 
 public class DemandeJoueur extends JFrame implements ActionListener
 {
-	//private IHMGUI ihm;
+	private LauncherIhm frame;
 	private SpinnerModel spinNbJ;
 	private JSpinner spinner;
 	private JPanel panHaut, panBas;
 	private JButton bOk, bCancel;
 
-	public DemandeJoueur(/*IHMGUI ihm*/)
+	public DemandeJoueur(LauncherIhm frame)
 	{
 		this.setSize(320,60);
-		//this.ihm = ihm;
+		this.frame = frame;
 		this.setLocationRelativeTo(null);
 		this.spinNbJ = new SpinnerNumberModel(2,2,6,1);
 		this.setUndecorated(true);
@@ -56,7 +56,7 @@ public class DemandeJoueur extends JFrame implements ActionListener
 		if (e.getSource()==this.bOk)
 		{	
 			this.dispose();
-			//this.ihm.setNbJ(Integer.valueOf(this.spinner.getValue().toString()));	
+			this.frame.setNbJ(Integer.valueOf(this.spinner.getValue().toString()));	
 		}
 	}
 
@@ -70,7 +70,4 @@ public class DemandeJoueur extends JFrame implements ActionListener
 		btn.setFont(new Font("Helvetica", Font.BOLD, 15));
 	}
 
-	public static void main(String[] args){
-		new DemandeJoueur();
-	}
 }

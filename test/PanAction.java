@@ -22,27 +22,12 @@ public class PanAction extends JPanel implements ActionListener{
 		for (int i = 0;i<image.length ; i++) {
 			image[i] = icon.getImage();
 			image[i] = createImage(new FilteredImageSource(image[i].getSource(),
-        // 50 d'écart entre chaques images
 				new CropImageFilter(50*i, 50*numJoueur, 50, 50)));
 		}
 
 		picRobot1 = new JLabel[3];
 		picRobot2 = new JLabel[3];
-		picCarte  = new JLabel[13];
-		picCarte[0]  = new JLabel(new ImageIcon(image[0]));
-		picCarte[1]  = new JLabel(new ImageIcon(image[0]));
-		picCarte[2]  = new JLabel(new ImageIcon(image[1]));
-		picCarte[3]  = new JLabel(new ImageIcon(image[2]));
-		picCarte[4]  = new JLabel(new ImageIcon(image[2]));
-		picCarte[5]  = new JLabel(new ImageIcon(image[2]));
-		picCarte[6]  = new JLabel(new ImageIcon(image[3]));
-		picCarte[7]  = new JLabel(new ImageIcon(image[3]));
-		picCarte[8]  = new JLabel(new ImageIcon(image[3]));
-		picCarte[9]  = new JLabel(new ImageIcon(image[4]));
-		picCarte[10]  = new JLabel(new ImageIcon(image[4]));
-		picCarte[11]  = new JLabel(new ImageIcon(image[5]));
-		picCarte[12]  = new JLabel(new ImageIcon(image[5]));
-		
+		picCarte  = new JLabel[6];	
 		MouseListener ml = new MouseListener() {
 
 			@Override
@@ -54,7 +39,7 @@ public class PanAction extends JPanel implements ActionListener{
 				JComponent jc = (JComponent)e.getSource();
 				TransferHandler th = jc.getTransferHandler();
 				th.exportAsDrag(jc, e, TransferHandler.COPY);
-				jc.setVisible(false);
+				//jc.setVisible(false);
 			}
 
 			@Override
@@ -81,6 +66,7 @@ public class PanAction extends JPanel implements ActionListener{
 		panCentre.setLayout(new GridLayout(2,1));
 
 		panProgra = new JPanel();
+		panProgra.add(new JLabel(new ImageIcon("Images/R1.png")));
 		for (int i = 0;i<picRobot1.length ; i++) {
 			picRobot1[i]  = new JLabel(new ImageIcon("Images/rouge.png"));
 			//picRobot1[i].addMouseListener(ml);
@@ -91,6 +77,7 @@ public class PanAction extends JPanel implements ActionListener{
 		panProgra.setEnabled(false);
 		panProgra.add(Box.createHorizontalStrut(100));
 
+		panProgra.add(new JLabel(new ImageIcon("Images/R1.png")));
 		for (int i = 0;i<picRobot1.length ; i++) {
 			picRobot2[i]  = new JLabel(new ImageIcon("Images/rouge.png"));
 			//picRobot2[i].addMouseListener(ml);
@@ -100,6 +87,7 @@ public class PanAction extends JPanel implements ActionListener{
 		JPanel panCarte = new JPanel();
 		panProgra.setBackground(new Color(130,130,130));
 		for (int i = 0; i<picCarte.length ;i++ ) {
+			picCarte[i]  = new JLabel(new ImageIcon(image[i]));
 			picCarte[i].addMouseListener(ml);
 			picCarte[i].setTransferHandler(new TransferHandler("icon"));
 			panCarte.add(picCarte[i]);
@@ -111,6 +99,21 @@ public class PanAction extends JPanel implements ActionListener{
 		panCentre.add(panProgra);
 		panCentre.add(panCarte);
 		add(panCentre);	
+	}
+
+	public Image[] getProgram(){
+		Image[] retour = new Image[6];
+		for (int i=0;i<picRobot1.length ;i++ ) {
+			BufferedImage image = new BufferedImage( picRobot1[i].getIcon().getIconWidth() , picRobot1[i].getIcon().getIconHeight() , BufferedImage.TYPE_INT_RGB );
+			picRobot1[i].getIcon().paintIcon(null, image.getGraphics() , 0 , 0 );
+			retour[i] = image;
+		}
+		for (int i=0;i<picRobot2.length ;i++ ) {
+			BufferedImage image = new BufferedImage( picRobot2[i].getIcon().getIconWidth() , picRobot2[i].getIcon().getIconHeight() , BufferedImage.TYPE_INT_RGB );
+			picRobot2[i].getIcon().paintIcon(null, image.getGraphics() , 0 , 0 );
+			retour[i+3] = image;
+		}
+		return retour;
 	}
 
 	public void actionPerformed(ActionEvent e){
