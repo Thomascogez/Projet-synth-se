@@ -84,7 +84,6 @@ public class Robot extends Contenu
 
 		if(casesVoisines[dir] != null)
 		{
-			System.out.println(casesVoisines[dir].getid());
 			if(casesVoisines[dir].getContenu()==null)
 			{
 				caseHexa.setContenu(null);
@@ -97,13 +96,12 @@ public class Robot extends Contenu
 				CaseHexa[] casesVoisinesDeVoisine = casesVoisines[dir].getVoisines();
 				if(casesVoisinesDeVoisine[dir] != null)
 				{
-					if(casesVoisinesDeVoisine[dir].getContenu() == null)
+					if(casesVoisinesDeVoisine[this.dir].getContenu() == null)
 					{
-						System.out.println("Etape Finale avancer");
 						caseHexa.setContenu(null);
-						casesVoisinesDeVoisine[dir].setContenu(casesVoisines[dir].getContenu());
+						casesVoisinesDeVoisine[this.dir].setContenu(casesVoisines[this.dir].getContenu());
 						casesVoisines[dir].setContenu(this);
-						caseHexa = casesVoisines[dir];
+						caseHexa = casesVoisines[this.dir];
 					}
 				}
 			}
