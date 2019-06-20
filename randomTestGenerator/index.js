@@ -1,3 +1,5 @@
+var fs = require('fs'); 
+
 var joueur = [0,1];
 var action = ["Avancer", "Avancer2","TournerG", "TournerD","Charger", "Deposer"];
 
@@ -10,4 +12,7 @@ var genRandom = (val) =>{
     return res
 }
 
-console.log(genRandom(10000))
+fs.appendFile('test.txt', genRandom(10000), function (err) {
+    if (err) throw err;
+    console.log('Saved!');
+  }); 
