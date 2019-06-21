@@ -34,6 +34,20 @@ public class Joueur
 		//TODO : type de robot ?????
 	}
 
+	public int getDirRobot(int numRobot)
+	{
+		return robots[numRobot].getDir();
+	}
+
+	public boolean robotAppartientAuJoueur(Robot robot)
+	{
+		for(int i=0; i<robots.length; i++)
+			if(robots[i].equals(robot))
+				return true;
+
+		return false;
+	}
+
 	public String[] getMainOrdres()
 	{
 		return mainOrdres;
@@ -158,6 +172,13 @@ public class Joueur
 	public void setTestOrdres(String orde,int numRobot){
 		robots[numRobot].setTestOrdres(orde);
 	
+	}
+	public int getCristalRobot(int id)
+	{
+		int val = 0;
+		if(id == 0 || id == 1)
+			val = robots[0].getValeurCristal()+1;
+		return val;
 	}
 
 	public void setBase(Base b)

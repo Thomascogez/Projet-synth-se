@@ -40,11 +40,6 @@ public class Plateau
 		this.terrain = creerTerrain(nomJoueur.length);
 		initTerrain(nomJoueur.length);
 
-		for (CaseHexa c : terrain[27].getVoisines() )
-		{
-			System.out.println(c.getNum());
-		}
-
 		tourJoueur = 0;
 	}
 
@@ -52,7 +47,7 @@ public class Plateau
 	public Joueur getJoueurCourant(){return tabJoueur[tourJoueur];}
 	public int getJoueur(){return tourJoueur;}
 
-	public boolean getVictoire()
+	public boolean getVictoirePoint()
 	{
 		for (Joueur j : tabJoueur )
 		{
@@ -60,6 +55,32 @@ public class Plateau
 				return true;
 		}
 		return false;
+	}
+	public boolean getVictoireCrystal()
+	{
+		if (pileCristaux.size()==0) {
+			this.dernierTour--;
+			if (this.dernierTour==0) {
+				return true;
+			}
+		}
+		return false;
+	}
+	public Joueur getMeileurJoueur(){
+		int pointMax = 0;
+		Joueur j = this.tabJoueur[0];
+		for (int i = 0; i<this.tabJoueur.length;i++ ) {
+			int point = this.tabJoueur[i].getPoint();
+			for (Robot r : this.tabJoueur[i].getRobots()) {
+				point += r.getValeurCristal();
+			}
+			if (point>pointMax) {
+				pointMax = point;
+				j =  this.tabJoueur[i];
+			}
+		}
+		return j;
+
 	}
 
 	public CaseHexa[] creerTerrain(int nbJoueur)
@@ -154,7 +175,7 @@ public class Plateau
 					{
 						if(cpt==0)
 						{
-							robot = new Robot();
+							robot = new Robot(this);
 							terrain[tabObjContenu[2]].setContenu(robot);
 							tabJoueur[tabObjContenu[0]].setRobot(robot,
 							                                     terrain[tabObjContenu[2]],
@@ -164,7 +185,6 @@ public class Plateau
 						if(cpt==1)
 						{
 							base = new Base();
-							System.out.println("TEST : gz grg zrgzr : " + terrain[tabObjContenu[1]].getNum());
 							terrain[tabObjContenu[1]].setContenu(base);
 							tabJoueur[tabObjContenu[0]].setBase(base);
 						}
@@ -173,6 +193,7 @@ public class Plateau
 						{
 							cristal = Cristal.creerCristal(tabObjContenu[0]);
 							terrain[tabObjContenu[1]].setContenu(cristal);
+							cristal.setPositionDeBase(tabObjContenu[1]);
 						}
 
 						if(cpt==3)
@@ -190,6 +211,35 @@ public class Plateau
 		return tabJoueur[id];
 	}
 
+	public void ajouterNouvCristalDePile(int indCase)
+	{
+		if(terrain[indCase].getContenu()==null)
+			terrain[indCase].setContenu(pileCristaux.pop());
+
+		else
+		{
+			CaseHexa[] casesVoisines = terrain[indCase].getVoisines();
+			for(int i=0; i<6; i++)
+			{
+				if(casesVoisines[i].getContenu() == null)
+				{
+					casesVoisines[i].setContenu(pileCristaux.pop());
+					return;
+				}
+			}
+
+			// Si il n'y a de la place ni sur la case, ni sur les cases voisines,
+			// on regarde les voisines des voisines. Cela ne rend pas un problème
+			// impossible mais totalement improbable.
+			for(int i=0; i<6; i++)
+			{
+				CaseHexa[] casesVoisinesDeVoisine = casesVoisines[i].getVoisines();
+				for(int j=0; j<6; j++)
+					if(casesVoisinesDeVoisine[j].getContenu() == null)
+						casesVoisinesDeVoisine[j].setContenu(pileCristaux.pop());
+			}
+		}
+	}
 
 	public String afficherPlateau(){
 		String retour = "";
@@ -205,7 +255,11 @@ public class Plateau
 				if (s.contains("$"))
 				{
 					caseHex = Integer.parseInt(s.substring(s.trim().lastIndexOf("$")+1));
-					retour += " "+this.terrain[caseHex].getid()+" ";
+					if(this.terrain[caseHex].getid().equals("R") &&
+					   !getJoueurCourant().robotAppartientAuJoueur((Robot)(terrain[caseHex].getContenu())) )
+						retour += " r ";
+					else
+						retour += " "+this.terrain[caseHex].getid()+" ";
 				}
 				else
 				{
