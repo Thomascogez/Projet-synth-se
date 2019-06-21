@@ -1,6 +1,6 @@
 var fs = require('fs'); 
 
-var joueur = [0,1];
+var joueur = [0,1,2,3,4];
 var action = ["Avancer", "Avancer2","TournerG", "TournerD","Charger", "Deposer"];
 
 var genRandom = (val) =>{
