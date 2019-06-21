@@ -10,7 +10,6 @@
 public class Cristal extends Contenu
 {
 	private int valeur;
-	private int indPositionDeBase;
 
 	private Cristal(int valeur)
 	{
@@ -24,16 +23,10 @@ public class Cristal extends Contenu
 		return null;
 	}
 
-	public void setPositionDeBase(int indCaseHexa)
-	{
-		indPositionDeBase = indCaseHexa;
+	public int getPositionDeBase(){
+		//TODO:position de la case de départ
+		return 0;
 	}
-
-	public int getPositionDeBase()
-	{
-		return indPositionDeBase;
-	}
-
 	public int getValeur()
 	{
 		return valeur;

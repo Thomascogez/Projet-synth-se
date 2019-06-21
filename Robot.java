@@ -14,26 +14,12 @@ public class Robot extends Contenu
 	private Cristal  cristalPorte;
 	private String[] tabOrdres;
 
-	private Plateau plateau; // uniquement pour la pile de cristaux
-
-	public Robot(Plateau plateau)
+	public Robot()
 	{
 		if(dir<0 || dir>=6)
 			dir = 0;
 		cristalPorte = null;
 		tabOrdres = new String[]{"","",""};
-		this.plateau = plateau;
-	}
-
-	public boolean equals(Robot autre)
-	{
-		return this.caseHexa==autre.caseHexa &&
-		       this.dir     ==autre.dir;
-	}
-
-	public int getDir()
-	{
-		return dir;
 	}
 
 	public String[] getOrdres()
@@ -67,6 +53,7 @@ public class Robot extends Contenu
 				if(tabOrdres[i].equals("DEPOSER"))
 					deposer();
 			}
+		
 		}
 	}
 
@@ -192,10 +179,6 @@ public class Robot extends Contenu
 		{
 			Base base = (Base)(casesVoisines[dir].getContenu());
 			base.ajouterCristal(cristalPorte);
-			if(cristalPorte != null){
-				plateau.ajouterNouvCristalDePile(cristalPorte.getPositionDeBase());
-			}
-			
 			cristalPorte = null;
 		}
 	}

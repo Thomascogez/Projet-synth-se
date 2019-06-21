@@ -78,7 +78,7 @@ public class IHMCUI
 
 	}
 	public String menuAction() {
-		Console.println("\tVoulez-vous modifier/consulter un programme avant execution ? : \n\n" +
+		Console.println("\tVoulez-vous modifier un programme avant execution ? : \n\n" +
 		                "\t\t"+ CouleurConsole.VERT.getFont()  +" 1 - Oui\n"           +
 		                "\t\t"+ CouleurConsole.ROUGE.getFont() +" 2 - Non"              );
 		Console.normal();
@@ -95,7 +95,7 @@ public class IHMCUI
 
 	public int demandeNumRobot()
 	{
-		System.out.println("Quel robot voulez-vous reprogrammer/consulter ?");
+		System.out.println("Quel robot voulez-vous reprogrammer ?");
 		int nRobot;
 		Scanner sc = new Scanner(System.in);
 		do{
@@ -132,43 +132,14 @@ public class IHMCUI
 
 	public String[] demandeModif(Joueur jCourant, int numRobot)
 	{
-		int dirRobot = jCourant.getDirRobot(numRobot);
-		String infoDir = "\tDirection du robot : ";
-		if(dirRobot==0)
-			infoDir+="Haut";
-		if(dirRobot==1)
-			infoDir+="Haut Droite";
-		if(dirRobot==2)
-			infoDir+="Bas Droite";
-		if(dirRobot==3)
-			infoDir+="Bas";
-		if(dirRobot==4)
-			infoDir+="Bas Gauche";
-		if(dirRobot==5)
-			infoDir+="Haut Gauche";
-		System.out.println(infoDir+"\n");
-
+		//jCourant.resetCarte();
 		String[] tabOrdres = jCourant.getOrdresRobot(numRobot);
 		System.out.print(" - ");
 		for(int i=0; i<tabOrdres.length; i++)
 			System.out.print(tabOrdres[i]+" - ");
-
-		Scanner sc = new Scanner(System.in);
-		int     rep;
-		System.out.println("\nVoulez-vous reprogrammer le robot ?\n"+
-		                   "\t1-Oui\n\t2-Non");
-		do{
-			try{
-				rep = sc.nextInt();
-			}catch(Exception e){ rep=-1; }
-		}while(rep!=1 && rep!=2);
-
-		if(rep==2)
-			return new String[]{"Avancer2","Avancer2","Avancer2"};
-
-		// Début reprogrammation
 		System.out.println("\nChanger quel ordre ?");
 
+		Scanner sc = new Scanner(System.in);
 		int numOrdre;
 		do{
 			try{

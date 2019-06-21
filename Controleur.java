@@ -112,6 +112,9 @@ public class Controleur
 
 	public static void main(String[] args)
 	{
+<<<<<<< HEAD
+		new Controleur(args[0]).lancerPartie();
+=======
 		//mode test
 		if(args.length  == 1){
 			new Controleur(args[0]).lancerPartie();
@@ -120,5 +123,6 @@ public class Controleur
 			new Controleur().lancerPartie();
 		}
 		
+>>>>>>> f5cf03b3e0c280681f911945821f444a94620bfe
 	}
 }
