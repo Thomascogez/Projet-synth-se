@@ -45,7 +45,13 @@ public class Controleur
 					this.ihm.victoire();
 					break;
 				}
+				
 			}
+			System.out.println("J1 R1 : "+metier.getJoueur(0).getCristalRobot(0));
+			System.out.println("J1 R2 : "+metier.getJoueur(0).getCristalRobot(1));
+			System.out.println("J2 R1 : "+metier.getJoueur(1).getCristalRobot(0));
+			System.out.println("J2 R2 : "+metier.getJoueur(1).getCristalRobot(1));
+			
 		}
 		while(!this.metier.getVictoire())
 		{
@@ -103,9 +109,6 @@ public class Controleur
 
 	public static void main(String[] args)
 	{
-<<<<<<< HEAD
-		new Controleur(args[0]).lancerPartie();
-=======
 		//mode test
 		if(args.length  == 1){
 			new Controleur(args[0]).lancerPartie();
@@ -114,6 +117,5 @@ public class Controleur
 			new Controleur().lancerPartie();
 		}
 		
->>>>>>> f5cf03b3e0c280681f911945821f444a94620bfe
 	}
 }
