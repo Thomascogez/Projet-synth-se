@@ -20,26 +20,13 @@ public class Cristal extends Contenu
 	private int indPositionDeBase;
 
 	/**
-	 * Instancie le cristal. Est appelé par la fabrique "creerCristal(int valeur)"
+	 * Instancie le cristal.
 	 *
 	 * @param valeur La valeur
 	 */
-	private Cristal(int valeur)
+	public Cristal(int valeur)
 	{
 		this.valeur = valeur;
-	}
-
-	/**
-	 * Créé le cristal.
-	 *
-	 * @param valeur La valeur
-	 * @return Le cristal créé
-	 */
-	public static Cristal creerCristal(int valeur)
-	{
-		if(valeur>=2 && valeur<=4)
-			return new Cristal(valeur);
-		return null;
 	}
 
 	/**

@@ -307,14 +307,14 @@ public class Plateau
 
 						if(cpt==2)
 						{
-							cristal = Cristal.creerCristal(tabObjContenu[0]);
+							cristal = new Cristal(tabObjContenu[0]);
 							terrain[tabObjContenu[1]].setContenu(cristal);
 							cristal.setPositionDeBase(tabObjContenu[1]);
 						}
 
 						if(cpt==3)
 						{
-							cristal = Cristal.creerCristal(tabObjContenu[0]);
+							cristal = new Cristal(tabObjContenu[0]);
 							pileCristaux.push(cristal);
 						}
 					}
