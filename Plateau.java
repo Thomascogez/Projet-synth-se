@@ -260,6 +260,11 @@ public class Plateau
 					if(this.terrain[caseHex].getid().equals("R") &&
 					   !getJoueurCourant().robotAppartientAuJoueur((Robot)(terrain[caseHex].getContenu())) )
 						retour += " r ";
+					else if(this.terrain[caseHex].getid().equals("C"))
+					{
+						Cristal cristal = (Cristal)(this.terrain[caseHex].getContenu());
+						retour += " "+this.terrain[caseHex].getid()+cristal.getValeur();
+					}
 					else
 						retour += " "+this.terrain[caseHex].getid()+" ";
 				}
