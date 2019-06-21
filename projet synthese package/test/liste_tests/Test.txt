@@ -1,0 +1,56 @@
+1 -----Déplacement de base---------------
+
+déplacement N,O,S,E
+déplacement NE,NO,OS,SE,EO
+
+2 -----Déplacement avec conditions-------
+
+déplacement vers le bord du plateau
+déplacement vers une case avec un cristal
+déplacement vers une case avec un joueur
+déplacement vers une case avec une base
+essayer de déplacé un cristal et sont cristal adjacent
+
+
+3----- Test Actions (autres que déplacerX1) ------
+    1 - déplacer x2
+
+        - déplacer x2 vers case vide                                   (déplacement normal)
+        - déplacer x2 vers le bord                                     (ne sort pas du plateau)
+        - déplacer x2 vers le bord du plateau puis redéplacer x2       (ne sort pas du plateau)
+        - déplacer x2 vers une base                                    (la base ne se déplace pas, le joueur est bloqué devant la base)
+        - déplacer x2 vers un cristal                                  (Le cristal se déplace si aucun obstacle)
+        - déplacer x2 vers un cristal puis redéplacer                  (le cristal se déplace avec le joueur si aucun obstacle)
+        - déplacer x2 vers un joueur                                   (le joueur adverse est déplace si aucun obstacle devant)
+        - déplacer x2 vers un joueur puis redéplacer                   (le joueur adverse est déplace si aucun obstacle devant)
+        - déplacer x2 vers 2 joueur                                    (Le joueur est bloqué)
+        - déplacer x2 vers 2 joueur puis redéplacer                    (Le joueur est bloqué)
+
+    2 - prendre
+
+        - prendre sur une case vide                                    (le robot ne reçoit aucun objet)
+        - prendre un cristal sur case regardé                          (le robot reçoit le cristal de la case et le cristal et retiré de la case)
+        - essayer de ramasser sur une case adjacente a un cristal      (le robot ne reçoit pas de cristal )
+        - essayer de ramasser sur une case en dehors de plateau        (Le robot de reçoit pas de cristal )
+        - essayer de prendre sur un robot vide                         (le robot ne reçoit aucun objet)
+        - essayer de prendre sur un robot plein                        (le robot reçoit le cristal de l'autre robot et l'autre robot perd ce cristal)
+        - essayer de ramasser sur une case adjacente a un robot plein  (le robot ne reçoit pas de cristal )
+
+    3 - tourner à gauche
+
+        - Tourner à gauche
+        -
+    4 - tourner à droite
+
+
+4------- Combinaison d'action -------------
+
+
+
+
+         
+    
+
+               
+
+
