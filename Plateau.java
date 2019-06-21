@@ -109,13 +109,13 @@ public class Plateau
 
 					retour += "(Dir:";
 					if(robot[j].getDir()==0)
-						retour+="H";
+						retour+="H ";
 					if(robot[j].getDir()==1)
 						retour+="HD";
 					if(robot[j].getDir()==2)
 						retour+="BD";
 					if(robot[j].getDir()==3)
-						retour+="B";
+						retour+="B ";
 					if(robot[j].getDir()==4)
 						retour+="BG";
 					if(robot[j].getDir()==5)
