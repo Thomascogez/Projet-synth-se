@@ -225,7 +225,9 @@ public class Robot extends Contenu
 
 		if(casesVoisines[dir].getContenu() instanceof Cristal)
 		{
-			cristalPorte = (Cristal)(casesVoisines[dir].getContenu());
+			System.out.println("CRISTAL PORTEE : "+(Cristal)(casesVoisines[dir].getContenu()));
+			this.cristalPorte = (Cristal)(casesVoisines[dir].getContenu());
+			System.out.println(this.cristalPorte.getValeur());
 			casesVoisines[dir].setContenu(null);
 		}
 

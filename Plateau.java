@@ -333,6 +333,7 @@ public class Plateau
 		return tabJoueur[id];
 	}
 
+
 	/**
 	 * Retire un cristal de la pile et le place le plus proche possible de la case
 	 * dont le numéro est donné en paramètre
@@ -342,8 +343,11 @@ public class Plateau
 	public void ajouterNouvCristalDePile(int indCase)
 	{
 		if(terrain[indCase].getContenu()==null)
-			terrain[indCase].setContenu(pileCristaux.pop());
-
+			if(pileCristaux.size() > 0)
+			{
+				terrain[indCase].setContenu(pileCristaux.pop());
+			}
+			
 		else
 		{
 			CaseHexa[] casesVoisines = terrain[indCase].getVoisines();
@@ -351,7 +355,10 @@ public class Plateau
 			{
 				if(casesVoisines[i].getContenu() == null)
 				{
-					casesVoisines[i].setContenu(pileCristaux.pop());
+					if(pileCristaux.size() > 0)
+					{
+						casesVoisines[i].setContenu(pileCristaux.pop());
+					}
 					return;
 				}
 			}
@@ -364,7 +371,10 @@ public class Plateau
 				CaseHexa[] casesVoisinesDeVoisine = casesVoisines[i].getVoisines();
 				for(int j=0; j<6; j++)
 					if(casesVoisinesDeVoisine[j].getContenu() == null)
-						casesVoisinesDeVoisine[j].setContenu(pileCristaux.pop());
+						if(pileCristaux.size() > 0)
+						{
+							casesVoisinesDeVoisine[j].setContenu(pileCristaux.pop());
+						}
 			}
 		}
 	}

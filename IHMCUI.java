@@ -86,7 +86,7 @@ public class IHMCUI
 		Console.normal();
 	}
 
-	/* SUPPRIME
+	/* SUPPRIME non
 	public void afficherScores(ArrayList<Joueur> lJoueur)
 	{
 		System.out.println("+------------+-----------+");
