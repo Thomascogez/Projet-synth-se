@@ -80,7 +80,7 @@ public class Robot extends Contenu
 	public int getValeurCristal()
 	{
 		if(this.cristalPorte!=null)
-			return this.cristalPorte.getValeur()-1;
+			return this.cristalPorte.getValeur();
 
 		return 0;
 	}
