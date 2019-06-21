@@ -27,13 +27,18 @@ public class IHMCUI
 	 */
 	public IHMCUI(Controleur ctrl){this.ctrl = ctrl;}
 
-
+	/**
+	 * Méthode appelée au début d'une nouvelle partie pour afficher le nom du jeu
+	 */
 	private void ecranDemarrage()
 	{
 		System.out.println(
 		        "  _   _   _   _     _   _   _     _   _   _   _  \r\n / \\ / \\ / \\ / \\   / \\ / \\ / \\   / \\ / \\ / \\ / \\ \r\n( T | w | i | n ) ( T | i | n ) ( B | o | t | s )\r\n \\_/ \\_/ \\_/ \\_/   \\_/ \\_/ \\_/   \\_/ \\_/ \\_/ \\_/ \n");
 	}
 
+	/**
+	 * Affiche l'écran de démarrage puis demande le nombre de joueurs et leur nom
+	 */
 	public String[] nouvellePartie()
 	{
 		ecranDemarrage();
@@ -59,12 +64,17 @@ public class IHMCUI
 		return tabNom;
 	}
 
+	/**
+	 * Affiche le plateau avec le tour du joueur et son score
+	 */
 	public void afficherGrille(String grille, Joueur joueur)
 	{
 		System.out.println(grille);
 		Console.println (coulJoueur[ctrl.getJoueur()].getFont()+"Tour du Joueur " + joueur.getNom() + "| Point : "+joueur.getPoints()+"");
 		Console.normal();
 	}
+
+	/* SUPPRIME
 	public void afficherScores(ArrayList<Joueur> lJoueur)
 	{
 		System.out.println("+------------+-----------+");
@@ -76,9 +86,13 @@ public class IHMCUI
 		Console.normal();
 		System.out.println("+------------+-----------+");
 
-	}
+	}*/
+
+	/**
+	 * Demande au joueur s'il veut consulter ou reprogrammer un de ses robots
+	 */
 	public String menuAction() {
-		Console.println("\tVoulez-vous modifier un programme avant execution ? : \n\n" +
+		Console.println("\tVoulez-vous modifier/consulter un programme avant execution ? : \n\n" +
 		                "\t\t"+ CouleurConsole.VERT.getFont()  +" 1 - Oui\n"           +
 		                "\t\t"+ CouleurConsole.ROUGE.getFont() +" 2 - Non"              );
 		Console.normal();
@@ -93,9 +107,12 @@ public class IHMCUI
 		return String.valueOf(rep);
 	}
 
+	/**
+	 * Demande au joueur le robot qu'il veut consulter/modifier par son numéro
+	 */
 	public int demandeNumRobot()
 	{
-		System.out.println("Quel robot voulez-vous reprogrammer ?");
+		System.out.println("Quel robot voulez-vous reprogrammer/consulter ?");
 		int nRobot;
 		Scanner sc = new Scanner(System.in);
 		do{
@@ -106,6 +123,9 @@ public class IHMCUI
 		return nRobot;
 	}
 
+	/**
+	 * Demande au joueur quel ordre il veut donner à un robot au premier tour
+	 */
 	public String[] demandeModifTour1(Joueur jCourant)
 	{
 		System.out.println("Choisir l'ordre à donner au robot :");
@@ -130,16 +150,54 @@ public class IHMCUI
 		return tabRetour;
 	}
 
+	/**
+	 * Affiche des informations sur le robot choisi,
+	 * demande au joueur s'il veut modifier son robot et
+	 * quel modification il veut faire.
+	 */
 	public String[] demandeModif(Joueur jCourant, int numRobot)
 	{
-		//jCourant.resetCarte();
+		// Affiche des informations sur le robot
+		int dirRobot = jCourant.getDirRobot(numRobot);
+		String infoDir = "\tDirection du robot : ";
+		if(dirRobot==0)
+			infoDir+="Haut";
+		if(dirRobot==1)
+			infoDir+="Haut Droite";
+		if(dirRobot==2)
+			infoDir+="Bas Droite";
+		if(dirRobot==3)
+			infoDir+="Bas";
+		if(dirRobot==4)
+			infoDir+="Bas Gauche";
+		if(dirRobot==5)
+			infoDir+="Haut Gauche";
+		System.out.println(infoDir+"\n");
+
 		String[] tabOrdres = jCourant.getOrdresRobot(numRobot);
 		System.out.print(" - ");
 		for(int i=0; i<tabOrdres.length; i++)
 			System.out.print(tabOrdres[i]+" - ");
+
+		// Demande au joueur s'il veut modifier son robot
+		Scanner sc = new Scanner(System.in);
+		int     rep;
+		System.out.println("\nVoulez-vous reprogrammer le robot ?\n"+
+		                   "\t1-Oui\n\t2-Non");
+		do{
+			try{
+				rep = sc.nextInt();
+			}catch(Exception e){ rep=-1; }
+		}while(rep!=1 && rep!=2);
+
+		// Si le joueur ne veut pas reprogrammer le robot,
+		// on envoie MATHIEU
+		if(rep==2)
+			return new String[]{"Avancer2","Avancer2","Avancer2"};
+
+		// Début reprogrammation
 		System.out.println("\nChanger quel ordre ?");
 
-		Scanner sc = new Scanner(System.in);
 		int numOrdre;
 		do{
 			try{
