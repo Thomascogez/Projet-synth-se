@@ -178,7 +178,15 @@ public class IHMCUI
 		System.out.print(" - ");
 		for(int i=0; i<tabOrdres.length; i++)
 			System.out.print(tabOrdres[i]+" - ");
-
+		if(jCourant.getCristalRobot(numRobot) != 0)
+		{
+			System.out.println("Contenu du Robot : " + jCourant.getCristalRobot(numRobot));
+		}
+		else
+		{
+			System.out.println("Robot vide ");
+		}
+		
 		// Demande au joueur s'il veut modifier son robot
 		Scanner sc = new Scanner(System.in);
 		int     rep;
