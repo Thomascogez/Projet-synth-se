@@ -39,6 +39,10 @@ public class Joueur
 		return robots[numRobot].getDir();
 	}
 
+	public Robot[] getRobots(){
+		return robots;
+	}
+
 	public boolean robotAppartientAuJoueur(Robot robot)
 	{
 		for(int i=0; i<robots.length; i++)
@@ -171,7 +175,7 @@ public class Joueur
 	}
 	public void setTestOrdres(String orde,int numRobot){
 		robots[numRobot].setTestOrdres(orde);
-	
+
 	}
 	public int getCristalRobot(int id)
 	{

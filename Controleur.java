@@ -51,7 +51,7 @@ public class Controleur
 				this.ihm.afficherGrille(this.metier.afficherPlateau(), metier.getJoueurCourant());
 				if(this.metier.getVictoirePoint())
 				{
-					this.ihm.getVictoire(metier.getJoueurCourant());
+					this.ihm.victoire(metier.getJoueurCourant());
 					break;
 				}
 
@@ -115,7 +115,7 @@ public class Controleur
 			}
 		}
 		if (this.metier.getVictoirePoint()) {this.ihm.victoire( metier.getJoueurCourant());}
-		if (this.metier.getVictoireCrystal()) {this.ihm.victoir(metier.getMeileurJoueur());}
+		if (this.metier.getVictoireCrystal()) {this.ihm.victoire(metier.getMeileurJoueur());}
 	}
 
 	public static void main(String[] args)

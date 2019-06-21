@@ -22,11 +22,13 @@ public class Plateau
 	private Stack<Cristal> pileCristaux;
 	private int longueurMin;
 	private int longueurMax;
+	private int dernierTour;
 
 	public Plateau(String[] nomJoueur)
 	{
 		this.nbCases = 61;
 		this.typePlateau = 1;
+		this.dernierTour = 3;
 		this.tabJoueur = new Joueur[nomJoueur.length];
 		longueurMin = 5;
 		longueurMax = 9;
