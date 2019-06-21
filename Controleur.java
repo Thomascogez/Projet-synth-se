@@ -76,6 +76,13 @@ public class Controleur
 				System.out.println("Joueur N°"+s.split("/")[0].split(":")[0]);
 				System.out.println("Robot N°"+s.split("/")[0].split(":")[1]);
 				System.out.println("Séquence :"+s.split("/")[1]+"\n\n\n");
+				System.out.println();
+				System.out.println();
+				System.out.println("Score : ");
+				System.out.println("J1 R1 : "+metier.getJoueur(0).getCristalRobot(0));
+				System.out.println("J1 R2 : "+metier.getJoueur(0).getCristalRobot(1));
+				System.out.println("J2 R1 : "+metier.getJoueur(1).getCristalRobot(0));
+				System.out.println("J2 R2 : "+metier.getJoueur(1).getCristalRobot(1));
 				this.ihm.afficherGrille(this.metier.afficherPlateau(), metier.getJoueurCourant());
 				if(this.metier.getVictoirePoint())
 				{
@@ -85,10 +92,7 @@ public class Controleur
 				}
 
 			}
-			System.out.println("J1 R1 : "+metier.getJoueur(0).getCristalRobot(0));
-			System.out.println("J1 R2 : "+metier.getJoueur(0).getCristalRobot(1));
-			System.out.println("J2 R1 : "+metier.getJoueur(1).getCristalRobot(0));
-			System.out.println("J2 R2 : "+metier.getJoueur(1).getCristalRobot(1));
+			
 
 		}
 		while(!this.metier.getVictoirePoint()||!metier.getVictoireCrystal())
