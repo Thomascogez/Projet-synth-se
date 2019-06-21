@@ -191,7 +191,7 @@ public class IHMCUI
 		}while(rep!=1 && rep!=2);
 
 		// Si le joueur ne veut pas reprogrammer le robot,
-		// on envoie MATHIEU
+		// on envoie une série d'ordre impossible (1 Avancer2 au maximum par joueur)
 		if(rep==2)
 			return new String[]{"Avancer2","Avancer2","Avancer2"};
 
@@ -228,13 +228,18 @@ public class IHMCUI
 		return null;
 	}
 
+	/**
+	 * Demande au joueur par quel ordre de leur main il veut remplacer l'ordre choisi du robot
+	 */
 	private String[] remplacerParMain(Joueur jCourant, int numRobot, int numOrdre)
 	{
 		String[] main   = jCourant.getMainOrdres();
 		int[]    mainNb = jCourant.getMainNbOrdres();
+		// Affiche les ordres en main et leur quantité
 		for(int i=0; i<main.length; i++)
 			System.out.println("\t"+(i+1)+" "+main[i]+" (x"+mainNb[i]+")");
 
+		// Demande au joueur l'ordre de la main qu'il veut
 		System.out.println("Par quel ordre voulez le remplacer ?");
 		Scanner sc = new Scanner(System.in);
 		int numOrdreRemplace;
@@ -244,16 +249,15 @@ public class IHMCUI
 			}catch(Exception e){ numOrdreRemplace=-1; }
 		}while(numOrdreRemplace<0 || numOrdreRemplace>main.length-1);
 
-		System.out.println("BUG? "+numOrdreRemplace +" "+main[numOrdreRemplace]);
 		String[] tabOrdres = jCourant.getOrdresRobot(numRobot);
 
 		tabOrdres[numOrdre] = main[numOrdreRemplace];
-
-		for(int i=0; i<tabOrdres.length; i++)
-			System.out.println("BUG? "+tabOrdres[i]);
 		return tabOrdres;
 	}
 
+	/**
+	 * Demande au joueur par quel ordre du robot il veut remplacer l'ordre choisi du robot
+	 */
 	private String[] remplacerParAutreOrdre(Joueur jCourant, int numRobot, int numOrdre)
 	{
 		System.out.println("Par quel ordre voulez le remplacer ?");
@@ -276,6 +280,9 @@ public class IHMCUI
 		return tabOrdres;
 	}
 
+	/**
+	 * Permet de récupérer l'ordre choisi en paramètre
+	 */
 	private String[] recupOrdre(Joueur jCourant, int numRobot, int numOrdre)
 	{
 		String[] tabOrdres = jCourant.getOrdresRobot(numRobot);
@@ -287,11 +294,17 @@ public class IHMCUI
 		return tabOrdres;
 	}
 
+	/**
+	 * Affiche un message de victoire
+	 */
 	public void victoire(Joueur joueur)
 	{
 		Console.println("Bravo "+ joueur.getNom() +"  à gagner la partie !");
 	}
 
+	/**
+	 * Affiche un message de fin de partie
+	 */
 	public void finDePartie(){
 		Console.println(CouleurConsole.JAUNE.getFont()+"  _   _   _     _   _     _   _   _   _   _   _  \r\n / \\ / \\ / \\   / \\ / \\   / \\ / \\ / \\ / \\ / \\ / \\ \r\n( F | i | n ) ( d | e ) ( P | a | r | t | i | e )\r\n \\_/ \\_/ \\_/   \\_/ \\_/   \\_/ \\_/ \\_/ \\_/ \\_/ \\_/ ");
 	}
