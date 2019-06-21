@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Stack;
 import java.util.Scanner;
 import iut.algo.*;
 
@@ -81,9 +82,40 @@ public class IHMCUI
 	public void afficherGrille(String grille, Joueur joueur)
 	{
 		System.out.println(grille);
+		Console.println(afficherPileCristaux());
 		System.out.println(ctrl.afficherRobotsJouentPas());
 		Console.println (coulJoueur[ctrl.getJoueur()].getFont()+"Tour du Joueur " + joueur.getNom() + "| Point : "+joueur.getPoints()+"");
 		Console.normal();
+	}
+
+	private String afficherPileCristaux(){
+		Stack<Cristal> pile = ctrl.getPileCristaux();
+		String res = "Pile cristal : \n";
+		int taille = pile.size();
+		for (int i = 0; i < taille; i++)
+			res+="+-------+";
+		res+="\n";
+		for (Cristal c : pile)
+			//cristal violet
+			if(c.getValeur() == 4){
+				res += String.format("|"+CouleurConsole.MAUVE.getFont()+"%7s"+CouleurConsole.BLANC.getFont()+"|","C"+c.getValeur());
+			}else if(c.getValeur() == 3){
+				res += String.format("|"+CouleurConsole.VERT.getFont()+"%7s"+CouleurConsole.BLANC.getFont()+"|","C"+c.getValeur());
+			}else if(c.getValeur() == 2){
+				res += String.format("|"+CouleurConsole.BLEU.getFont()+"%7s"+CouleurConsole.BLANC.getFont()+"|","C"+c.getValeur());
+			}
+			// for (CouleurConsole c: CouleurConsole.values() )
+			// {
+			//    Console.couleurFond ( c );
+			//    Console.print ( " " );
+			//    System.out.println(c.values());
+			// } 
+			
+		res+=" =====>\n";
+		for (int i = 0; i < taille; i++)
+			res+="+-------+";
+		return res;
+		
 	}
 
 	/* SUPPRIME non
