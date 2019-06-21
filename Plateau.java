@@ -109,13 +109,13 @@ public class Plateau
 
 					retour += "(Dir:";
 					if(robot[j].getDir()==0)
-						retour+="H";
+						retour+="H ";
 					if(robot[j].getDir()==1)
 						retour+="HD";
 					if(robot[j].getDir()==2)
 						retour+="BD";
 					if(robot[j].getDir()==3)
-						retour+="B";
+						retour+="B ";
 					if(robot[j].getDir()==4)
 						retour+="BG";
 					if(robot[j].getDir()==5)
@@ -316,14 +316,14 @@ public class Plateau
 
 						if(cpt==2)
 						{
-							cristal = Cristal.creerCristal(tabObjContenu[0]);
+							cristal = new Cristal(tabObjContenu[0]);
 							terrain[tabObjContenu[1]].setContenu(cristal);
 							cristal.setPositionDeBase(tabObjContenu[1]);
 						}
 
 						if(cpt==3)
 						{
-							cristal = Cristal.creerCristal(tabObjContenu[0]);
+							cristal = new Cristal(tabObjContenu[0]);
 							pileCristaux.push(cristal);
 						}
 					}

@@ -72,7 +72,7 @@ public class Joueur
 	 * @return le tableau de robots
 	 */
 	public Robot[] getRobots(){
-		return Arrays.copyOf(robots, robots.length);
+		return robots;
 	}
 
 	/**
@@ -128,8 +128,15 @@ public class Joueur
 			{
 				if(tabOrdres[i]!=null)
 				{
-					if( tabOrdres[i].equals(mainOrdres[j]) ||
-					    tabAutre[i].equals(mainOrdres[j])   )
+					if( tabOrdres[i].equalsIgnoreCase(mainOrdres[j]) )
+					{
+						if(mainNbOrdres[j]>0)
+							mainNbOrdres[j]--;
+						else
+							return false;
+					}
+
+					if(tabAutre[i].equalsIgnoreCase(mainOrdres[j]))
 					{
 						if(mainNbOrdres[j]>0)
 							mainNbOrdres[j]--;

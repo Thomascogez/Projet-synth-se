@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * Classe Robot.
  *
@@ -84,7 +86,7 @@ public class Robot extends Contenu
 	 */
 	public String[] getOrdres()
 	{
-		return tabOrdres;
+		return tabOrdres/*Arrays.copyOf(tabOrdres, tabOrdres.length)*/;
 	}
 
 	/**
