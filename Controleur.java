@@ -5,12 +5,12 @@ public class Controleur
 	private int     numTour;
 	private ChargementTest test;
 
-	public Controleur()
+	public Controleur(String arg)
 	{
 
 		this.ihm = new IHMCUI(this);
 		this.metier = new Plateau(this.ihm.nouvellePartie());
-		this.test = new ChargementTest(1);
+		this.test = new ChargementTest(Integer.parseInt(arg));
 		numTour = 0;
 	}
 
@@ -88,6 +88,6 @@ public class Controleur
 
 	public static void main(String[] args)
 	{
-		new Controleur().lancerPartie();
+		new Controleur(args[0]).lancerPartie();
 	}
 }

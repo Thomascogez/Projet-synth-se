@@ -44,6 +44,7 @@ public class Robot extends Contenu
 				if(tabOrdres[i].equals("DEPOSER"))
 					deposer();
 			}
+		
 		}
 	}
 
