@@ -1,8 +1,10 @@
 import java.io.*;
 import java.util.*;
 
+// TODO: Auto-generated Javadoc
 /**
- * Classe Plateau
+ * Classe Plateau.
+ *
  * @author Quentin BERNARDIN
  * @author Mathieu BOIREAU
  * @author Thomas  COGEZ--ALLIX
@@ -12,18 +14,42 @@ import java.util.*;
 
 public class Plateau
 {
+	
+	/** The nb cases. */
 	private int nbCases;
+	
+	/** The point max. */
 	private int pointMax;
 
+	/** The terrain. */
 	private CaseHexa[] terrain;
+	
+	/** The tab joueur. */
 	private Joueur[]   tabJoueur;
+	
+	/** The tour joueur. */
 	private int tourJoueur;
+	
+	/** The type plateau. */
 	private int typePlateau;
+	
+	/** The pile cristaux. */
 	private Stack<Cristal> pileCristaux;
+	
+	/** The longueur min. */
 	private int longueurMin;
+	
+	/** The longueur max. */
 	private int longueurMax;
+	
+	/** The dernier tour. */
 	private int dernierTour;
 
+	/**
+	 * Instantiates a new plateau.
+	 *
+	 * @param nomJoueur the nom joueur
+	 */
 	public Plateau(String[] nomJoueur)
 	{
 		this.nbCases = 61;
@@ -45,10 +71,30 @@ public class Plateau
 		tourJoueur = 0;
 	}
 
+	/**
+	 * Changer joueur.
+	 */
 	public void changerJoueur(){tourJoueur=(tourJoueur+1)%tabJoueur.length;}
+	
+	/**
+	 * Gets the joueur courant.
+	 *
+	 * @return the joueur courant
+	 */
 	public Joueur getJoueurCourant(){return tabJoueur[tourJoueur];}
+	
+	/**
+	 * Gets the joueur.
+	 *
+	 * @return the joueur
+	 */
 	public int getJoueur(){return tourJoueur;}
 
+	/**
+	 * Gets the victoire point.
+	 *
+	 * @return the victoire point
+	 */
 	public boolean getVictoirePoint()
 	{
 		for (Joueur j : tabJoueur )
@@ -58,6 +104,12 @@ public class Plateau
 		}
 		return false;
 	}
+	
+	/**
+	 * Gets the victoire crystal.
+	 *
+	 * @return the victoire crystal
+	 */
 	public boolean getVictoireCrystal()
 	{
 		if (pileCristaux.size()==0) {
@@ -68,6 +120,12 @@ public class Plateau
 		}
 		return false;
 	}
+	
+	/**
+	 * Gets the meileur joueur.
+	 *
+	 * @return the meileur joueur
+	 */
 	public Joueur getMeileurJoueur(){
 		int pointMax = 0;
 		Joueur j = this.tabJoueur[0];
@@ -85,6 +143,12 @@ public class Plateau
 
 	}
 
+	/**
+	 * Creer terrain.
+	 *
+	 * @param nbJoueur the nb joueur
+	 * @return the case hexa[]
+	 */
 	public CaseHexa[] creerTerrain(int nbJoueur)
 	{
 		if (nbJoueur>4)
@@ -143,6 +207,11 @@ public class Plateau
 		return terrain;
 	}
 
+	/**
+	 * Inits the terrain.
+	 *
+	 * @param nbJoueur the nb joueur
+	 */
 	private void initTerrain(int nbJoueur)
 	{
 		final File fichier =new File("Data/Plateau.data");
@@ -177,7 +246,7 @@ public class Plateau
 					{
 						if(cpt==0)
 						{
-							robot = new Robot(this);
+							robot = new Robot(this, tabObjContenu[0]);
 							terrain[tabObjContenu[2]].setContenu(robot);
 							tabJoueur[tabObjContenu[0]].setRobot(robot,
 							                                     terrain[tabObjContenu[2]],
@@ -186,7 +255,7 @@ public class Plateau
 
 						if(cpt==1)
 						{
-							base = new Base();
+							base = new Base(tabObjContenu[0]);
 							terrain[tabObjContenu[1]].setContenu(base);
 							tabJoueur[tabObjContenu[0]].setBase(base);
 						}
@@ -209,10 +278,21 @@ public class Plateau
 		}catch(Exception e){e.printStackTrace();/*System.out.println("Impossible d'initialiser le plateau !");*/}
 	}
 
+	/**
+	 * Gets the joueur.
+	 *
+	 * @param id the id
+	 * @return the joueur
+	 */
 	public Joueur getJoueur(int id){
 		return tabJoueur[id];
 	}
 
+	/**
+	 * Ajouter nouv cristal de pile.
+	 *
+	 * @param indCase the ind case
+	 */
 	public void ajouterNouvCristalDePile(int indCase)
 	{
 		if(terrain[indCase].getContenu()==null)
@@ -243,6 +323,11 @@ public class Plateau
 		}
 	}
 
+	/**
+	 * Afficher plateau.
+	 *
+	 * @return the string
+	 */
 	public String afficherPlateau(){
 		String retour = "";
 		int caseHex;
@@ -257,13 +342,20 @@ public class Plateau
 				if (s.contains("$"))
 				{
 					caseHex = Integer.parseInt(s.substring(s.trim().lastIndexOf("$")+1));
-					if(this.terrain[caseHex].getid().equals("R") &&
-					   !getJoueurCourant().robotAppartientAuJoueur((Robot)(terrain[caseHex].getContenu())) )
-						retour += " r ";
+					if(this.terrain[caseHex].getid().equals("R"))
+					{
+						Robot robot = (Robot)(this.terrain[caseHex].getContenu());
+						retour +=robot.getNumJoueur()+this.terrain[caseHex].getid()+" ";
+					}
 					else if(this.terrain[caseHex].getid().equals("C"))
 					{
 						Cristal cristal = (Cristal)(this.terrain[caseHex].getContenu());
 						retour += " "+this.terrain[caseHex].getid()+cristal.getValeur();
+					}
+					else if(this.terrain[caseHex].getid().equals("B"))
+					{
+						Base base = (Base)(this.terrain[caseHex].getContenu());
+						retour += base.getNumJoueur()+this.terrain[caseHex].getid()+" ";
 					}
 					else
 						retour += " "+this.terrain[caseHex].getid()+" ";
