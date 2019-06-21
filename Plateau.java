@@ -86,6 +86,49 @@ public class Plateau
 	public Joueur getJoueurCourant(){return tabJoueur[tourJoueur];}
 
 	/**
+	 * Renvoie une chaine d'affichage des ordres des robots qui ne jouent pas
+	 *
+	 * @return chaine à afficher
+	 */
+	public String afficherRobotsJouentPas()
+	{
+		String retour="Robots des autres joueurs\n";
+
+		for(int i=0; i<tabJoueur.length; i++)
+		{
+			if(i!=tourJoueur)
+			{
+				retour += "\tJoueur "+(i+1)+"\n\t\t| ";
+				Robot[] robot = tabJoueur[i].getRobots();
+				for(int j=0; j<2; j++)
+				{
+					retour += "Robot "+(j+1)+" : ";
+					String[] ordres = robot[j].getOrdres();
+					for(int cpt=0; cpt<3; cpt++)
+						retour += ordres[cpt]+" - ";
+
+					retour += "(Dir:";
+					if(robot[j].getDir()==0)
+						retour+="H";
+					if(robot[j].getDir()==1)
+						retour+="HD";
+					if(robot[j].getDir()==2)
+						retour+="BD";
+					if(robot[j].getDir()==3)
+						retour+="B";
+					if(robot[j].getDir()==4)
+						retour+="BG";
+					if(robot[j].getDir()==5)
+						retour+="HG";
+					retour+=") | ";
+				}
+				retour += "\n";
+			}
+		}
+		return retour;
+	}
+
+	/**
 	 * Renvoie le numéro de joueur.
 	 *
 	 * @return le numéro de joueur

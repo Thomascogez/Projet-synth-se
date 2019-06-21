@@ -81,6 +81,7 @@ public class IHMCUI
 	public void afficherGrille(String grille, Joueur joueur)
 	{
 		System.out.println(grille);
+		System.out.println(ctrl.afficherRobotsJouentPas());
 		Console.println (coulJoueur[ctrl.getJoueur()].getFont()+"Tour du Joueur " + joueur.getNom() + "| Point : "+joueur.getPoints()+"");
 		Console.normal();
 	}

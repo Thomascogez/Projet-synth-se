@@ -152,6 +152,16 @@ public class Controleur
 	}
 
 	/**
+	 * Renvoie une chaine d'affichage des ordres des robots qui ne jouent pas (voir dans Plateau)
+	 *
+	 * @return chaine à afficher
+	 */
+	public String afficherRobotsJouentPas()
+	{
+		return metier.afficherRobotsJouentPas();
+	}
+
+	/**
 	 * La méthode principale qui lance la partie
 	 *
 	 * @param args les arguments
