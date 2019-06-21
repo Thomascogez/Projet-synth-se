@@ -1,7 +1,14 @@
 import java.util.ArrayList;
+
 /**
- * Joueur
+ * Classe Joueur
+ * @author Quentin BERNARDIN
+ * @author Mathieu BOIREAU
+ * @author Thomas  COGEZ--ALLIX
+ * @author Patrice MAISONNEUVE
+ * @version 06-21-2019
  */
+
 public class Joueur
 {
 	private String  nom;

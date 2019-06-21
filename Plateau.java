@@ -1,5 +1,15 @@
 import java.io.*;
 import java.util.*;
+
+/**
+ * Classe Plateau
+ * @author Quentin BERNARDIN
+ * @author Mathieu BOIREAU
+ * @author Thomas  COGEZ--ALLIX
+ * @author Patrice MAISONNEUVE
+ * @version 06-21-2019
+ */
+
 public class Plateau
 {
 	private int nbCases;
@@ -37,7 +47,7 @@ public class Plateau
 	public Joueur getJoueurCourant(){return tabJoueur[tourJoueur];}
 	public int getJoueur(){return tourJoueur;}
 
-	public boolean getVictoire()
+	public boolean getVictoirePoint()
 	{
 		for (Joueur j : tabJoueur )
 		{
@@ -45,6 +55,32 @@ public class Plateau
 				return true;
 		}
 		return false;
+	}
+	public boolean getVictoireCrystal()
+	{
+		if (pileCristaux.size()==0) {
+			this.dernierTour--;
+			if (this.dernierTour==0) {
+				return true;
+			}
+		}
+		return false;
+	}
+	public Joueur getMeileurJoueur(){
+		int pointMax = 0;
+		Joueur j = this.tabJoueur[0];
+		for (int i = 0; i<this.tabJoueur.length;i++ ) {
+			int point = this.tabJoueur[i].getPoint();
+			for (Robot r : this.tabJoueur[i].getRobots()) {
+				point += r.getValeurCristal();
+			}
+			if (point>pointMax) {
+				pointMax = point;
+				j =  this.tabJoueur[i];
+			}
+		}
+		return j;
+
 	}
 
 	public CaseHexa[] creerTerrain(int nbJoueur)

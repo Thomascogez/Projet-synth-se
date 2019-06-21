@@ -1,3 +1,12 @@
+/**
+ * Classe Controleur
+ * @author Quentin BERNARDIN
+ * @author Mathieu BOIREAU
+ * @author Thomas  COGEZ--ALLIX
+ * @author Patrice MAISONNEUVE
+ * @version 06-21-2019
+ */
+
 public class Controleur
 {
 	private IHMCUI  ihm;
@@ -32,7 +41,7 @@ public class Controleur
 		{
 			String[] tabSequence = test.getProperty("SEQUENCE_TEST").trim().split("#");
 
-			for (String s : tabSequence) 
+			for (String s : tabSequence)
 			{
 				metier.getJoueur(Integer.parseInt(s.split("/")[0].split(":")[0])).setTestOrdres(s.split("/")[1],Integer.parseInt(s.split("/")[0].split(":")[1]));
 
@@ -42,7 +51,7 @@ public class Controleur
 				this.ihm.afficherGrille(this.metier.afficherPlateau(), metier.getJoueurCourant());
 				if(this.metier.getVictoire())
 				{
-					this.ihm.victoire();
+					this.ihm.getVictoirePoint(metier.getJoueurCourant());
 					break;
 				}
 				
@@ -53,7 +62,7 @@ public class Controleur
 			System.out.println("J2 R2 : "+metier.getJoueur(1).getCristalRobot(1));
 			
 		}
-		while(!this.metier.getVictoire())
+		while(!this.metier.getVictoirePoint()||!metier.getVictoireCrystal())
 		{
 			Joueur joueur = metier.getJoueurCourant();
 			if(joueur == j1)
@@ -101,10 +110,12 @@ public class Controleur
 					}
 				}while(!valid);
 
-
-			metier.changerJoueur();
+			if (!this.metier.getVictoirePoint()||!metier.getVictoireCrystal()) {
+				metier.changerJoueur();
+			}
 		}
-		this.ihm.victoire();
+		if (this.metier.getVictoirePoint()) {this.ihm.victoire( metier.getJoueurCourant());}
+		if (this.metier.getVictoireCrystal()) {this.ihm.victoir(metier.getMeileurJoueur());}
 	}
 
 	public static void main(String[] args)
@@ -116,6 +127,6 @@ public class Controleur
 		}else{
 			new Controleur().lancerPartie();
 		}
-		
+
 	}
 }

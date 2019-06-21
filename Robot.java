@@ -1,3 +1,12 @@
+/**
+ * Classe Robot
+ * @author Quentin BERNARDIN
+ * @author Mathieu BOIREAU
+ * @author Thomas  COGEZ--ALLIX
+ * @author Patrice MAISONNEUVE
+ * @version 06-21-2019
+ */
+
 public class Robot extends Contenu
 {
 	private CaseHexa caseHexa;
@@ -131,8 +140,11 @@ public class Robot extends Contenu
 	private void charger()
 	{
 		CaseHexa[] casesVoisines = caseHexa.getVoisines();
+		if(cristalPorte != null)
+			return;
 		if(casesVoisines[dir] == null)
 			return;
+		
 		if(casesVoisines[dir].getContenu() instanceof Cristal)
 		{
 			cristalPorte = (Cristal)(casesVoisines[dir].getContenu());
