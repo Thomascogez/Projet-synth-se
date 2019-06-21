@@ -13,10 +13,12 @@ public class Base extends Contenu
 {
 
 	private ArrayList<Cristal> cristaux;
+	private int numJoueur;
 
-	public Base()
+	public Base(int numJoueur)
 	{
 		this.cristaux = new ArrayList <Cristal>();
+		this.numJoueur = numJoueur+1;
 	}
 
 	/**
@@ -27,6 +29,11 @@ public class Base extends Contenu
 	public void ajouterCristal(Cristal c)
 	{
 		this.cristaux.add(c);
+	}
+
+	public int getNumJoueur()
+	{
+		return this.numJoueur;
 	}
 
 	public ArrayList<Cristal> getCristaux()

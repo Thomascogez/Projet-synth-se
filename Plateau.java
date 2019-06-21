@@ -177,7 +177,7 @@ public class Plateau
 					{
 						if(cpt==0)
 						{
-							robot = new Robot(this);
+							robot = new Robot(this, tabObjContenu[0]);
 							terrain[tabObjContenu[2]].setContenu(robot);
 							tabJoueur[tabObjContenu[0]].setRobot(robot,
 							                                     terrain[tabObjContenu[2]],
@@ -186,7 +186,7 @@ public class Plateau
 
 						if(cpt==1)
 						{
-							base = new Base();
+							base = new Base(tabObjContenu[0]);
 							terrain[tabObjContenu[1]].setContenu(base);
 							tabJoueur[tabObjContenu[0]].setBase(base);
 						}
@@ -257,13 +257,20 @@ public class Plateau
 				if (s.contains("$"))
 				{
 					caseHex = Integer.parseInt(s.substring(s.trim().lastIndexOf("$")+1));
-					if(this.terrain[caseHex].getid().equals("R") &&
-					   !getJoueurCourant().robotAppartientAuJoueur((Robot)(terrain[caseHex].getContenu())) )
-						retour += " r ";
+					if(this.terrain[caseHex].getid().equals("R"))
+					{
+						Robot robot = (Robot)(this.terrain[caseHex].getContenu());
+						retour +=robot.getNumJoueur()+this.terrain[caseHex].getid()+" ";
+					}
 					else if(this.terrain[caseHex].getid().equals("C"))
 					{
 						Cristal cristal = (Cristal)(this.terrain[caseHex].getContenu());
 						retour += " "+this.terrain[caseHex].getid()+cristal.getValeur();
+					}
+					else if(this.terrain[caseHex].getid().equals("B"))
+					{
+						Base base = (Base)(this.terrain[caseHex].getContenu());
+						retour += base.getNumJoueur()+this.terrain[caseHex].getid()+" ";
 					}
 					else
 						retour += " "+this.terrain[caseHex].getid()+" ";

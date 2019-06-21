@@ -13,22 +13,29 @@ public class Robot extends Contenu
 	private int      dir;
 	private Cristal  cristalPorte;
 	private String[] tabOrdres;
+	private int numJoueur;
 
 	private Plateau plateau; // uniquement pour la pile de cristaux
 
-	public Robot(Plateau plateau)
+	public Robot(Plateau plateau, int numJoueur)
 	{
 		if(dir<0 || dir>=6)
 			dir = 0;
 		cristalPorte = null;
 		tabOrdres = new String[]{"","",""};
 		this.plateau = plateau;
+		this.numJoueur = numJoueur+1;
 	}
 
 	public boolean equals(Robot autre)
 	{
 		return this.caseHexa==autre.caseHexa &&
 		       this.dir     ==autre.dir;
+	}
+
+	public int getNumJoueur()
+	{
+		return this.numJoueur;
 	}
 
 	public int getDir()
@@ -67,7 +74,7 @@ public class Robot extends Contenu
 				if(tabOrdres[i].equals("DEPOSER"))
 					deposer();
 			}
-		
+
 		}
 	}
 
@@ -144,7 +151,7 @@ public class Robot extends Contenu
 			return;
 		if(casesVoisines[dir] == null)
 			return;
-		
+
 		if(casesVoisines[dir].getContenu() instanceof Cristal)
 		{
 			cristalPorte = (Cristal)(casesVoisines[dir].getContenu());
@@ -196,7 +203,7 @@ public class Robot extends Contenu
 			if(cristalPorte != null){
 				plateau.ajouterNouvCristalDePile(cristalPorte.getPositionDeBase());
 			}
-			
+
 			cristalPorte = null;
 		}
 	}
