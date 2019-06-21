@@ -11,23 +11,23 @@
 public class CaseHexa
 {
 	
-	/** The cases voisines. */
+	/** Les cases voisines dans un tableau de cases. */
 	private CaseHexa[] casesVoisines;
 	
-	/** The contenu case. */
+	/** Le contenu de la case (une base, un cristal ou un robot) */
 	private Contenu contenuCase;
 	
-	/** The id. */
+	/** La manière dont est affiché le contenu de la case dans l'affichage */
 	private String id;
 	
-	/** The num incre. */
+	/** Le numéro séquentiel auto-incrémenté */
 	private static int numIncre = 0;
 	
-	/** The num. */
+	/** Le numéro de la case */
 	private int num;
 
 	/**
-	 * Instantiates a new case hexa.
+	 * Instancie la case.
 	 */
 	public CaseHexa()
 	{
@@ -38,9 +38,9 @@ public class CaseHexa
 	}
 
 	/**
-	 * Gets the voisines.
+	 * Renvoie le tableau de cases voisines de la case
 	 *
-	 * @return the voisines
+	 * @return les cases voisines
 	 */
 	public CaseHexa[] getVoisines()
 	{
@@ -48,9 +48,9 @@ public class CaseHexa
 	}
 
 	/**
-	 * Gets the num.
+	 * Renvoie le numéro de la case
 	 *
-	 * @return the num
+	 * @return le numéro de la case
 	 */
 	public int getNum()
 	{
@@ -58,10 +58,10 @@ public class CaseHexa
 	}
 
 	/**
-	 * Sets the voisin.
+	 * Sets un voisin de la case avec sa position par rapport à la case.
 	 *
-	 * @param caseHexa the case hexa
-	 * @param orientation the orientation
+	 * @param caseHexa La case voisine
+	 * @param orientation La position de la voisine par rapport à la case.
 	 */
 	public void setVoisin(CaseHexa caseHexa, int orientation)
 	{
@@ -69,7 +69,7 @@ public class CaseHexa
 	}
 
 	/**
-	 * Lier case.
+	 * Lier une case.
 	 *
 	 * @param caseHex the case hex
 	 * @param orientation the orientation
@@ -81,9 +81,9 @@ public class CaseHexa
 	}
 
 	/**
-	 * Sets the contenu.
+	 * Sets le contenu de la case (une base, un cristal ou un robot).
 	 *
-	 * @param contenuCase the new contenu
+	 * @param contenuCase Le nouveau contenu
 	 */
 	public void setContenu(Contenu contenuCase)
 	{
@@ -99,16 +99,16 @@ public class CaseHexa
 	}
 
 	/**
-	 * Gets the id.
+	 * Renvoie la chaine d'affichage de la case
 	 *
-	 * @return the id
+	 * @return id
 	 */
 	public String getid(){return this.id;}
 
 	/**
-	 * Gets the contenu.
+	 * Renvoie le contenu.
 	 *
-	 * @return the contenu
+	 * @return Le contenu
 	 */
 	public Contenu getContenu()
 	{

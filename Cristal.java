@@ -1,4 +1,3 @@
-// TODO: Auto-generated Javadoc
 /**
  * Classe Cristal.
  *
@@ -12,16 +11,18 @@
 public class Cristal extends Contenu
 {
 	
-	/** The valeur. */
+	/** La valeur du cristal. */
 	private int valeur;
 	
-	/** The ind position de base. */
+	/** L'indice de la position de base du cristal
+	 * (utile pour la pile de cristaux à rajouter durant la partie).
+	 */
 	private int indPositionDeBase;
 
 	/**
-	 * Instantiates a new cristal.
+	 * Instancie le cristal. Est appelé par la fabrique "creerCristal(int valeur)"
 	 *
-	 * @param valeur the valeur
+	 * @param valeur La valeur
 	 */
 	private Cristal(int valeur)
 	{
@@ -29,10 +30,10 @@ public class Cristal extends Contenu
 	}
 
 	/**
-	 * Creer cristal.
+	 * Créé le cristal.
 	 *
-	 * @param valeur the valeur
-	 * @return the cristal
+	 * @param valeur La valeur
+	 * @return Le cristal créé
 	 */
 	public static Cristal creerCristal(int valeur)
 	{
@@ -42,9 +43,9 @@ public class Cristal extends Contenu
 	}
 
 	/**
-	 * Sets the position de base.
+	 * Sets la position de base.
 	 *
-	 * @param indCaseHexa the new position de base
+	 * @param indCaseHexa l'indice de la position de base
 	 */
 	public void setPositionDeBase(int indCaseHexa)
 	{
@@ -52,9 +53,9 @@ public class Cristal extends Contenu
 	}
 
 	/**
-	 * Gets the position de base.
+	 * Renvoie la position de base.
 	 *
-	 * @return the position de base
+	 * @return le position de base
 	 */
 	public int getPositionDeBase()
 	{
@@ -62,9 +63,9 @@ public class Cristal extends Contenu
 	}
 
 	/**
-	 * Gets the valeur.
+	 * Renvoie la valeur du cristal.
 	 *
-	 * @return the valeur
+	 * @return La valeur
 	 */
 	public int getValeur()
 	{

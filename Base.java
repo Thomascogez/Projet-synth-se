@@ -13,10 +13,15 @@ import java.util.ArrayList;
 public class Base extends Contenu
 {
 
-	/** The cristaux. */
+	/** La liste des cristaux contenus dans la base. */
 	private ArrayList<Cristal> cristaux;
+	/** Le numéro du joueur à qui appartient la base. */
 	private int numJoueur;
 
+	/**
+	 * Instancie une base
+	 * @param numJoueur le numéro du joueur à qui appartient la base
+	 */
 	public Base(int numJoueur)
 	{
 		this.cristaux = new ArrayList <Cristal>();
@@ -24,20 +29,28 @@ public class Base extends Contenu
 	}
 
 	/**
-	 * Methode permettant d'ajouter un crystal dans la base.
+	 * Ajoute un cristal dans la base.
 	 *
-	 * @param c la crystal a ajouter
+	 * @param c Le cristal à ajouter
 	 */
 	public void ajouterCristal(Cristal c)
 	{
 		this.cristaux.add(c);
 	}
 
+	/**
+	 * Renvoie le numéro du joueur
+	 */
 	public int getNumJoueur()
 	{
 		return this.numJoueur;
 	}
 
+	/**
+	 * Renvoie le nombre de points de l'ensemble des cristaux de la base
+	 *
+	 * @return le nombre de points
+	 */
 	public int getTotalpoint()
 	{
 		int retour = 0;
