@@ -189,27 +189,6 @@ public class Joueur
 	public int getPoints(){return this.points;}
 
 	/**
-	 * Renvoie la liste des cristaux dans la base du joueur.
-	 *
-	 * @return les cristaux de la base
-	 */
-	public ArrayList<Cristal> getCristauxBase()
-	{
-		return this.baseJoueur.getCristaux();
-	}
-
-	/**
-	 * Renvoie le nombre de cristaux de la valeur voulue.
-	 *
-	 * @param valeur la valeur
-	 * @return le nombre de cristaux
-	 */
-	public int getNbCristaux(int valeur)
-	{
-		return this.baseJoueur.getNbCristaux(valeur);
-	}
-
-	/**
 	 * Réinitialise les ordres en main.
 	 */
 	public void resetCarte()
