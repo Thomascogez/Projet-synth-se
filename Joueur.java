@@ -246,7 +246,7 @@ public class Joueur
 	{
 		int val = 0;
 		if(id == 0 || id == 1)
-			val = robots[0].getValeurCristal();
+			val = robots[id].getValeurCristal();
 		return val;
 	}
 

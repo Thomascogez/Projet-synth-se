@@ -72,6 +72,11 @@ public class Controleur
 			for (String s : tabSequence)
 			{
 				metier.getJoueur(Integer.parseInt(s.split("/")[0].split(":")[0])).setTestOrdres(s.split("/")[1],Integer.parseInt(s.split("/")[0].split(":")[1]));
+				System.out.println("Contenu robots : ");
+				System.out.println("J1 R1 : "+metier.getJoueur(0).getCristalRobot(0));
+				System.out.println("J1 R2 : "+metier.getJoueur(0).getCristalRobot(1));
+				System.out.println("J2 R1 : "+metier.getJoueur(1).getCristalRobot(0));
+				System.out.println("J2 R2 : "+metier.getJoueur(1).getCristalRobot(1));
 
 				System.out.println("Joueur N°"+s.split("/")[0].split(":")[0]);
 				System.out.println("Robot N°"+s.split("/")[0].split(":")[1]);
@@ -92,6 +97,11 @@ public class Controleur
 				}
 
 			}
+			System.out.println("FIN");
+			System.out.println("J1 R1 : "+metier.getJoueur(0).getCristalRobot(0));
+			System.out.println("J1 R2 : "+metier.getJoueur(0).getCristalRobot(1));
+			System.out.println("J2 R1 : "+metier.getJoueur(1).getCristalRobot(0));
+			System.out.println("J2 R2 : "+metier.getJoueur(1).getCristalRobot(1));
 			
 
 		}
