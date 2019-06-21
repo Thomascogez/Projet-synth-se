@@ -13,16 +13,16 @@ import java.util.Arrays;
 
 public class Joueur
 {
-	
+
 	/** Le nom du joueur. */
 	private String  nom;
-	
+
 	/** La base du joueur. */
 	private Base    baseJoueur;
-	
+
 	/** Les points du joueurs. */
 	private int     points;
-	
+
 	/** Les robots du joueur. */
 	private Robot[] robots;
 
@@ -30,11 +30,11 @@ public class Joueur
 	private static final String[] mainOrdres = new String[] {"Avancer", "Avancer2",
 	                                                         "TournerG", "TournerD",
 	                                                         "Charger", "Deposer"   };
-	
+
 	/** Le nombre de chaque ordre en main. */
 	private int[] mainNbOrdres;
-	
-	/** 
+
+	/**
 	 * Le nombre de chaque ordre en main en début de partie
 	 * (pour réinitialiser la main du joueur)
 	 */
@@ -186,14 +186,7 @@ public class Joueur
 	 *
 	 * @return les points
 	 */
-	public int getPoints()
-	{
-		int pointsTot;
-
-		pointsTot = this.points+this.robots[0].getValeurCristal()+this.robots[1].getValeurCristal();
-
-		return pointsTot;
-	}
+	public int getPoints(){return this.points;}
 
 	/**
 	 * Renvoie la liste des cristaux dans la base du joueur.
@@ -252,7 +245,7 @@ public class Joueur
 		robots[1]=r;
 		this.setCaseHexa(robots[1], caseHex, orientation);
 	}
-	
+
 	/**
 	 * Sets des ordres pour le mode de test.
 	 *
@@ -263,7 +256,7 @@ public class Joueur
 	{
 		robots[numRobot].setTestOrdres(ordre);
 	}
-	
+
 	/**
 	 * Renvoie le cristal tenu par le robot.
 	 *
@@ -323,7 +316,7 @@ public class Joueur
 	 *
 	 * @param point Les points à ajouter
 	 */
-	public void setPoint(int point){
-		this.points += point;
+	public void setPoint(){
+		this.points = this.baseJoueur.getTotalpoint();
 	}
 }

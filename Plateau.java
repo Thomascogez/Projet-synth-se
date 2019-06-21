@@ -13,34 +13,34 @@ import java.util.*;
 
 public class Plateau
 {
-	
+
 	/** Le nombre de cases. */
 	private int nbCases;
-	
+
 	/** Le nombre de point max. */
 	private int pointMax;
 
 	/** Le terrain. */
 	private CaseHexa[] terrain;
-	
+
 	/** Le tab joueur. */
 	private Joueur[]   tabJoueur;
-	
+
 	/** Le numéro du joueur. */
 	private int tourJoueur;
-	
+
 	/** Le type du plateau (si typePlateau = 1, 61cases - si typePlateau = 2, 91cases). */
 	private int typePlateau;
-	
+
 	/** La pile de cristaux. */
 	private Stack<Cristal> pileCristaux;
-	
+
 	/** La longueur min. d'une ligne*/
 	private int longueurMin;
-	
+
 	/** La longueur max. d'une ligne*/
 	private int longueurMax;
-	
+
 	/** Le dernier tour. */
 	private int dernierTour;
 
@@ -73,15 +73,18 @@ public class Plateau
 	/**
 	 * Passe au joueur suivant.
 	 */
-	public void changerJoueur(){tourJoueur=(tourJoueur+1)%tabJoueur.length;}
-	
+	public void changerJoueur(){
+		tabJoueur[tourJoueur].setPoint();
+		tourJoueur=(tourJoueur+1)%tabJoueur.length;
+	}
+
 	/**
 	 * Renvoie le joueur courant.
 	 *
 	 * @return le joueur courant
 	 */
 	public Joueur getJoueurCourant(){return tabJoueur[tourJoueur];}
-	
+
 	/**
 	 * Renvoie le numéro de joueur.
 	 *
@@ -103,7 +106,7 @@ public class Plateau
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Renvoie faux quand la partie est finie
 	 *
@@ -119,7 +122,7 @@ public class Plateau
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Renvoie le joueur avec le meilleur score
 	 *

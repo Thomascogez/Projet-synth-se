@@ -43,6 +43,15 @@ public class Base extends Contenu
 		return cristaux;
 	}
 
+	public int getTotalpoint()
+	{
+		int retour = 0;
+		for (Cristal c  :cristaux ) {
+			retour += c.getValeur();
+		}
+		return retour;
+	}
+
 	/**
 	 * Gets the nb cristaux.
 	 *
