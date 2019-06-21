@@ -7,7 +7,4 @@
  * @version 06-21-2019
  */
 
-public abstract class Contenu
-{
-	
-}
+public abstract class Contenu{ }

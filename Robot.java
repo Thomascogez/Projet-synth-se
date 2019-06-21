@@ -1,4 +1,3 @@
-// TODO: Auto-generated Javadoc
 /**
  * Classe Robot.
  *
@@ -12,29 +11,29 @@
 public class Robot extends Contenu
 {
 	
-	/** The case hexa. */
+	/** La case du robot */
 	private CaseHexa caseHexa;
 	
-	/** The dir. */
+	/** La direction du robot */
 	private int      dir;
 	
-	/** The cristal porte. */
+	/** Le cristal porté par le robot */
 	private Cristal  cristalPorte;
 	
-	/** The tab ordres. */
+	/** Le tableau d'ordres du robot */
 	private String[] tabOrdres;
 	
-	/** The num joueur. */
+	/** Le numéro du joueur à qui appartient le robot */
 	private int numJoueur;
 
-	/** The plateau. */
+	/** Le plateau. */
 	private Plateau plateau; // uniquement pour la pile de cristaux
 
 	/**
-	 * Instantiates a new robot.
+	 * Instancie un robot.
 	 *
-	 * @param plateau the plateau
-	 * @param numJoueur the num joueur
+	 * @param plateau Le plateau
+	 * @param numJoueur Le numéro du joueur joueur
 	 */
 	public Robot(Plateau plateau, int numJoueur)
 	{
@@ -47,10 +46,10 @@ public class Robot extends Contenu
 	}
 
 	/**
-	 * Equals.
+	 * Vérifie l'équivalence de deux robots.
 	 *
-	 * @param autre the autre
-	 * @return true, if successful
+	 * @param autre L'autre robot
+	 * @return vrai si le robot est équivalent à l'autre robot
 	 */
 	public boolean equals(Robot autre)
 	{
@@ -59,9 +58,9 @@ public class Robot extends Contenu
 	}
 
 	/**
-	 * Gets the num joueur.
+	 * Renvoie le numéro du joueur
 	 *
-	 * @return the num joueur
+	 * @return le numéro du joueur
 	 */
 	public int getNumJoueur()
 	{
@@ -69,9 +68,9 @@ public class Robot extends Contenu
 	}
 
 	/**
-	 * Gets the dir.
+	 * Renvoie la direction du robot.
 	 *
-	 * @return the dir
+	 * @return la direction
 	 */
 	public int getDir()
 	{
@@ -79,9 +78,9 @@ public class Robot extends Contenu
 	}
 
 	/**
-	 * Gets the ordres.
+	 * Renvoie sous la forme d'un tableau de chaines.
 	 *
-	 * @return the ordres
+	 * @return les ordres du robot
 	 */
 	public String[] getOrdres()
 	{
@@ -89,7 +88,7 @@ public class Robot extends Contenu
 	}
 
 	/**
-	 * Action.
+	 * Déclenche les ordres du robot.
 	 */
 	public void action()
 	{
@@ -122,9 +121,9 @@ public class Robot extends Contenu
 	}
 
 	/**
-	 * Action modif.
+	 * Change les ordres avant de les déclencher
 	 *
-	 * @param tabOrdres the tab ordres
+	 * @param tabOrdres Les nouveaux ordres dans un tableau de chaines
 	 */
 	public void actionModif(String[] tabOrdres)
 	{
@@ -133,9 +132,9 @@ public class Robot extends Contenu
 	}
 
 	/**
-	 * Gets the valeur cristal.
+	 * Renvoie la valeur du cristal porté.
 	 *
-	 * @return the valeur cristal
+	 * @return la valeur du cristal
 	 */
 	public int getValeurCristal()
 	{
@@ -146,12 +145,12 @@ public class Robot extends Contenu
 	}
 
 	/**
-	 * Sets the case hexa.
+	 * Sets la case et l'orientation du robot.
 	 *
-	 * @param caseHexa the case hexa
-	 * @param orientation the orientation
+	 * @param caseHexa La case
+	 * @param orientation L'orientation
 	 */
-	// A n'utiliser qu'Ã  l'initialisation du plateau
+	// A n'utiliser qu'à l'initialisation du plateau
 	public void setCaseHexa(CaseHexa caseHexa, int orientation)
 	{
 		this.caseHexa = caseHexa;
@@ -159,9 +158,9 @@ public class Robot extends Contenu
 	}
 
 	/**
-	 * Tourner.
+	 * Fait tourner le robot à gauche ou à droite
 	 *
-	 * @param direction the direction
+	 * @param direction gauche ou droite
 	 */
 	private void tourner(char direction)
 	{
@@ -174,7 +173,8 @@ public class Robot extends Contenu
 	}
 
 	/**
-	 * Avancer.
+	 * Fait avancer le robot, en poussant un cristal ou un robot si il gêne, si possible.
+	 * Ne peut faire sortir aucun objet du plateau
 	 */
 	private void avancer()
 	{
@@ -212,7 +212,8 @@ public class Robot extends Contenu
 	}
 
 	/**
-	 * Charger.
+	 * Charge un cristal si il y en a un devant
+	 * ou si un robot porte un cristal devant(le 2e robot perd son cristal).
 	 */
 	private void charger()
 	{
@@ -237,9 +238,9 @@ public class Robot extends Contenu
 	}
 	
 	/**
-	 * Sets the test ordres.
+	 * Sets les ordres du robot pour le mode test
 	 *
-	 * @param tabTest the new test ordres
+	 * @param tabTest les nouveaux ordres
 	 */
 	public void setTestOrdres(String tabTest)
 	{
@@ -248,7 +249,8 @@ public class Robot extends Contenu
 	}
 
 	/**
-	 * Deposer.
+	 * Dépose un cristal sur la case en face, sur un robot ne portant pas de cristal,
+	 * ou dans une base (alliée ou adverse)
 	 */
 	private void deposer()
 	{
