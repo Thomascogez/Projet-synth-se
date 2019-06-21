@@ -81,6 +81,7 @@ public class Controleur
 				{
 					this.ihm.victoire(metier.getJoueurCourant());
 					break;
+					
 				}
 
 			}
