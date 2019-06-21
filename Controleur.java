@@ -1,4 +1,3 @@
-// TODO: Auto-generated Javadoc
 /**
  * Classe Controleur.
  *
@@ -12,23 +11,23 @@
 public class Controleur
 {
 	
-	/** The ihm. */
+	/** L'ihm. */
 	private IHMCUI  ihm;
 	
-	/** The metier. */
+	/** Le plateau. */
 	private Plateau metier;
 	
-	/** The num tour. */
+	/** Le numéro de tour. */
 	private int     numTour;
 	
-	/** The test. */
+	/** Objet qui charge les tests. */
 	private ChargementTest test;
 	
-	/** The test mode. */
+	/** Le test mode actif ou non. */
 	private boolean testMode;
 
 	/**
-	 * Instantiates a new controleur.
+	 * Instancie le controleur sans le test mode.
 	 */
 	public Controleur()
 	{
@@ -40,9 +39,9 @@ public class Controleur
 	}
 	
 	/**
-	 * Instantiates a new controleur.
+	 * Instancie le controleur avec le test mode
 	 *
-	 * @param arg the arg
+	 * @param arg Le numéro du fichier de test
 	 */
 	public Controleur(String arg)
 	{
@@ -54,14 +53,14 @@ public class Controleur
 	}
 
 	/**
-	 * Gets the joueur.
+	 * Renvoie le numéro du joueur.
 	 *
-	 * @return the joueur
+	 * @return le numéro du joueur
 	 */
 	public int getJoueur(){return metier.getJoueur();}
 
 	/**
-	 * Lancer partie.
+	 * Lance la partie.
 	 */
 	public void lancerPartie()
 	{
@@ -148,9 +147,9 @@ public class Controleur
 	}
 
 	/**
-	 * The main method.
+	 * La méthode principale qui lance la partie
 	 *
-	 * @param args the arguments
+	 * @param args les arguments
 	 */
 	public static void main(String[] args)
 	{

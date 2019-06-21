@@ -1,7 +1,6 @@
 import java.io.*;
 import java.util.*;
 
-// TODO: Auto-generated Javadoc
 /**
  * Classe Plateau.
  *
@@ -15,40 +14,40 @@ import java.util.*;
 public class Plateau
 {
 	
-	/** The nb cases. */
+	/** Le nombre de cases. */
 	private int nbCases;
 	
-	/** The point max. */
+	/** Le nombre de point max. */
 	private int pointMax;
 
-	/** The terrain. */
+	/** Le terrain. */
 	private CaseHexa[] terrain;
 	
-	/** The tab joueur. */
+	/** Le tab joueur. */
 	private Joueur[]   tabJoueur;
 	
-	/** The tour joueur. */
+	/** Le numéro du joueur. */
 	private int tourJoueur;
 	
-	/** The type plateau. */
+	/** Le type du plateau (si typePlateau = 1, 61cases - si typePlateau = 2, 91cases). */
 	private int typePlateau;
 	
-	/** The pile cristaux. */
+	/** La pile de cristaux. */
 	private Stack<Cristal> pileCristaux;
 	
-	/** The longueur min. */
+	/** La longueur min. d'une ligne*/
 	private int longueurMin;
 	
-	/** The longueur max. */
+	/** La longueur max. d'une ligne*/
 	private int longueurMax;
 	
-	/** The dernier tour. */
+	/** Le dernier tour. */
 	private int dernierTour;
 
 	/**
-	 * Instantiates a new plateau.
+	 * Instancie un nouveau plateau.
 	 *
-	 * @param nomJoueur the nom joueur
+	 * @param nomJoueur Le tableau contenant les noms des joueurs dans l'ordre
 	 */
 	public Plateau(String[] nomJoueur)
 	{
@@ -72,28 +71,28 @@ public class Plateau
 	}
 
 	/**
-	 * Changer joueur.
+	 * Passe au joueur suivant.
 	 */
 	public void changerJoueur(){tourJoueur=(tourJoueur+1)%tabJoueur.length;}
 	
 	/**
-	 * Gets the joueur courant.
+	 * Renvoie le joueur courant.
 	 *
-	 * @return the joueur courant
+	 * @return le joueur courant
 	 */
 	public Joueur getJoueurCourant(){return tabJoueur[tourJoueur];}
 	
 	/**
-	 * Gets the joueur.
+	 * Renvoie le numéro de joueur.
 	 *
-	 * @return the joueur
+	 * @return le numéro de joueur
 	 */
 	public int getJoueur(){return tourJoueur;}
 
 	/**
-	 * Gets the victoire point.
+	 * Renvoie vrai si un joueur a atteint de nombre de points pour gagner
 	 *
-	 * @return the victoire point
+	 * @return si un joueur a atteint de nombre de points pour gagner
 	 */
 	public boolean getVictoirePoint()
 	{
@@ -106,9 +105,9 @@ public class Plateau
 	}
 	
 	/**
-	 * Gets the victoire crystal.
+	 * Renvoie faux quand la partie est finie
 	 *
-	 * @return the victoire crystal
+	 * @return si la partie n'est pas finie
 	 */
 	public boolean getVictoireCrystal()
 	{
@@ -122,9 +121,9 @@ public class Plateau
 	}
 	
 	/**
-	 * Gets the meileur joueur.
+	 * Renvoie le joueur avec le meilleur score
 	 *
-	 * @return the meileur joueur
+	 * @return le meilleur joueur
 	 */
 	public Joueur getMeileurJoueur(){
 		int pointMax = 0;
@@ -144,10 +143,10 @@ public class Plateau
 	}
 
 	/**
-	 * Creer terrain.
+	 * Créer le terrain.
 	 *
-	 * @param nbJoueur the nb joueur
-	 * @return the case hexa[]
+	 * @param nbJoueur Le nombre de joueurs
+	 * @return le terrain sous la forme d'un tableau de cases hexagonales
 	 */
 	public CaseHexa[] creerTerrain(int nbJoueur)
 	{
@@ -208,9 +207,9 @@ public class Plateau
 	}
 
 	/**
-	 * Inits the terrain.
+	 * Initialise le terrain.
 	 *
-	 * @param nbJoueur the nb joueur
+	 * @param nbJoueur Le nombre de joueurs
 	 */
 	private void initTerrain(int nbJoueur)
 	{
@@ -279,19 +278,20 @@ public class Plateau
 	}
 
 	/**
-	 * Gets the joueur.
+	 * Renvoie le joueur dont le numéro est donné en paramètre.
 	 *
-	 * @param id the id
-	 * @return the joueur
+	 * @param id l'indice du joueur dans le tableau de joueurs
+	 * @return le joueur
 	 */
 	public Joueur getJoueur(int id){
 		return tabJoueur[id];
 	}
 
 	/**
-	 * Ajouter nouv cristal de pile.
+	 * Retire un cristal de la pile et le place le plus proche possible de la case
+	 * dont le numéro est donné en paramètre
 	 *
-	 * @param indCase the ind case
+	 * @param indCase L'indice de la case
 	 */
 	public void ajouterNouvCristalDePile(int indCase)
 	{
@@ -324,9 +324,9 @@ public class Plateau
 	}
 
 	/**
-	 * Afficher plateau.
+	 * Renvoie le plateau sous la forme d'une chaine
 	 *
-	 * @return the string
+	 * @return le plateau
 	 */
 	public String afficherPlateau(){
 		String retour = "";

@@ -1,6 +1,6 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
-// TODO: Auto-generated Javadoc
 /**
  * Classe Joueur.
  *
@@ -14,33 +14,36 @@ import java.util.ArrayList;
 public class Joueur
 {
 	
-	/** The nom. */
+	/** Le nom du joueur. */
 	private String  nom;
 	
-	/** The base joueur. */
+	/** La base du joueur. */
 	private Base    baseJoueur;
 	
-	/** The points. */
+	/** Les points du joueurs. */
 	private int     points;
 	
-	/** The robots. */
+	/** Les robots du joueur. */
 	private Robot[] robots;
 
-	/** The Constant mainOrdres. */
+	/** Les noms des ordres en main constants */
 	private static final String[] mainOrdres = new String[] {"Avancer", "Avancer2",
 	                                                         "TournerG", "TournerD",
 	                                                         "Charger", "Deposer"   };
 	
-	/** The main nb ordres. */
+	/** Le nombre de chaque ordre en main. */
 	private int[] mainNbOrdres;
 	
-	/** The main nb ordres stock. */
+	/** 
+	 * Le nombre de chaque ordre en main en début de partie
+	 * (pour réinitialiser la main du joueur)
+	 */
 	private int[] mainNbOrdresStock;
 
 	/**
-	 * Instantiates a new joueur.
+	 * Instancie un nouveau joueur.
 	 *
-	 * @param nom the nom
+	 * @param nom Le nom du joueur
 	 */
 	public Joueur(String nom)
 	{
@@ -50,15 +53,13 @@ public class Joueur
 
 		mainNbOrdres      = new int[] {2,1,3,3,2,2};
 		mainNbOrdresStock = new int[] {2,1,3,3,2,2};
-
-		//TODO : type de robot ?????
 	}
 
 	/**
-	 * Gets the dir robot.
+	 * Renvoie la direction robot.
 	 *
-	 * @param numRobot the num robot
-	 * @return the dir robot
+	 * @param numRobot Le numéro du robot
+	 * @return la direction du robot
 	 */
 	public int getDirRobot(int numRobot)
 	{
@@ -66,53 +67,37 @@ public class Joueur
 	}
 
 	/**
-	 * Gets the robots.
+	 * Renvoie une copie du tableau de robots du joueur
 	 *
-	 * @return the robots
+	 * @return le tableau de robots
 	 */
 	public Robot[] getRobots(){
-		return robots;
+		return Arrays.copyOf(robots, robots.length);
 	}
 
 	/**
-	 * Robot appartient au joueur.
+	 * Renvoie une copie du tableau des noms des ordres en main
 	 *
-	 * @param robot the robot
-	 * @return true, if successful
-	 */
-	public boolean robotAppartientAuJoueur(Robot robot)
-	{
-		for(int i=0; i<robots.length; i++)
-			if(robots[i].equals(robot))
-				return true;
-
-		return false;
-	}
-
-	/**
-	 * Gets the main ordres.
-	 *
-	 * @return the main ordres
+	 * @return les noms des ordres en main
 	 */
 	public String[] getMainOrdres()
 	{
-		return mainOrdres;
+		return Arrays.copyOf(mainOrdres, mainOrdres.length);
 	}
 
 	/**
-	 * Gets the main nb ordres.
-	 *
-	 * @return the main nb ordres
+	 * Renvoie une copie du tableau des noms des ordres en main	 *
+	 * @return le nombre des ordres en main
 	 */
 	public int[] getMainNbOrdres()
 	{
-		return mainNbOrdres;
+		return Arrays.copyOf(mainNbOrdres, mainNbOrdres.length);
 	}
 
 	/**
-	 * Donner ordres.
+	 * Donne les ordres au robot.
 	 *
-	 * @param numRobot the num robot
+	 * @param numRobot Le numéro du robot
 	 */
 	public void donnerOrdres(int numRobot)
 	{
@@ -120,11 +105,11 @@ public class Joueur
 	}
 
 	/**
-	 * Donner ordres modif.
+	 * Donner les modifications aux ordres.
 	 *
-	 * @param tabOrdres the tab ordres
-	 * @param numRobot the num robot
-	 * @return true, if successful
+	 * @param tabOrdres Le tableau des ordres à donner
+	 * @param numRobot Le numéro du robot
+	 * @return vrai si le joueur a suffisamment d'ordres en main pour faire l'action
 	 */
 	public boolean donnerOrdresModif(String[] tabOrdres, int numRobot)
 	{
@@ -159,7 +144,7 @@ public class Joueur
 	}
 
 	/**
-	 * Actualiser main.
+	 * Actualise la quantité d'ordre dans la main du joueur.
 	 */
 	public void actualiserMain()
 	{
@@ -186,10 +171,10 @@ public class Joueur
 	}
 
 	/**
-	 * Gets the ordres robot.
+	 * Renvoie les ordres du robot.
 	 *
-	 * @param numRobot the num robot
-	 * @return the ordres robot
+	 * @param numRobot Le numéro du robot
+	 * @return les noms des ordres du robot
 	 */
 	public String[] getOrdresRobot(int numRobot)
 	{
@@ -197,9 +182,9 @@ public class Joueur
 	}
 
 	/**
-	 * Gets the points.
+	 * Renvoie les points du joueur.
 	 *
-	 * @return the points
+	 * @return les points
 	 */
 	public int getPoints()
 	{
@@ -211,9 +196,9 @@ public class Joueur
 	}
 
 	/**
-	 * Gets the cristaux base.
+	 * Renvoie la liste des cristaux dans la base du joueur.
 	 *
-	 * @return the cristaux base
+	 * @return les cristaux de la base
 	 */
 	public ArrayList<Cristal> getCristauxBase()
 	{
@@ -221,10 +206,10 @@ public class Joueur
 	}
 
 	/**
-	 * Gets the nb cristaux.
+	 * Renvoie le nombre de cristaux de la valeur voulue.
 	 *
-	 * @param valeur the valeur
-	 * @return the nb cristaux
+	 * @param valeur la valeur
+	 * @return le nombre de cristaux
 	 */
 	public int getNbCristaux(int valeur)
 	{
@@ -232,19 +217,7 @@ public class Joueur
 	}
 
 	/**
-	 * Comparer points.
-	 *
-	 * @param etape the etape
-	 * @param autreJoueur the autre joueur
-	 * @return the int
-	 */
-	public int comparerPoints(boolean etape, Joueur autreJoueur)
-	{
-		return (etape)? this.getPoints()-autreJoueur.getPoints() : this.getPoint()-autreJoueur.getPoint();
-	}
-
-	/**
-	 * Reset carte.
+	 * Réinitialise les ordres en main.
 	 */
 	public void resetCarte()
 	{
@@ -253,20 +226,20 @@ public class Joueur
 	}
 
 	/**
-	 * Ajouter cristal.
+	 * Ajouter un cristal dans la base.
 	 *
-	 * @param c the c
+	 * @param c Le cristal à ajouter
 	 */
 	public void ajouterCristal(Cristal c){
 		this.baseJoueur.ajouterCristal(c);
 	}
 
 	/**
-	 * Sets the robot.
+	 * Sets le robot.
 	 *
-	 * @param r the r
-	 * @param caseHex the case hex
-	 * @param orientation the orientation
+	 * @param r Le robot
+	 * @param caseHex La case du robot
+	 * @param orientation L'orientation du robot
 	 */
 	public void setRobot(Robot r, CaseHexa caseHex, int orientation)
 	{
@@ -281,21 +254,21 @@ public class Joueur
 	}
 	
 	/**
-	 * Sets the test ordres.
+	 * Sets des ordres pour le mode de test.
 	 *
-	 * @param orde the orde
-	 * @param numRobot the num robot
+	 * @param ordre les ordes
+	 * @param numRobot le numéro robot
 	 */
-	public void setTestOrdres(String orde,int numRobot){
-		robots[numRobot].setTestOrdres(orde);
-
+	public void setTestOrdres(String ordre,int numRobot)
+	{
+		robots[numRobot].setTestOrdres(ordre);
 	}
 	
 	/**
-	 * Gets the cristal robot.
+	 * Renvoie le cristal tenu par le robot.
 	 *
-	 * @param id the id
-	 * @return the cristal robot
+	 * @param id L'id du robot
+	 * @return la valeur du cristal porté par le robot (peut être nul s'il n'en porte pas)
 	 */
 	public int getCristalRobot(int id)
 	{
@@ -306,9 +279,9 @@ public class Joueur
 	}
 
 	/**
-	 * Sets the base.
+	 * Sets la base.
 	 *
-	 * @param b the new base
+	 * @param b La base
 	 */
 	public void setBase(Base b)
 	{
@@ -316,11 +289,11 @@ public class Joueur
 	}
 
 	/**
-	 * Sets the case hexa.
+	 * Sets la case du robot au robot.
 	 *
-	 * @param r the r
-	 * @param caseHex the case hex
-	 * @param orientation the orientation
+	 * @param r Le robot
+	 * @param caseHex La case
+	 * @param orientation L'orientation
 	 */
 	public void setCaseHexa(Robot r, CaseHexa caseHex, int orientation)
 	{
@@ -328,27 +301,27 @@ public class Joueur
 	}
 
 	/**
-	 * Gets the nom.
+	 * Gets le nom.
 	 *
-	 * @return the nom
+	 * @return le nom
 	 */
 	public String getNom() {
 		return nom;
 	}
 
 	/**
-	 * Gets the point.
+	 * Renvoie le nombre de points.
 	 *
-	 * @return the point
+	 * @return les points
 	 */
 	public int getPoint() {
 		return points;
 	}
 
 	/**
-	 * Sets the point.
+	 * Ajoute des points
 	 *
-	 * @param point the new point
+	 * @param point Les points à ajouter
 	 */
 	public void setPoint(int point){
 		this.points += point;
