@@ -11,24 +11,32 @@ import java.util.Scanner;
  */
 
 import iut.algo.*;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class IHMCUI.
+ */
 public class IHMCUI
 {
+	
+	/** The coul joueur. */
 	// SUPPRIME
 	CouleurConsole[] coulJoueur = {CouleurConsole.valueOf("ROUGE"),CouleurConsole.valueOf("JAUNE"),
 	                               CouleurConsole.valueOf("VERT") ,CouleurConsole.valueOf("BLEU"),
 								   CouleurConsole.valueOf("MAUVE"),CouleurConsole.valueOf("BLANC")};
-	/**
-	 * Controleur qui fait la liaison avec la partie métier
-	 */
+	
+	/** Controleur qui fait la liaison avec la partie métier. */
 	private Controleur ctrl;
 
 	/**
-	 * Constructeur permettant de stocker le controleur
+	 * Constructeur permettant de stocker le controleur.
+	 *
+	 * @param ctrl the ctrl
 	 */
 	public IHMCUI(Controleur ctrl){this.ctrl = ctrl;}
 
 	/**
-	 * Méthode appelée au début d'une nouvelle partie pour afficher le nom du jeu
+	 * Méthode appelée au début d'une nouvelle partie pour afficher le nom du jeu.
 	 */
 	private void ecranDemarrage()
 	{
@@ -37,7 +45,9 @@ public class IHMCUI
 	}
 
 	/**
-	 * Affiche l'écran de démarrage puis demande le nombre de joueurs et leur nom
+	 * Affiche l'écran de démarrage puis demande le nombre de joueurs et leur nom.
+	 *
+	 * @return the string[]
 	 */
 	public String[] nouvellePartie()
 	{
@@ -65,7 +75,10 @@ public class IHMCUI
 	}
 
 	/**
-	 * Affiche le plateau avec le tour du joueur et son score
+	 * Affiche le plateau avec le tour du joueur et son score.
+	 *
+	 * @param grille the grille
+	 * @param joueur the joueur
 	 */
 	public void afficherGrille(String grille, Joueur joueur)
 	{
@@ -89,7 +102,9 @@ public class IHMCUI
 	}*/
 
 	/**
-	 * Demande au joueur s'il veut consulter ou reprogrammer un de ses robots
+	 * Demande au joueur s'il veut consulter ou reprogrammer un de ses robots.
+	 *
+	 * @return the string
 	 */
 	public String menuAction() {
 		Console.println("\tVoulez-vous modifier/consulter un programme avant execution ? : \n\n" +
@@ -108,7 +123,9 @@ public class IHMCUI
 	}
 
 	/**
-	 * Demande au joueur le robot qu'il veut consulter/modifier par son numéro
+	 * Demande au joueur le robot qu'il veut consulter/modifier par son numéro.
+	 *
+	 * @return the int
 	 */
 	public int demandeNumRobot()
 	{
@@ -124,7 +141,10 @@ public class IHMCUI
 	}
 
 	/**
-	 * Demande au joueur quel ordre il veut donner à un robot au premier tour
+	 * Demande au joueur quel ordre il veut donner à un robot au premier tour.
+	 *
+	 * @param jCourant the j courant
+	 * @return the string[]
 	 */
 	public String[] demandeModifTour1(Joueur jCourant)
 	{
@@ -154,6 +174,10 @@ public class IHMCUI
 	 * Affiche des informations sur le robot choisi,
 	 * demande au joueur s'il veut modifier son robot et
 	 * quel modification il veut faire.
+	 *
+	 * @param jCourant the j courant
+	 * @param numRobot the num robot
+	 * @return the string[]
 	 */
 	public String[] demandeModif(Joueur jCourant, int numRobot)
 	{
@@ -237,7 +261,12 @@ public class IHMCUI
 	}
 
 	/**
-	 * Demande au joueur par quel ordre de leur main il veut remplacer l'ordre choisi du robot
+	 * Demande au joueur par quel ordre de leur main il veut remplacer l'ordre choisi du robot.
+	 *
+	 * @param jCourant the j courant
+	 * @param numRobot the num robot
+	 * @param numOrdre the num ordre
+	 * @return the string[]
 	 */
 	private String[] remplacerParMain(Joueur jCourant, int numRobot, int numOrdre)
 	{
@@ -264,7 +293,12 @@ public class IHMCUI
 	}
 
 	/**
-	 * Demande au joueur par quel ordre du robot il veut remplacer l'ordre choisi du robot
+	 * Demande au joueur par quel ordre du robot il veut remplacer l'ordre choisi du robot.
+	 *
+	 * @param jCourant the j courant
+	 * @param numRobot the num robot
+	 * @param numOrdre the num ordre
+	 * @return the string[]
 	 */
 	private String[] remplacerParAutreOrdre(Joueur jCourant, int numRobot, int numOrdre)
 	{
@@ -289,7 +323,12 @@ public class IHMCUI
 	}
 
 	/**
-	 * Permet de récupérer l'ordre choisi en paramètre
+	 * Permet de récupérer l'ordre choisi en paramètre.
+	 *
+	 * @param jCourant the j courant
+	 * @param numRobot the num robot
+	 * @param numOrdre the num ordre
+	 * @return the string[]
 	 */
 	private String[] recupOrdre(Joueur jCourant, int numRobot, int numOrdre)
 	{
@@ -303,7 +342,9 @@ public class IHMCUI
 	}
 
 	/**
-	 * Affiche un message de victoire
+	 * Affiche un message de victoire.
+	 *
+	 * @param joueur the joueur
 	 */
 	public void victoire(Joueur joueur)
 	{
@@ -311,7 +352,7 @@ public class IHMCUI
 	}
 
 	/**
-	 * Affiche un message de fin de partie
+	 * Affiche un message de fin de partie.
 	 */
 	public void finDePartie(){
 		Console.println(CouleurConsole.JAUNE.getFont()+"  _   _   _     _   _     _   _   _   _   _   _  \r\n / \\ / \\ / \\   / \\ / \\   / \\ / \\ / \\ / \\ / \\ / \\ \r\n( F | i | n ) ( d | e ) ( P | a | r | t | i | e )\r\n \\_/ \\_/ \\_/   \\_/ \\_/   \\_/ \\_/ \\_/ \\_/ \\_/ \\_/ ");

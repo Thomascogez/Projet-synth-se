@@ -1,5 +1,7 @@
+// TODO: Auto-generated Javadoc
 /**
- * Classe Controleur
+ * Classe Controleur.
+ *
  * @author Quentin BERNARDIN
  * @author Mathieu BOIREAU
  * @author Thomas  COGEZ--ALLIX
@@ -9,12 +11,25 @@
 
 public class Controleur
 {
+	
+	/** The ihm. */
 	private IHMCUI  ihm;
+	
+	/** The metier. */
 	private Plateau metier;
+	
+	/** The num tour. */
 	private int     numTour;
+	
+	/** The test. */
 	private ChargementTest test;
+	
+	/** The test mode. */
 	private boolean testMode;
 
+	/**
+	 * Instantiates a new controleur.
+	 */
 	public Controleur()
 	{
 
@@ -23,6 +38,12 @@ public class Controleur
 		numTour = 0;
 		testMode = false;
 	}
+	
+	/**
+	 * Instantiates a new controleur.
+	 *
+	 * @param arg the arg
+	 */
 	public Controleur(String arg)
 	{
 		this.ihm = new IHMCUI(this);
@@ -32,8 +53,16 @@ public class Controleur
 		testMode = true;
 	}
 
+	/**
+	 * Gets the joueur.
+	 *
+	 * @return the joueur
+	 */
 	public int getJoueur(){return metier.getJoueur();}
 
+	/**
+	 * Lancer partie.
+	 */
 	public void lancerPartie()
 	{
 		Joueur j1 = metier.getJoueurCourant();
@@ -118,6 +147,11 @@ public class Controleur
 		if (this.metier.getVictoireCrystal()) {this.ihm.victoire(metier.getMeileurJoueur());}
 	}
 
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args)
 	{
 		//mode test
