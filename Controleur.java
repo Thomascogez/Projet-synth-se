@@ -78,7 +78,7 @@ public class Controleur
 				System.out.println("Séquence :"+s.split("/")[1]+"\n\n\n");
 				System.out.println();
 				System.out.println();
-				System.out.println("Score : ");
+				System.out.println("Contenu robots : ");
 				System.out.println("J1 R1 : "+metier.getJoueur(0).getCristalRobot(0));
 				System.out.println("J1 R2 : "+metier.getJoueur(0).getCristalRobot(1));
 				System.out.println("J2 R1 : "+metier.getJoueur(1).getCristalRobot(0));
