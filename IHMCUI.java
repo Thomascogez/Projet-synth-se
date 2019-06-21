@@ -81,13 +81,36 @@ public class IHMCUI
 	 */
 	public void afficherGrille(String grille, Joueur joueur)
 	{
-		System.out.println(grille);
-		Console.println(afficherPileCristaux());
-		System.out.println(ctrl.afficherRobotsJouentPas());
+		//System.out.println(grille);
+		for(int i=0; i<grille.length(); i++)
+		{
+			if(grille.charAt(i)=='\\' && grille.charAt(i+1)=='t')
+				System.out.print("\t");
+			else if(grille.charAt(i)=='\\' && grille.charAt(i+1)=='n')
+				System.out.print("\n");
+			else if( Character.isDigit(grille.charAt(i)) && grille.charAt(i+1)=='B' ||
+			         Character.isDigit(grille.charAt(i)) && grille.charAt(i+1)=='R' ||
+			         Character.isDigit(grille.charAt(i)) && grille.charAt(i+1)=='r'   )
+			{
+				String sInd = String.valueOf(grille.charAt(i));
+				int ind = Integer.parseInt(sInd)-1;
+				Console.print(coulJoueur[ind].getFont()+grille.charAt(i)+grille.charAt(i+1));
+				i++;
+			}
+			else
+			{
+				Console.normal();
+				Console.print(grille.charAt(i));
+			}
+		}
+		Console.println("\n"+afficherPileCristaux());
+		Console.normal();
+		afficherRobotsJouentPas();
 		Console.println (coulJoueur[ctrl.getJoueur()].getFont()+"Tour du Joueur " + joueur.getNom() + "| Point : "+joueur.getPoints()+"");
 		Console.normal();
 	}
 
+	//BUG?
 	private String afficherPileCristaux(){
 		Stack<Cristal> pile = ctrl.getPileCristaux();
 		String res = "Pile de cristaux : \n";
@@ -116,6 +139,35 @@ public class IHMCUI
 			res+="+-------+";
 		return res;
 		
+	}
+
+	//BUG?
+	private void afficherRobotsJouentPas()
+	{
+		String sAffichage = ctrl.afficherRobotsJouentPas();
+		for(int i=0; i<sAffichage.length(); i++)
+		{
+			String sJoueur = "";
+			if(i+8<sAffichage.length() && sAffichage.charAt(i)=='J')
+				for(int j=0; j<8; j++)
+					sJoueur+=String.valueOf(sAffichage.charAt(i+j));
+
+			if(sAffichage.charAt(i)=='\\' && sAffichage.charAt(i+1)=='t')
+				System.out.print("\t");
+			else if(sAffichage.charAt(i)=='\\' && sAffichage.charAt(i+1)=='n')
+				System.out.print("\n");
+			else if(sJoueur.contains("Joueur "))
+			{
+				int ind = Integer.parseInt(String.valueOf(sJoueur.charAt(7)));
+				Console.print(coulJoueur[ind-1].getFont()+sJoueur);
+				i+=7;
+			}
+			else
+			{
+				Console.normal();
+				Console.print(sAffichage.charAt(i));
+			}
+		}
 	}
 
 	/* SUPPRIME non
