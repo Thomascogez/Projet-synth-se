@@ -149,7 +149,7 @@ public class Controleur
 			}
 		}
 		if (this.metier.getVictoirePoint()) {this.ihm.victoire( metier.getJoueurCourant());}
-		if (this.metier.getVictoireCrystal()) {this.ihm.victoire(metier.getMeileurJoueur());}
+		if (this.metier.getVictoireCrystal()) {this.ihm.victoire(metier.getMeilleurJoueur());}
 	}
 
 	/**

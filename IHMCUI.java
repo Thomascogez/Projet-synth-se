@@ -90,7 +90,7 @@ public class IHMCUI
 
 	private String afficherPileCristaux(){
 		Stack<Cristal> pile = ctrl.getPileCristaux();
-		String res = "Pile cristal : \n";
+		String res = "Pile de cristaux : \n";
 		int taille = pile.size();
 		for (int i = 0; i < taille; i++)
 			res+="+-------+";

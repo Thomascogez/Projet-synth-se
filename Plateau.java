@@ -92,7 +92,7 @@ public class Plateau
 	 */
 	public String afficherRobotsJouentPas()
 	{
-		String retour="Robots des autres joueurs\n";
+		String retour="Robots des autres joueurs : \n";
 
 		for(int i=0; i<tabJoueur.length; i++)
 		{
@@ -102,7 +102,12 @@ public class Plateau
 				Robot[] robot = tabJoueur[i].getRobots();
 				for(int j=0; j<2; j++)
 				{
-					retour += "Robot "+(j+1)+" : ";
+					retour += "Robot "+(j+1);
+					if(j==0)
+						retour+="(R)";
+					else
+						retour+="(r)";
+					retour+=" : ";
 					String[] ordres = robot[j].getOrdres();
 					for(int cpt=0; cpt<3; cpt++)
 						retour += ordres[cpt]+" - ";
@@ -180,7 +185,7 @@ public class Plateau
 	 *
 	 * @return le meilleur joueur
 	 */
-	public Joueur getMeileurJoueur(){
+	public Joueur getMeilleurJoueur(){
 		int pointMax = 0;
 		Joueur j = this.tabJoueur[0];
 		for (int i = 0; i<this.tabJoueur.length;i++ ) {
