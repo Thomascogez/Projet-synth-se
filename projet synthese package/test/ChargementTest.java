@@ -25,7 +25,7 @@ public class ChargementTest {
     public ChargementTest(int numTest) {
         this.numTest = numTest;
         try (InputStream input = new FileInputStream(
-                "tests/liste_tests/test_"+this.numTest+".config")) {
+                "liste_tests/test_"+this.numTest+".config")) {
 
             prop = new Properties();
             prop.load(input);
