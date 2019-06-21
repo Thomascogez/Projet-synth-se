@@ -1,8 +1,14 @@
 import java.util.ArrayList;
 
 /**
-* Base
-*/
+ * Classe Base
+ * @author Quentin BERNARDIN
+ * @author Mathieu BOIREAU
+ * @author Thomas  COGEZ--ALLIX
+ * @author Patrice MAISONNEUVE
+ * @version 06-21-2019
+ */
+
 public class Base extends Contenu
 {
 

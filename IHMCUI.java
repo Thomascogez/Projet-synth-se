@@ -1,23 +1,42 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Classe IHM
+ * @author Quentin BERNARDIN
+ * @author Mathieu BOIREAU
+ * @author Thomas  COGEZ--ALLIX
+ * @author Patrice MAISONNEUVE
+ * @version 06-21-2019
+ */
+
 import iut.algo.*;
 public class IHMCUI
 {
+	// SUPPRIME
 	CouleurConsole[] coulJoueur = {CouleurConsole.valueOf("ROUGE"),CouleurConsole.valueOf("JAUNE"),
 	                               CouleurConsole.valueOf("VERT") ,CouleurConsole.valueOf("BLEU"),
 								   CouleurConsole.valueOf("MAUVE"),CouleurConsole.valueOf("BLANC")};
+	/**
+	 * Controleur qui fait la liaison avec la partie métier
+	 */
 	private Controleur ctrl;
 
+	/**
+	 * Constructeur permettant de stocker le controleur
+	 */
 	public IHMCUI(Controleur ctrl){this.ctrl = ctrl;}
-	public void ecranDemarrage()
+
+
+	private void ecranDemarrage()
 	{
 		System.out.println(
-		        "  _   _   _   _     _   _   _     _   _   _   _  \r\n / \\ / \\ / \\ / \\   / \\ / \\ / \\   / \\ / \\ / \\ / \\ \r\n( T | w | i | n ) ( T | i | n ) ( B | o | t | s )\r\n \\_/ \\_/ \\_/ \\_/   \\_/ \\_/ \\_/   \\_/ \\_/ \\_/ \\_/ ");
+		        "  _   _   _   _     _   _   _     _   _   _   _  \r\n / \\ / \\ / \\ / \\   / \\ / \\ / \\   / \\ / \\ / \\ / \\ \r\n( T | w | i | n ) ( T | i | n ) ( B | o | t | s )\r\n \\_/ \\_/ \\_/ \\_/   \\_/ \\_/ \\_/   \\_/ \\_/ \\_/ \\_/ \n");
 	}
 
 	public String[] nouvellePartie()
 	{
+		ecranDemarrage();
 		//Initialisation : on demande le nombre de joueurs, avec vérification...
 		System.out.print ( "Choix du nombre de joueurs [2..6] : " );
 		int nbJoueurMax = Clavier.lire_int();
