@@ -49,18 +49,18 @@ public class Controleur
 				System.out.println("Robot N°"+s.split("/")[0].split(":")[1]);
 				System.out.println("Séquence :"+s.split("/")[1]+"\n\n\n");
 				this.ihm.afficherGrille(this.metier.afficherPlateau(), metier.getJoueurCourant());
-				if(this.metier.getVictoire())
+				if(this.metier.getVictoirePoint())
 				{
-					this.ihm.getVictoirePoint(metier.getJoueurCourant());
+					this.ihm.getVictoire(metier.getJoueurCourant());
 					break;
 				}
-				
+
 			}
 			System.out.println("J1 R1 : "+metier.getJoueur(0).getCristalRobot(0));
 			System.out.println("J1 R2 : "+metier.getJoueur(0).getCristalRobot(1));
 			System.out.println("J2 R1 : "+metier.getJoueur(1).getCristalRobot(0));
 			System.out.println("J2 R2 : "+metier.getJoueur(1).getCristalRobot(1));
-			
+
 		}
 		while(!this.metier.getVictoirePoint()||!metier.getVictoireCrystal())
 		{
