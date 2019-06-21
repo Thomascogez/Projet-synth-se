@@ -64,11 +64,19 @@ public class IHMCUI
 		}
 		//...Et on demande leurs noms respectifs
 		String[] tabNom = new String[nbJoueurMax];
+		boolean  estNomEgal = false;
 		for (int i= 0; i< nbJoueurMax ;i++ )
 		{
-			Console.print (coulJoueur[i].getFont()+"Nom du Joueur " +(i+1)+ " : ");
-			Console.normal();
-			tabNom[i] = Clavier.lireString();
+			do{
+				Console.print (coulJoueur[i].getFont()+"Nom du Joueur " +(i+1)+ " : ");
+				Console.normal();
+				estNomEgal = false;
+
+				tabNom[i] = Clavier.lireString();
+				for(int j=0; j<tabNom.length; j++)
+					if(tabNom[i].equals(tabNom[j]) && j!=i)
+						estNomEgal = true;
+			}while(!tabNom[i].matches("[a-zA-Z0-9]+") || estNomEgal);
 		}
 		return tabNom;
 	}
