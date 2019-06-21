@@ -229,9 +229,9 @@ public class IHMCUI
 		return tabOrdres;
 	}
 
-	public void victoire()
+	public void victoire(Joueur joueur)
 	{
-		Console.println("Bravo le joueur x à gagner la partie !");
+		Console.println("Bravo "+ joueur.getNom() +"  à gagner la partie !");
 	}
 
 	public void finDePartie(){

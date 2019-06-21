@@ -41,7 +41,7 @@ public class Controleur
 		{
 			String[] tabSequence = test.getProperty("SEQUENCE_TEST").trim().split("#");
 
-			for (String s : tabSequence) 
+			for (String s : tabSequence)
 			{
 				metier.getJoueur(Integer.parseInt(s.split("/")[0].split(":")[0])).setTestOrdres(s.split("/")[1],Integer.parseInt(s.split("/")[0].split(":")[1]));
 
@@ -51,12 +51,12 @@ public class Controleur
 				this.ihm.afficherGrille(this.metier.afficherPlateau(), metier.getJoueurCourant());
 				if(this.metier.getVictoire())
 				{
-					this.ihm.victoire();
+					this.ihm.getVictoirePoint(metier.getJoueurCourant());
 					break;
 				}
 			}
 		}
-		while(!this.metier.getVictoire())
+		while(!this.metier.getVictoirePoint()||!metier.getVictoireCrystal())
 		{
 			Joueur joueur = metier.getJoueurCourant();
 			if(joueur == j1)
@@ -104,17 +104,16 @@ public class Controleur
 					}
 				}while(!valid);
 
-
-			metier.changerJoueur();
+			if (!this.metier.getVictoirePoint()||!metier.getVictoireCrystal()) {
+				metier.changerJoueur();
+			}
 		}
-		this.ihm.victoire();
+		if (this.metier.getVictoirePoint()) {this.ihm.victoire( metier.getJoueurCourant());}
+		if (this.metier.getVictoireCrystal()) {this.ihm.victoir(metier.getMeileurJoueur());}
 	}
 
 	public static void main(String[] args)
 	{
-<<<<<<< HEAD
-		new Controleur(args[0]).lancerPartie();
-=======
 		//mode test
 		if(args.length  == 1){
 			new Controleur(args[0]).lancerPartie();
@@ -122,7 +121,5 @@ public class Controleur
 		}else{
 			new Controleur().lancerPartie();
 		}
-		
->>>>>>> f5cf03b3e0c280681f911945821f444a94620bfe
 	}
 }
