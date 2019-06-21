@@ -4,14 +4,23 @@ public class Controleur
 	private Plateau metier;
 	private int     numTour;
 	private ChargementTest test;
+	private boolean testMode;
 
-	public Controleur(String arg)
+	public Controleur()
 	{
 
 		this.ihm = new IHMCUI(this);
 		this.metier = new Plateau(this.ihm.nouvellePartie());
+		numTour = 0;
+		testMode = false;
+	}
+	public Controleur(String arg)
+	{
+		this.ihm = new IHMCUI(this);
+		this.metier = new Plateau(this.ihm.nouvellePartie());
 		this.test = new ChargementTest(Integer.parseInt(arg));
 		numTour = 0;
+		testMode = true;
 	}
 
 	public int getJoueur(){return metier.getJoueur();}
@@ -19,20 +28,26 @@ public class Controleur
 	public void lancerPartie()
 	{
 		Joueur j1 = metier.getJoueurCourant();
-		if(test.getProperty("TEST_MODE").trim().equals("TRUE"))
+		if(testMode)
+		{
+			String[] tabSequence = test.getProperty("SEQUENCE_TEST").trim().split("#");
+
+			for (String s : tabSequence) 
 			{
-				String[] tabSequence = test.getProperty("SEQUENCE_TEST").trim().split("#");
+				metier.getJoueur(Integer.parseInt(s.split("/")[0].split(":")[0])).setTestOrdres(s.split("/")[1],Integer.parseInt(s.split("/")[0].split(":")[1]));
 
-				for (String s : tabSequence) {
-					metier.getJoueur(Integer.parseInt(s.split("/")[0].split(":")[0])).setTestOrdres(s.split("/")[1],Integer.parseInt(s.split("/")[0].split(":")[1]));
-
-					System.out.println("Joueur N°"+s.split("/")[0].split(":")[0]);
-					System.out.println("Robot N°"+s.split("/")[0].split(":")[1]);
-					System.out.println("Séquence :"+s.split("/")[1]+"\n\n\n");
-					this.ihm.afficherGrille(this.metier.afficherPlateau(), metier.getJoueurCourant());
+				System.out.println("Joueur N°"+s.split("/")[0].split(":")[0]);
+				System.out.println("Robot N°"+s.split("/")[0].split(":")[1]);
+				System.out.println("Séquence :"+s.split("/")[1]+"\n\n\n");
+				this.ihm.afficherGrille(this.metier.afficherPlateau(), metier.getJoueurCourant());
+				if(this.metier.getVictoire())
+				{
+					this.ihm.victoire();
+					break;
 				}
 			}
-		while(!this.metier.getVictoire() ||test.getProperty("TEST_MODE").trim().equals("TRUE"))
+		}
+		while(!this.metier.getVictoire())
 		{
 			Joueur joueur = metier.getJoueurCourant();
 			if(joueur == j1)
@@ -68,7 +83,7 @@ public class Controleur
 								valid = true;
 							}
 							else
-								System.out.println("Ordres invalides");
+								System.out.println("\nLa reprogrammation n'a pas été effectué\n");
 						}
 
 						else
@@ -88,6 +103,17 @@ public class Controleur
 
 	public static void main(String[] args)
 	{
+<<<<<<< HEAD
 		new Controleur(args[0]).lancerPartie();
+=======
+		//mode test
+		if(args.length  == 1){
+			new Controleur(args[0]).lancerPartie();
+		//mode normal
+		}else{
+			new Controleur().lancerPartie();
+		}
+		
+>>>>>>> f5cf03b3e0c280681f911945821f444a94620bfe
 	}
 }
