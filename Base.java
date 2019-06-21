@@ -38,11 +38,6 @@ public class Base extends Contenu
 		return this.numJoueur;
 	}
 
-	public ArrayList<Cristal> getCristaux()
-	{
-		return cristaux;
-	}
-
 	public int getTotalpoint()
 	{
 		int retour = 0;
@@ -52,31 +47,4 @@ public class Base extends Contenu
 		return retour;
 	}
 
-	/**
-	 * Gets the nb cristaux.
-	 *
-	 * @param valeur the valeur
-	 * @return the nb cristaux
-	 */
-	public int getNbCristaux(int valeur)
-	{
-		int cpt = 0;
-		for (Cristal c : this.cristaux)
-		{
-			if (c.getValeur() == valeur)
-				cpt++;
-		}
-		return cpt;
-	}
-
-	/**
-	 * To string.
-	 *
-	 * @return the string
-	 */
-	@Override
-	public String toString()
-	{
-		return "Cristaux dans la base "+cristaux;
-	}
 }
