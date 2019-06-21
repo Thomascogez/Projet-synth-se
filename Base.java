@@ -1,7 +1,9 @@
 import java.util.ArrayList;
 
+// TODO: Auto-generated Javadoc
 /**
- * Classe Base
+ * Classe Base.
+ *
  * @author Quentin BERNARDIN
  * @author Mathieu BOIREAU
  * @author Thomas  COGEZ--ALLIX
@@ -12,6 +14,7 @@ import java.util.ArrayList;
 public class Base extends Contenu
 {
 
+	/** The cristaux. */
 	private ArrayList<Cristal> cristaux;
 	private int numJoueur;
 
@@ -22,10 +25,10 @@ public class Base extends Contenu
 	}
 
 	/**
-	* Methode permettant d'ajouter un crystal dans la base
-	*
-	* @param c la crystal a ajouter
-	*/
+	 * Methode permettant d'ajouter un crystal dans la base.
+	 *
+	 * @param c la crystal a ajouter
+	 */
 	public void ajouterCristal(Cristal c)
 	{
 		this.cristaux.add(c);
@@ -41,6 +44,12 @@ public class Base extends Contenu
 		return cristaux;
 	}
 
+	/**
+	 * Gets the nb cristaux.
+	 *
+	 * @param valeur the valeur
+	 * @return the nb cristaux
+	 */
 	public int getNbCristaux(int valeur)
 	{
 		int cpt = 0;
@@ -52,6 +61,11 @@ public class Base extends Contenu
 		return cpt;
 	}
 
+	/**
+	 * To string.
+	 *
+	 * @return the string
+	 */
 	@Override
 	public String toString()
 	{

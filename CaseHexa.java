@@ -1,4 +1,3 @@
-// TODO: Auto-generated Javadoc
 /**
  * Classe CaseHexa.
  *
