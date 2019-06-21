@@ -1,3 +1,6 @@
+import java.util.Stack;
+
+
 /**
  * Classe Controleur.
  *
@@ -71,23 +74,10 @@ public class Controleur
 
 			for (String s : tabSequence)
 			{
-				metier.getJoueur(Integer.parseInt(s.split("/")[0].split(":")[0])).setTestOrdres(s.split("/")[1],Integer.parseInt(s.split("/")[0].split(":")[1]));
-				System.out.println("Contenu robots : ");
-				System.out.println("J1 R1 : "+metier.getJoueur(0).getCristalRobot(0));
-				System.out.println("J1 R2 : "+metier.getJoueur(0).getCristalRobot(1));
-				System.out.println("J2 R1 : "+metier.getJoueur(1).getCristalRobot(0));
-				System.out.println("J2 R2 : "+metier.getJoueur(1).getCristalRobot(1));
-
 				System.out.println("Joueur N°"+s.split("/")[0].split(":")[0]);
 				System.out.println("Robot N°"+s.split("/")[0].split(":")[1]);
 				System.out.println("Séquence :"+s.split("/")[1]+"\n\n\n");
-				System.out.println();
-				System.out.println();
-				System.out.println("Contenu robots : ");
-				System.out.println("J1 R1 : "+metier.getJoueur(0).getCristalRobot(0));
-				System.out.println("J1 R2 : "+metier.getJoueur(0).getCristalRobot(1));
-				System.out.println("J2 R1 : "+metier.getJoueur(1).getCristalRobot(0));
-				System.out.println("J2 R2 : "+metier.getJoueur(1).getCristalRobot(1));
+				metier.getJoueur(Integer.parseInt(s.split("/")[0].split(":")[0])).setTestOrdres(s.split("/")[1],Integer.parseInt(s.split("/")[0].split(":")[1]));
 				this.ihm.afficherGrille(this.metier.afficherPlateau(), metier.getJoueurCourant());
 				if(this.metier.getVictoirePoint())
 				{
@@ -98,6 +88,7 @@ public class Controleur
 
 			}
 			System.out.println("FIN");
+			System.out.println("Contenu robots : ");
 			System.out.println("J1 R1 : "+metier.getJoueur(0).getCristalRobot(0));
 			System.out.println("J1 R2 : "+metier.getJoueur(0).getCristalRobot(1));
 			System.out.println("J2 R1 : "+metier.getJoueur(1).getCristalRobot(0));
@@ -169,6 +160,16 @@ public class Controleur
 	public String afficherRobotsJouentPas()
 	{
 		return metier.afficherRobotsJouentPas();
+	}
+
+	/**
+	 * Methode retournant la pile de cristaux
+	 * 
+	 * @return pileCristaux
+	 */
+
+	public Stack<Cristal> getPileCristaux(){
+		return metier.getPileCristaux();
 	}
 
 	/**

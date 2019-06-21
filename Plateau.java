@@ -129,6 +129,15 @@ public class Plateau
 	}
 
 	/**
+	 * Methode retournant la pile de cristaux
+	 * 
+	 * @return pileCristaux
+	 */
+	public Stack<Cristal> getPileCristaux(){
+		return pileCristaux;
+	}
+
+	/**
 	 * Renvoie le numéro de joueur.
 	 *
 	 * @return le numéro de joueur
