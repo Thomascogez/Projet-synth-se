@@ -150,6 +150,14 @@ public class Joueur
 		return true;
 	}
 
+	//BUG?
+	public boolean estPremierRobot(Robot r)
+	{
+		if(robots[0].equals(r))
+			return true;
+		return false;
+	}
+
 	/**
 	 * Actualise la quantité d'ordre dans la main du joueur.
 	 */

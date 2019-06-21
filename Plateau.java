@@ -401,7 +401,11 @@ public class Plateau
 					if(this.terrain[caseHex].getid().equals("R"))
 					{
 						Robot robot = (Robot)(this.terrain[caseHex].getContenu());
-						retour +=robot.getNumJoueur()+this.terrain[caseHex].getid()+" ";
+						//retour +=robot.getNumJoueur()+this.terrain[caseHex].getid()+" ";
+						if(tabJoueur[robot.getNumJoueur()-1].estPremierRobot(robot))
+							retour +=robot.getNumJoueur()+this.terrain[caseHex].getid()+" ";
+						else
+							retour +=robot.getNumJoueur()+"r ";
 					}
 					else if(this.terrain[caseHex].getid().equals("C"))
 					{
