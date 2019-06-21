@@ -1,7 +1,5 @@
-// TODO: Auto-generated Javadoc
 /**
- * Classe Robot.
- *
+ * Classe Robot
  * @author Quentin BERNARDIN
  * @author Mathieu BOIREAU
  * @author Thomas  COGEZ--ALLIX
@@ -11,31 +9,14 @@
 
 public class Robot extends Contenu
 {
-	
-	/** The case hexa. */
 	private CaseHexa caseHexa;
-	
-	/** The dir. */
 	private int      dir;
-	
-	/** The cristal porte. */
 	private Cristal  cristalPorte;
-	
-	/** The tab ordres. */
 	private String[] tabOrdres;
-	
-	/** The num joueur. */
 	private int numJoueur;
 
-	/** The plateau. */
 	private Plateau plateau; // uniquement pour la pile de cristaux
 
-	/**
-	 * Instantiates a new robot.
-	 *
-	 * @param plateau the plateau
-	 * @param numJoueur the num joueur
-	 */
 	public Robot(Plateau plateau, int numJoueur)
 	{
 		if(dir<0 || dir>=6)
@@ -46,51 +27,27 @@ public class Robot extends Contenu
 		this.numJoueur = numJoueur+1;
 	}
 
-	/**
-	 * Equals.
-	 *
-	 * @param autre the autre
-	 * @return true, if successful
-	 */
 	public boolean equals(Robot autre)
 	{
 		return this.caseHexa==autre.caseHexa &&
 		       this.dir     ==autre.dir;
 	}
 
-	/**
-	 * Gets the num joueur.
-	 *
-	 * @return the num joueur
-	 */
 	public int getNumJoueur()
 	{
 		return this.numJoueur;
 	}
 
-	/**
-	 * Gets the dir.
-	 *
-	 * @return the dir
-	 */
 	public int getDir()
 	{
 		return dir;
 	}
 
-	/**
-	 * Gets the ordres.
-	 *
-	 * @return the ordres
-	 */
 	public String[] getOrdres()
 	{
 		return tabOrdres;
 	}
 
-	/**
-	 * Action.
-	 */
 	public void action()
 	{
 		for(int i=0; i<tabOrdres.length; i++)
@@ -121,22 +78,12 @@ public class Robot extends Contenu
 		}
 	}
 
-	/**
-	 * Action modif.
-	 *
-	 * @param tabOrdres the tab ordres
-	 */
 	public void actionModif(String[] tabOrdres)
 	{
 		this.tabOrdres = tabOrdres;
 		action();
 	}
 
-	/**
-	 * Gets the valeur cristal.
-	 *
-	 * @return the valeur cristal
-	 */
 	public int getValeurCristal()
 	{
 		if(this.cristalPorte!=null)
@@ -145,24 +92,13 @@ public class Robot extends Contenu
 		return 0;
 	}
 
-	/**
-	 * Sets the case hexa.
-	 *
-	 * @param caseHexa the case hexa
-	 * @param orientation the orientation
-	 */
-	// A n'utiliser qu'Ã  l'initialisation du plateau
+	// A n'utiliser qu'à l'initialisation du plateau
 	public void setCaseHexa(CaseHexa caseHexa, int orientation)
 	{
 		this.caseHexa = caseHexa;
 		this.dir = orientation;
 	}
 
-	/**
-	 * Tourner.
-	 *
-	 * @param direction the direction
-	 */
 	private void tourner(char direction)
 	{
 		System.out.println("direction "+dir+" - direction-1mod6 : "+((dir-1)%6));
@@ -173,9 +109,6 @@ public class Robot extends Contenu
 		System.out.println("tourner "+dir);
 	}
 
-	/**
-	 * Avancer.
-	 */
 	private void avancer()
 	{
 		CaseHexa[] casesVoisines = caseHexa.getVoisines();
@@ -211,9 +144,6 @@ public class Robot extends Contenu
 		}
 	}
 
-	/**
-	 * Charger.
-	 */
 	private void charger()
 	{
 		CaseHexa[] casesVoisines = caseHexa.getVoisines();
@@ -235,21 +165,12 @@ public class Robot extends Contenu
 			autreRobot.cristalPorte = null;
 		}
 	}
-	
-	/**
-	 * Sets the test ordres.
-	 *
-	 * @param tabTest the new test ordres
-	 */
 	public void setTestOrdres(String tabTest)
 	{
 		tabOrdres = tabTest.split(":");
 		this.action();
 	}
 
-	/**
-	 * Deposer.
-	 */
 	private void deposer()
 	{
 		CaseHexa[] casesVoisines = caseHexa.getVoisines();
