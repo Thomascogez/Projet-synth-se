@@ -74,7 +74,7 @@ public class Plateau
 		for (int i = 0; i<this.tabJoueur.length;i++ ) {
 			int point = this.tabJoueur[i].getPoint();
 			for (Robot r : this.tabJoueur[i].getRobots()) {
-				point += r.getValeurCristal();
+				point += r.getValeurCristal()-1;
 			}
 			if (point>pointMax) {
 				pointMax = point;
