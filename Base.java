@@ -16,13 +16,12 @@ public class Base extends Contenu
 
 	/** The cristaux. */
 	private ArrayList<Cristal> cristaux;
+	private int numJoueur;
 
-	/**
-	 * Instantiates a new base.
-	 */
-	public Base()
+	public Base(int numJoueur)
 	{
 		this.cristaux = new ArrayList <Cristal>();
+		this.numJoueur = numJoueur+1;
 	}
 
 	/**
@@ -35,11 +34,11 @@ public class Base extends Contenu
 		this.cristaux.add(c);
 	}
 
-	/**
-	 * Gets the cristaux.
-	 *
-	 * @return the cristaux
-	 */
+	public int getNumJoueur()
+	{
+		return this.numJoueur;
+	}
+
 	public ArrayList<Cristal> getCristaux()
 	{
 		return cristaux;
